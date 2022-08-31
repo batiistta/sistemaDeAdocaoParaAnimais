@@ -1,0 +1,73 @@
+@{
+  ViewData["Title"] = "Register";
+}
+
+
+<div class="formulario">  
+<img class="fixed inset-0 bg-gray-400  lg:block lg:w-1/2 bg-cover bg-center bd-no-repeat rounded-l-lg"  src="https://www.amigonaosecompra.com.br/images/banner-login.png" alt="">
+<div class="dividirTelaDireita">
+<form class="row g-2">
+  <div class="col-md-12">
+    <label for="nome" class="form-label">Nome Completo ou Razão Social</label>
+    <input type="text" class="form-control" id="nome" placeholder="Nome" required>
+  </div>  
+
+  <div class="col-md-12">
+    <label for="datadenascimento" class="form-label">Data de Nascimento</label>
+    <input type="date" class="form-control" id="dataNascimento" placeholder="Data de Nascimento" required>
+  </div>
+
+
+  <div class="col-md-12">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="e-mail" placeholder="Digite um email" required>
+  </div>
+
+  <div class="col-md-12">
+    <label for="email" class="form-label">Confirmar Email</label>
+    <input type="email" class="form-control" id="e-mail" placeholder="Repita o email" required>
+  </div>
+
+  <div class="col-md-12">
+    <label for="password" class="form-label">Senha</label>
+    <input type="password" class="form-control" id="password" placeholder="Digite uma senha" required>
+  </div>
+
+  <div class="col-md-12">
+    <label for="password" class="form-label">Confirmar Senha</label>
+    <input type="password" class="form-control" id="password" placeholder="Repita a senha" required>
+  </div>  
+
+  <div class="col-md-12">
+    <label for="Nacionalidade" class="form-label">Nacionalidade</label required>
+    <select class="form-select" aria-label="Default select example">
+      <option selected>Selecione uma opção</option>
+      <option value="1">Brasil</option>
+      <option value="2">França</option>
+      <option value="2">Argentina</option>
+      <option value="3">México</option>
+      <option value="3">Paraguai</option>
+      <option value="3">Uruguai</option>
+      <option value="3">Japão</option>
+    </select>
+  </div>
+
+    <div class="col-md-12">
+    <label for="estado" class="form-label">Estado</label required>
+    <select id="estado" class="form-select">
+      <option selected>Escolha...</option>
+      <option>...</option>
+    </select>
+  </div>
+
+  <div class="col-md-12">
+    <label for="cidade" class="form-label">Cidade</label>
+    <input type="text" class="form-control" id="cidade" placeholder="Cidade" required>
+  </div>
+
+  <div class="col-12">
+    <button type="button" class="btn btn-primary">Cadastrar</button>
+  </div>
+</form>
+</div>
+</div>

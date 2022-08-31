@@ -1,0 +1,24 @@
+.formulario {
+    width: 100%;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;       
+}
+
+.fixed{
+    position: fixed;       
+    margin: 0px;
+    float: left;
+    position:fixed;
+    width: 500px;;
+    height:500px;    
+    left:10px; 
+     
+}
+
+.dividirTelaDireita{
+    width: 50%;
+    float: right;
+    right: 10px;    
+}
+
