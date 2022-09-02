@@ -1,73 +1,100 @@
 @{
-  ViewData["Title"] = "Register";
+    ViewData["Title"] = "Register";
 }
 
 
-<div class="formulario">  
-<img class="fixed inset-0 bg-gray-400  lg:block lg:w-1/2 bg-cover bg-center bd-no-repeat rounded-l-lg"  src="https://www.amigonaosecompra.com.br/images/banner-login.png" alt="">
-<div class="dividirTelaDireita">
-<form class="row g-2">
-  <div class="col-md-12">
-    <label for="nome" class="form-label">Nome Completo ou Razão Social</label>
-    <input type="text" class="form-control" id="nome" placeholder="Nome" required>
-  </div>  
-
-  <div class="col-md-12">
-    <label for="datadenascimento" class="form-label">Data de Nascimento</label>
-    <input type="date" class="form-control" id="dataNascimento" placeholder="Data de Nascimento" required>
-  </div>
+<div class="modal-dialog" role="document">
+    <div class="modal-content rounded-4 shadow">
+        <div class="modal-header p-5 pb-4 border-bottom-0">
+            <!-- <h5 class="modal-title">Modal title</h5> -->
+            <h2 class="fw-bold mb-0">Cadastre-se</h2>
+        </div>
 
 
-  <div class="col-md-12">
-    <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="e-mail" placeholder="Digite um email" required>
-  </div>
+        <div class="modal-body p-5 pt-0">
+            <form class="">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control rounded-3" id="floatingInput"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Nome Completo</label>
+                </div>
 
-  <div class="col-md-12">
-    <label for="email" class="form-label">Confirmar Email</label>
-    <input type="email" class="form-control" id="e-mail" placeholder="Repita o email" required>
-  </div>
+                <div class="form-floating mb-3">
+                    <label for="estado" class="form-label"></label required>
+                    <select id="estado" class="form-select rounded-3">
+                        <option selected >Selecione um estado </option>
+                        <option value="1">Brasil</option>
+                        <option value="2">França</option>
+                        <option value="2">Argentina</option>
+                        <option value="3">México</option>
+                        <option value="3">Paraguai</option>
+                        <option value="3">Uruguai</option>
+                        <option value="3">Japão</option>
+                    </select>
+                    <label for="floatingInput">Estado</label>
+                </div>
 
-  <div class="col-md-12">
-    <label for="password" class="form-label">Senha</label>
-    <input type="password" class="form-control" id="password" placeholder="Digite uma senha" required>
-  </div>
+                <div class="form-floating mb-3">
+                    <label for="estado" class="form-label"></label required>
+                    <select id="estado" class="form-select rounded-3">
+                        <option selected >Selecione uma cidade </option>
+                        <option value="1">Brasil</option>
+                        <option value="2">França</option>
+                        <option value="2">Argentina</option>
+                        <option value="3">México</option>
+                        <option value="3">Paraguai</option>
+                        <option value="3">Uruguai</option>
+                        <option value="3">Japão</option>
+                    </select>
+                    <label for="floatingInput">Cidade</label>
+                </div>
 
-  <div class="col-md-12">
-    <label for="password" class="form-label">Confirmar Senha</label>
-    <input type="password" class="form-control" id="password" placeholder="Repita a senha" required>
-  </div>  
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control rounded-3" id="floatingInput"
+                        placeholder="(55)555555555">
+                    <label for="floatingInput">Telefone</label>
+                </div>
 
-  <div class="col-md-12">
-    <label for="Nacionalidade" class="form-label">Nacionalidade</label required>
-    <select class="form-select" aria-label="Default select example">
-      <option selected>Selecione uma opção</option>
-      <option value="1">Brasil</option>
-      <option value="2">França</option>
-      <option value="2">Argentina</option>
-      <option value="3">México</option>
-      <option value="3">Paraguai</option>
-      <option value="3">Uruguai</option>
-      <option value="3">Japão</option>
-    </select>
-  </div>
-
-    <div class="col-md-12">
-    <label for="estado" class="form-label">Estado</label required>
-    <select id="estado" class="form-select">
-      <option selected>Escolha...</option>
-      <option>...</option>
-    </select>
-  </div>
-
-  <div class="col-md-12">
-    <label for="cidade" class="form-label">Cidade</label>
-    <input type="text" class="form-control" id="cidade" placeholder="Cidade" required>
-  </div>
-
-  <div class="col-12">
-    <button type="button" class="btn btn-primary">Cadastrar</button>
-  </div>
-</form>
-</div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control rounded-3" id="floatingInput"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control rounded-3" id="floatingInput"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Confirmar Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Senha">
+                    <label for="floatingPassword">Senha</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Senha">
+                    <label for="floatingPassword">Confirmar Senha</label>
+                </div>
+                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Cadastrar</button>
+                <hr class="my-4">
+                <h2 class="fs-5 fw-bold mb-3">Ou entre com</h2>
+                <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" type="submit">
+                    <svg class="bi me-1" width="16" height="16">
+                        <use xlink:href="#twitter" />
+                    </svg>
+                    <i class="fa-brands fa-google"></i> Google
+                </button>
+                <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit">
+                    <svg class="bi me-1" width="16" height="16">
+                        <use xlink:href="#facebook" />
+                    </svg>
+                    <i class="fa-brands fa-facebook"></i> Facebook
+                </button>
+                <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
+                    <svg class="bi me-1" width="16" height="16">
+                        <use xlink:href="#github" />
+                    </svg>
+                    <i class="fa-brands fa-linkedin"></i> Linkedin
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
