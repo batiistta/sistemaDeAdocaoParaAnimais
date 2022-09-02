@@ -1,21 +1,12 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-.nav-bar{
-  align-items: center;
-  background-color: #0768ca;
-  height: 45px;
-}
 
-.nav-bar a{
-  margin: 10px;
-  text-decoration: none;
-}
 
 .navbar{
-  background-color: rgb(255, 254, 254);
-  height: 65px;
+  align-items: center;
+  background-color: #B2E8B1; 
+  height: 85px;
   margin-bottom: 20px;
-  border-radius: 10px;
   border: #fff;
 }
 
