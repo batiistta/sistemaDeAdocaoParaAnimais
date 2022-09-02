@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,33 +11,9 @@
     <link rel="stylesheet" href="~/css/fontawesome.min.css">
     <link rel="stylesheet" href="~/sistemaDeAdocaoParaAnimais.styles.css" asp-append-version="true" />
 </head>
+
 <body>
     <header>
-        <nav class="nav-bar navbar-expand-lg">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Home"
-                                asp-action="Duvidas"
-                                style="font-size: 17px; color: white; font-weight: bolder;">Dúvidas?</a>
-                        </li>
-                    </ul>
-                    <div class="d-flex d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a asp-area="" asp-controller="User"
-                                asp-action="Login"
-                                 style="font-size: 17px; color: white; text-decoration: none;"> <i class="fa-solid fa-arrow-right-to-bracket"></i> Entrar</a>
-                        <a asp-area="" asp-controller="User"
-                                asp-action="Register"  style="font-size: 17px; color: white; text-decoration: none;"> <i class="fa-solid fa-address-card"></i> Cadastre-se</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
 
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
@@ -52,12 +29,13 @@
                                 asp-action="Index" style="color: black; font-size: 28px;">AmoPets</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: black; font-size: 18px; margin-top: 10px;">Quero
-                                adotar</a>
+                            <a class="nav-link" href="#" style="color: black; font-size: 18px; margin-top: 10px;">Adotar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: black; font-size: 18px; margin-top: 10px;">Quero
-                                ajudar</a>
+                            <a class="nav-link" href="#" style="color: black; font-size: 18px; margin-top: 10px;">Divulgar</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="#" style="color: black; font-size: 18px; margin-top: 10px;">Contribuir</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Duvidas"
@@ -65,8 +43,8 @@
                         </li>
                     </ul>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-outline-primary me-md-2 " type="button">Quero adotar</button>
-                        <button class="btn btn-outline-secondary me-md-2 " type="button">Quero divulgar</button>
+                        <button class="btn btn btn-light me-md-2 " type="button">Entrar</button>
+                        <button class="btn btn btn-light me-md-2 " type="button">Cadastre-se</button>
                     </div>
                 </div>
             </div>
