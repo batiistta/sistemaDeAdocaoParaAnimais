@@ -1,3 +1,74 @@
+.carousel-item {
+  animation-delay: 3s;
+  transition: 3.5s ease;
+}
+
+.carousel-item img {
+  height: 470px;
+}
+
+.card {
+  margin: 10px;
+}
+
+.titulo_amigos {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.container_duvidas {
+  width: 100%;
+  align-items: center;
+}
+
+#section_duvidas {
+  min-height: 100vh;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 35px;
+  margin: 2rem 0rem;
+}
+
+.faq {
+  max-width: 700px;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid black;
+  cursor: pointer;
+}
+
+.question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question h3 {
+  font-size: 20px;
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1.5s ease;
+}
+
+.answer p {
+  padding-top: 1rem;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.faq.active .answer {
+  max-height: 200px;
+}
+
 html {
   font-size: 14px;
 }

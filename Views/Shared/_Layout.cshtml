@@ -14,39 +14,33 @@
 
 <body>
     <header>
-
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Home"
-                                asp-action="Index" style="color: black; font-size: 28px;">AmoPets</a>
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: black; font-size: 18px; margin-top: 10px;">Adotar</a>
+                            <a class="nav-link" href="#">Adotar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: black; font-size: 18px; margin-top: 10px;">Divulgar</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: black; font-size: 18px; margin-top: 10px;">Contribuir</a>
+                            <a class="nav-link" href="#">Divulgar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Duvidas"
-                                style="color: black; margin-top: 10px; font-size: 18px;">Dúvidas</a>
+                            <a class="nav-link" href="#">Dúvidas</a>
                         </li>
                     </ul>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn btn-light me-md-2 " type="button">Entrar</button>
-                        <button class="btn btn btn-light me-md-2 " type="button">Cadastre-se</button>
-                    </div>
                 </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-primary me-md-3" type="button">Entre</button>
+                <button class="btn btn-primary me-md-3" type="button">Cadastre</button>
             </div>
         </nav>
     </header>

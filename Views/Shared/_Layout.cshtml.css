@@ -2,9 +2,10 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 
-.navbar{
+.navbar {
   align-items: center;
-  background-color: #B2E8B1; 
+  background: linear-gradient(#91F0B4,
+      #53eb60);
   height: 85px;
   margin-bottom: 20px;
   border: #fff;
@@ -17,19 +18,24 @@ a.navbar-brand {
 }
 
 a {
-color: #fff;
+  color: black;
+  font-size: 1.3rem;
+  font-family: Roboto;
+  font-weight: 800;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  color: black;
+  width: 110px;
+  background-color: white;
+  border-color: black;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #fff;
+  border-color: #fff;
 }
 
 .border-top {
