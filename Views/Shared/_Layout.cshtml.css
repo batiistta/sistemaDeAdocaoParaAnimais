@@ -4,8 +4,8 @@ for details on configuring this project to bundle and minify static web assets. 
 
 .navbar {
   align-items: center;
-  background: linear-gradient(#91F0B4,
-      #53eb60);
+  background: linear-gradient(#42d979,
+      #79f583);
   height: 85px;
   margin-bottom: 20px;
   border: #fff;
@@ -18,7 +18,7 @@ a.navbar-brand {
 }
 
 a {
-  color: black;
+  color: #fff;
   font-size: 1.3rem;
   font-family: Roboto;
   font-weight: 800;
@@ -29,6 +29,11 @@ a {
   width: 110px;
   background-color: white;
   border-color: black;
+}
+
+.btn-primary:hover{
+  font-weight: bolder;
+  background-color: transparent;
 }
 
 .nav-pills .nav-link.active,

@@ -1,19 +1,109 @@
+h2 {
+  font-size: 35px;
+  font-family: Roboto;
+  font-weight: 400;
+  text-align: center;
+  flex-direction: column;
+}
+
 .carousel-item {
   animation-delay: 3s;
   transition: 3.5s ease;
+  width: 100%;
 }
 
 .carousel-item img {
-  height: 470px;
-}
-
-.card {
-  margin: 10px;
+  width: 100%;
 }
 
 .titulo_amigos {
-  margin-top: 35px;
-  margin-bottom: 35px;
+  margin-top: 50px;
+}
+
+.titulo_amigos h1{
+   font-size: 40px;
+  font-family: Roboto;
+  font-weight: 400;
+}
+
+.card-group{
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.button_VerMais {
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 45px;
+}
+
+.btn_VerMais {
+  font-size: 18px;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  color: black;
+  font-weight: bolder;
+  background-color: #A8EB6B;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.btn_VerMais:hover {
+  transition: 1s ease;
+  color: black;
+  background-color: #fff;
+}
+
+.titulo_adocao {
+  margin-top: 50px;
+}
+
+.beneficios_adocao {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  gap: 50px;
+}
+
+.beneficios-item {
+  margin-left: 20px;
+  height: 350px;
+}
+
+.beneficios-item img {
+  height: 300px;
+  width: 500px;
+}
+
+.list-beneficios-item {
+  list-style: none;
+  font-size: 16px;
+  margin: 15px;
+}
+
+.Cuidados_Pet {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 50px;
+  gap: 50px;
+}
+
+.Cuidados_item {
+  margin-left: 20px;
+  height: 350px;
+}
+
+.Cuidados_item img {
+  height: 300px;
+  width: 500px;
+}
+
+.list-cuidados-item {
+  list-style: none;
+  font-size: 16px;
+  margin: 15px;
 }
 
 .container_duvidas {
