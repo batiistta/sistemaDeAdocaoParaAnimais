@@ -163,6 +163,17 @@ html {
   font-size: 14px;
 }
 
+a{
+  margin: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: rgb(19, 19, 19);
+  font-size: 1.5rem;
+  font-family: -webkit-body;
+  font-weight: 600;
+}
+
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -205,15 +216,12 @@ body {
 
 /* Inicio do Css profile */
 
-body{
-    margin-top:20px;
-    color: #1a202c;
-    text-align: left;
-    background-color: #e2e8f0;    
-}
+
+
 .main-body {
     padding: 15px;
 }
+
 .card {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
 }
@@ -230,10 +238,15 @@ body{
     border-radius: .25rem;
 }
 
-.card-body {
+.card-body-profile {
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1rem;
+    height: 420px;
+}
+
+.rounded-circle{
+  margin-top: 30px;
 }
 
 .gutters-sm {
