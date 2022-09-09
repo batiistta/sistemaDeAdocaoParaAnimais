@@ -190,7 +190,7 @@ body {
   background-color: #fff;
 }
 
-
+/* Inicio  css Recovery */
 .enviar-email{
   height: center;
   background-color: white;
@@ -212,11 +212,9 @@ body {
   width: 100%;
   height: 2em;
   color: #ffffff;
-}
+} /* Fim do css Recovery */
 
 /* Inicio do Css profile */
-
-
 
 .main-body {
     padding: 15px;
@@ -273,3 +271,5 @@ body {
 }
 
 /* Fim do Css profile */
+
+
