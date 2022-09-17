@@ -2,7 +2,6 @@
     ViewData["Title"] = "Register";
 }
 
-
 <div class="modal-dialog" role="document">
     <div class="modal-content rounded-4 shadow">
         <div class="modal-header p-5 pb-4 border-bottom-0">
@@ -35,6 +34,29 @@
                         placeholder="name@example.com">
                     <label for="floatingInput">Confirmar Email</label>
                 </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-3" name="cep" id="floatingInput" value="">
+                    <label for="floatingInput">Cep</label>
+                </div>
+                 
+                <div class="form-floating mb-3">
+                    <label for="estado" class="form-label"></label required>
+                    <label for="floatingInput">Estado</label>
+                    <input type="text" class="form-control rounded-3" name="estado" id="floatingInput" value="">
+                </div>
+
+                <div class="form-floating mb-3">
+                    <label for="cidade" class="form-label"></label required>
+                    <input type="text" class="form-control rounded-3" name="cidade" id="floatingInput" value="">
+                    <label for="floatingInput">Cidade</label>
+                </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-3" name="bairro" id="floatingInput" value="">
+                    <label for="floatingInput">Bairro</label>
+                </div>
+
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Senha">
                     <label for="floatingPassword">Senha</label>
@@ -64,6 +86,7 @@
                     </svg>
                     <i class="fa-brands fa-linkedin"></i> Linkedin
                 </button>
+
             </form>
         </div>
     </div>
