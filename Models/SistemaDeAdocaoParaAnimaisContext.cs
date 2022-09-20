@@ -7,9 +7,9 @@ using sistemaDeAdocaoParaAnimais.Models;
 
 namespace sistemaDeAdocaoParaAnimais.Models;
 {
-    public class ProjetoRhContext : DbContext
+    public class SistemaDeAdocaoParaAnimaisContext : DbContext
     {
-        public ProjetoRhContext(DbContextOptions<SistemaDeAdocaoParaAnimaisContext> options) : base(options){}
+        public SistemaDeAdocaoParaAnimaisContext(DbContextOptions<SistemaDeAdocaoParaAnimaisContext> options) : base(options){}
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Animal> Animais { get; set; }

@@ -2,6 +2,7 @@ namespace sistemaDeAdocaoParaAnimais.Models
 {
     public class Caracteristica
     {
+        private int CaracteristicaId { get; set;} 
         private int Energia { get; set; }
         private int Humor { get; set; }
         private int Apego { get; set; }

@@ -2,7 +2,7 @@ namespace sistemaDeAdocaoParaAnimais.Models.Animal
 {
     public class Animal
     {
-        private int IdAnimal { get; set; }
+        private int AnimalId { get; set; }
         private string Nome { get; set; }
         private string Especie { get; set; }
         private string Raca { get; set; }
