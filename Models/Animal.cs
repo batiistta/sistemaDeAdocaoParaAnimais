@@ -4,7 +4,7 @@ namespace sistemaDeAdocaoParaAnimais.Models.Animal
     {
         private int IdAnimal { get; set; }
         private string Nome { get; set; }
-        private string Especia { get; set; }
+        private string Especie { get; set; }
         private string Raca { get; set; }
         private string Cor { get; set; }
         private string Descricao { get; set; }
