@@ -6,6 +6,10 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Required]
         private int Id { get; set;}
 
+        [ForeignKey("Usuario")]
+        private int FkUsuario { get; set; }
+        private virtual Usuario? Usuarios { get; set; }
+
         [Required]
         [Display(Name = "Cep")]
         private string Cep { get; set; }

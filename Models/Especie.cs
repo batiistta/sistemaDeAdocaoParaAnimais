@@ -10,7 +10,7 @@ namespace sistemaDeAdocaoParaAnimais.Models.Animal
         [Display(Name = Tipo)]
         private string Tipo { get; set; }
         
+        [Required]
         private virtual Icollection<Animal>? Animais { get; set; }
     }
-    
 }
