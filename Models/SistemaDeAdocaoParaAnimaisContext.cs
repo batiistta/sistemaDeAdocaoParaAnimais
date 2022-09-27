@@ -15,5 +15,6 @@ namespace sistemaDeAdocaoParaAnimais.Models;
         public DbSet<Animal> Animais { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Caracteristica> Caracteristicas { get; set; }
+        public DbSet<Especie> Especies { get; set; }
     }
 }

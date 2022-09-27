@@ -30,6 +30,5 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Display(Name = "Nome da rua")]
         private string Rua { get; set;}
 
-
     }
 }
