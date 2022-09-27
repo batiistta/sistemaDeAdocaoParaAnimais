@@ -1,34 +1,37 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace sistemaDeAdocaoParaAnimais.Models
 {
     public class Endereco
     {
         [Key]
         [Required]
-        private int Id { get; set;}
+        public int Id { get; set;}
 
         [ForeignKey("Usuario")]
-        private int FkUsuario { get; set; }
-        private virtual Usuario? Usuarios { get; set; }
+        public int FkUsuario { get; set; }
+        public virtual Usuario? Usuarios { get; set; }
 
         [Required]
         [Display(Name = "Cep")]
-        private string Cep { get; set; }
+        public string Cep { get; set; }
 
         [Required]
         [Display(Name = "Estado")]
-        private string Estado { get; set; }
+        public string Estado { get; set; }
 
         [Required]
         [Display(Name = "Cidade")]
-        private string Cidade { get; set; }
+        public string Cidade { get; set; }
 
         [Required]
         [Display(Name = "Bairro")]
-        private string Bairro { get; set; }
+        public string Bairro { get; set; }
 
         [Required]
         [Display(Name = "Nome da rua")]
-        private string Rua { get; set;}
+        public string Rua { get; set;}
 
     }
 }

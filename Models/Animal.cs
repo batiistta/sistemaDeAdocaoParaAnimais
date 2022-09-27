@@ -1,50 +1,53 @@
-namespace sistemaDeAdocaoParaAnimais.Models.Animal
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace sistemaDeAdocaoParaAnimais.Models
 {
-    public class Animal
+    public class Pets
     {
         [Key]
         [Required]
-        private int Id { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("Usuario")]
-        private int FkUsuario { get; set; }
-        private virtual Usuario? Usuarios { get; set; }
+        public int FkUsuario { get; set; }
+        public virtual Usuario? Usuarios { get; set; }
 
         [ForeignKey("Especie")]
-        private int FkEspecie { get; set; }
-        private virtual Especie? Especies { get; set; }
+        public int FkEspecie { get; set; }
+        public virtual Especie? Especies { get; set; }
 
         [ForeignKey("Caracteristica")]
-        private int FkCaracteristica { get; set; }
-        private virtual Caracteristica? Caracteristicas { get; set; }
+        public int FkCaracteristica { get; set; }
+        public virtual Caracteristica? Caracteristicas { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [Display(Name = "Nome")]
-        private string Nome { get; set; }
+        public string Nome { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [Display(Name = "Raça")]
-        private string Raca { get; set; }
+        public string Raca { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [Display(Name = "Cor")]
-        private string Cor { get; set; }
+        public string Cor { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [Display(Name = "Descrição")]
-        private string Descricao { get; set; }
+        public string Descricao { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [Display(Name = "Porte")]
-        private int Porte { get; set; }
+        public int Porte { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [Display(Name = "Filhote")]
-        private bool Filhote { get; set; }
+        public bool Filhote { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [Display(Name = "Adulto")]
-        private bool Adulto { get; set; }
- 
+        public bool Adulto { get; set; }
+
     }
 }
