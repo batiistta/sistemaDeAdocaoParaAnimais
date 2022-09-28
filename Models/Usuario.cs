@@ -20,7 +20,7 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Required]
         [Display(Name = "Nome Completo")]
         [StringLength(32,MinimumLength=5, ErrorMessage = "O nome deve ter entre 5 e 32 caracteres")]
-       public string Nome { get; set;}
+        public string Nome { get; set;}
 
         [Required]
         [Display(Name = "E-mail")]
@@ -46,9 +46,14 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public string ConfirmeSenha { get; set;}
 
         [Required]
-        [Display (Name = "Idade")]
-        [Range(18,60, ErrorMessage ="Idade válida entre 18 e 60 anos.")]
-        public string Idade { get; set; }
+        [Display (Name = "Data de nascimento")]
+        [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
+        public string DataNascimento { get; set; }
+
+        [Required]
+        [RegularExpression("/^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}/")]
+        [Display (Name = "CPF")]
+        public string Cpf { get; set; }
 
         [Required(ErrorMessage ="Preenchimento obrigatório.")]
         [Display (Name = "Insira seu gênero.")]
@@ -59,12 +64,12 @@ namespace sistemaDeAdocaoParaAnimais.Models
          ErrorMessage="Formato correto -> (xx) xxxxx-xxxx")]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Celular")]
-       public string Celular { get; set;}   
+         public string Celular { get; set;}   
 
         [Required]
         [Display (Name = "Termos & Condições")]
         [Range(typeof(bool),"true", "true", ErrorMessage ="Aceite os termos e condições.")]
-       public bool TermosCondições { get; set; }
+        public bool TermosCondições { get; set; }
 
     }
 }

@@ -21,6 +21,10 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public int FkCaracteristica { get; set; }
         public virtual Caracteristica? Caracteristicas { get; set; }
 
+        [Required]
+        [Display (Name = "Insira uma imagem")]
+        public string ImagensPet { get; set; }
+
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [Display(Name = "Nome")]
         public string Nome { get; set; }
