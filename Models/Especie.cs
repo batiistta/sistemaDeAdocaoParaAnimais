@@ -7,13 +7,13 @@ namespace sistemaDeAdocaoParaAnimais.Models
     {
         [Key]
         [Required]
-        public int Id { get; set; }
+        public int EspecieId { get; set; }
         
         [Required]
         [Display(Name = "Tipo")]
         public string Tipo { get; set; }
-        
+
         [Required]
-        public virtual ICollection<Pets>? Pets { get; set; }
+        public virtual ICollection<Animal> Animals { get; set; }
     }
 }

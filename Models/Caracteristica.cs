@@ -10,7 +10,7 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public int Id { get; set;} 
 
         [Required]
-        public virtual ICollection<Pets>? Pets { get; set; }
+        public virtual ICollection<Animal>? Animals { get; set; }
 
         [Required]
         [Display(Name = "Energia")]

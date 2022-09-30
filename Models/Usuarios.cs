@@ -1,0 +1,90 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+
+namespace sistemaDeAdocaoParaAnimais.Models
+{
+    public class Usuarios
+    {
+        [Key]
+        [Required]
+        public int UsuarioId { get; set; }
+
+        public virtual ICollection<Animal>? Animals { get; set; }
+
+        [Required]
+        [Display(Name = "Nome Completo")]
+        [StringLength(32, MinimumLength = 5, ErrorMessage = "O nome tem que ter entre 5 e 32 caracteres")]
+        public string Nome { get; set; }
+
+        [Required]
+        [Display(Name = "CPF")]
+        [RegularExpression("^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}", ErrorMessage = "Formato incorreto")]
+        public string CPF { get; set; }
+
+        [Required]
+        [Display(Name = "E-mail")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Confirme seu E-mail")]
+        public string ConfirmeEmail { get; set; }
+
+        [Required]
+        [RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
+        ErrorMessage = "Deve conter pelo menos 8 caracteres, pelo menos 1 número e letras minúsculas, maiúsculas e caracteres especiais(!@#$).")]
+        [Display(Name = "Senha")]
+        public string Senha { get; set; }
+
+        [Required]
+        [Display(Name = "Confirme Senha")]
+        public string ConfirmeSenha { get; set; }
+
+        [Required]
+        [Display(Name = "Idade")]
+        [Range(18, 60, ErrorMessage = "Idade válida entre 18 e 60 anos.")]
+        public string Idade { get; set; }
+
+        [Required(ErrorMessage = "Preenchimento obrigatório.")]
+        [Display(Name = "Insira seu gênero.")]
+        public string Genero { get; set; }
+
+        [Required]
+        [RegularExpression("([1-9]{2})(?:[2-8]|9[1-9])[0-9]{3}[0-9]{4}$",
+         ErrorMessage = "Formato correto -> (xx) xxxxx-xxxx")]
+        [Display(Name = "Celular")]
+        public string Celular { get; set; }
+
+        [Required]
+        [Display(Name = "Cep")]
+        public string Cep { get; set; }
+
+        [Required]
+        [Display(Name = "Logradouro")]
+        public string Rua { get; set; }
+
+        [Required]
+        [Display(Name = "Bairro")]
+        public string Bairro { get; set; }
+
+        [Required(ErrorMessage = "O número da casa precisa ser preenchido")]
+        [Display(Name = "Numero")]
+        public string Numero { get; set; }
+
+        [Display(Name = "Complemento")]
+        public string complemento { get; set; }
+
+        [Required]
+        [Display(Name = "Cidade")]
+        public string Cidade { get; set; }
+
+        [Required]
+        [Display(Name = "Estado")]
+        public string Estado { get; set; }
+
+        [Required]
+        [Display(Name = "Termos & Condições")]
+        [Range(typeof(bool), "true", "true", ErrorMessage = "Aceite os termos e condições.")]
+        public bool TermosCondições { get; set; }
+    }
+}

@@ -11,10 +11,9 @@ namespace sistemaDeAdocaoParaAnimais.Models
     {
         public SistemaDeAdocaoParaAnimaisContext(DbContextOptions<SistemaDeAdocaoParaAnimaisContext> options) : base(options){}
 
-        public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Pets> Pets { get; set; }
-        public DbSet<Endereco> Enderecos { get; set; }
-        public DbSet<Caracteristica> Caracteristicas { get; set; }
-        public DbSet<Especie> Especies { get; set; }
+        public DbSet<Animal> animals { get; set; }
+        public DbSet<Caracteristica> caracteristicas { get; set; }
+        public DbSet<Especie> especies { get; set; }
+        public DbSet<Usuarios> usuarios { get; set; }
     }
 };
