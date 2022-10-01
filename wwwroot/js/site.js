@@ -76,3 +76,55 @@ function pesquisacep(valor) {
         limpa_formulário_cep();
     }
 };
+
+
+// Validação de CPF 
+
+function validarCpf()
+{
+      var cpf = document.getElementById('cpf').value,
+      cpfSoNumero = cpf.replace('.','').replace('.','').replace('.',''),
+      somaDosNovePrimeirosNumeros = multiplicaNumeros(9, cpfSoNumero,10),
+      somaDosDezPrimeirosNumeros = multiplicaNumeros(10, cpfSoNumero,11),
+      resultadoModulo1 = obterDigitoVerificador(somaDosNovePrimeirosNumeros);
+      resultadoModulo2 = obterDigitoVerificador(somaDosDezPrimeirosNumeros);
+ 
+      if((resultadoModulo1 + resultadoModulo2) === cpfSoNumero.substr(9,2))
+    {
+          alert('CPF Válido');
+    } else 
+    {
+        alert('CPF Inválido');
+    }
+ }
+   function obterDigitoVerificador(soma) 
+  {
+     var resultado = (soma * 10) % 11;
+     return resultado.toString();
+  }
+   function multiplicaNumeros(quantidadeNumeros, cpfSoNumero, multiplicado)
+   {
+     var primeirosNumeros = cpfSoNumero.substr(0, quantidadeNumeros), somaDosNumeros =0;
+ 
+     for(var i = 0; i < primeirosNumeros.length; i++){
+     var numero = primeirosNumeros.substr(i, 1);
+         somaDosNumeros += numero * multiplicado;
+         multiplicado--;
+     }
+ 
+     return somaDosNumeros;
+ }
+
+ // Mascara para parentese telefone 
+
+ function mascara(telefone){ 
+    if(telefone.value.length == 0)
+        telefone.value = '(' + telefone.value; //quando começamos a digitar, o script irá inserir um parênteses no começo do campo.
+    if(telefone.value.length == 3)
+        telefone.value = telefone.value + ') '; //quando o campo já tiver 3 caracteres (um parênteses e 2 números) o script irá inserir mais um parênteses, fechando assim o código de área.
+
+    if(telefone.value.length == 10)
+        telefone.value = telefone.value + '-'; //quando o campo já tiver 8 caracteres, o script irá inserir um tracinho, para melhor visualização do telefone.
+
+}
+ 
