@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace sistemaDeAdocaoParaAnimais.Models
 {
+    [MetadataType(typeof(Usuarios))]
     public class Usuarios
     {
         [Key]
@@ -24,32 +25,40 @@ namespace sistemaDeAdocaoParaAnimais.Models
 
         [Required]
         [Display(Name = "E-mail")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]
         [Display(Name = "Confirme seu E-mail")]
+        [DataType(DataType.EmailAddress)]
+        [Compare(nameof(Email), ErrorMessage = "Os e-mails devem ser iguais.")]
         public string ConfirmeEmail { get; set; }
 
         [Required]
+        [DataType(DataType.Password)]
         [RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
         ErrorMessage = "Deve conter pelo menos 8 caracteres, pelo menos 1 número e letras minúsculas, maiúsculas e caracteres especiais(!@#$).")]
         [Display(Name = "Senha")]
         public string Senha { get; set; }
 
         [Required]
+        [DataType(DataType.Password)]
+        [Compare(nameof(Senha), ErrorMessage = "As senhas devem ser iguais.")]
         [Display(Name = "Confirme Senha")]
         public string ConfirmeSenha { get; set; }
 
         [Required]
-        [Display(Name = "Idade")]
-        [Range(18, 60, ErrorMessage = "Idade válida entre 18 e 60 anos.")]
-        public string Idade { get; set; }
+        [Display(Name = "Data de Nascimento")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public string DtNascimento { get; set; }
 
         [Required(ErrorMessage = "Preenchimento obrigatório.")]
         [Display(Name = "Insira seu gênero.")]
         public string Genero { get; set; }
 
         [Required]
+        [DataType(DataType.PhoneNumber)]
         [RegularExpression("([1-9]{2})(?:[2-8]|9[1-9])[0-9]{3}[0-9]{4}$",
          ErrorMessage = "Formato correto -> (xx) xxxxx-xxxx")]
         [Display(Name = "Celular")]

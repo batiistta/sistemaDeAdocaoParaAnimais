@@ -21,7 +21,9 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-              return View(await _context.usuarios.ToListAsync());
+              return _context.usuarios != null ? 
+                          View(await _context.usuarios.ToListAsync()) :
+                          Problem("Entity set 'SistemaDeAdocaoParaAnimaisContext.usuarios'  is null.");
         }
 
         // GET: Usuarios/Details/5
@@ -53,7 +55,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UsuarioId,Nome,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,Idade,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,TermosCondições")] Usuarios usuarios)
+        public async Task<IActionResult> Create([Bind("UsuarioId,Nome,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,TermosCondições")] Usuarios usuarios)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +87,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,Nome,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,Idade,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,TermosCondições")] Usuarios usuarios)
+        public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,Nome,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,TermosCondições")] Usuarios usuarios)
         {
             if (id != usuarios.UsuarioId)
             {
@@ -154,7 +156,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         private bool UsuariosExists(int id)
         {
-          return _context.usuarios.Any(e => e.UsuarioId == id);
+          return (_context.usuarios?.Any(e => e.UsuarioId == id)).GetValueOrDefault();
         }
     }
 }

@@ -18,9 +18,9 @@
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-            <div class="form-group">
+           <div class="form-group">
                 <label asp-for="CPF" class="control-label"></label>
-                <input asp-for="CPF" class="form-control" />
+                <input asp-for="CPF" onblur="validarCpf(this.value)" id="cpf" class="form-control" />
                 <span asp-validation-for="CPF" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -44,9 +44,9 @@
                 <span asp-validation-for="ConfirmeSenha" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Idade" class="control-label"></label>
-                <input asp-for="Idade" class="form-control" />
-                <span asp-validation-for="Idade" class="text-danger"></span>
+                <label asp-for="DtNascimento" class="control-label"></label>
+                <input asp-for="DtNascimento" class="form-control" />
+                <span asp-validation-for="DtNascimento" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Genero" class="control-label"></label>
@@ -55,21 +55,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="Celular" class="control-label"></label>
-                <input asp-for="Celular" class="form-control" />
+                <input asp-for="Celular" class="form-control"  placeholder="(xx) xxxxx-xxxx" class="form-control" size="20" maxlength="15" onkeypress="mascara(this)"/>
                 <span asp-validation-for="Celular" class="text-danger"></span>
             </div>
-           <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Cep" class="control-label"></label>
-                <input name="cep" class="form-control" asp-for="Cep" type="text" id="cep" value="" size="10" maxlength="9"
-                    onblur="pesquisacep(this.value);" />
+                <input name="cep" class="form-control" asp-for="Cep" type="text" id="cep" value="" size="10"
+                    maxlength="9" onblur="pesquisacep(this.value);" />
                 <span asp-validation-for="Cep" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Rua" class="control-label"></label>
                 <input asp-for="Rua" name="rua" type="text" class="form-control" id="rua" size="60" />
                 <span asp-validation-for="Rua" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Bairro" class="control-label"></label>
                 <input asp-for="Bairro" name="bairro" type="text" id="bairro" class="form-control" size="40" />
                 <span asp-validation-for="Bairro" class="text-danger"></span>
@@ -84,9 +84,9 @@
                 <input asp-for="Cidade" name="cidade" type="text" id="cidade" size="40" class="form-control" />
                 <span asp-validation-for="Cidade" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Estado" class="control-label"></label>
-               <input  asp-for="Estado" name="estado" type="text" id="estado" size="2" class="form-control" />
+                <input asp-for="Estado" name="estado" type="text" id="estado" size="2" class="form-control" />
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -96,7 +96,8 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="TermosCondições" /> @Html.DisplayNameFor(model => model.TermosCondições)
+                    <input class="form-check-input" asp-for="TermosCondições" /> @Html.DisplayNameFor(model =>
+                    model.TermosCondições)
                 </label>
             </div>
             <div class="form-group">
@@ -109,4 +110,3 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
