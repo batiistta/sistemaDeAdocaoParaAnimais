@@ -95,5 +95,8 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Display(Name = "Termos & Condições")]
         [Range(typeof(bool), "true", "true", ErrorMessage = "Aceite os termos e condições.")]
         public bool TermosCondições { get; set; }
+    
+      
+ 
     }
 }

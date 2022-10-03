@@ -125,6 +125,4 @@ function validarCpf()
 
     if(telefone.value.length == 10)
         telefone.value = telefone.value + '-'; //quando o campo já tiver 8 caracteres, o script irá inserir um tracinho, para melhor visualização do telefone.
-
 }
- 

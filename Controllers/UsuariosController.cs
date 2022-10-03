@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -21,11 +23,58 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-              return _context.usuarios != null ? 
-                          View(await _context.usuarios.ToListAsync()) :
-                          Problem("Entity set 'SistemaDeAdocaoParaAnimaisContext.usuarios'  is null.");
+            return _context.usuarios != null ?
+                        View(await _context.usuarios.ToListAsync()) :
+                        Problem("Entity set 'SistemaDeAdocaoParaAnimaisContext.usuarios'  is null.");
         }
 
+        [HttpPost]
+        public ActionResult EnviaEmail()
+        {
+            string emailDestinatario = Request.Form["txtEmail"];
+            SendMail(emailDestinatario);
+            return RedirectToAction("Index");
+        }
+
+        public bool SendMail(string email)
+        {
+            try
+            {
+                // Estancia da Classe de Mensagem
+                MailMessage _mailMessage = new MailMessage();
+                // Remetente
+                _mailMessage.From = new MailAddress("rafael78@ba.estudante.senai.br");
+
+                // Destinatario seta no metodo abaixo
+
+                //Contrói o MailMessage
+                _mailMessage.CC.Add(email);
+                _mailMessage.Subject = "Teste envio de email";
+                _mailMessage.IsBodyHtml = true;
+                _mailMessage.Body = "<p>Consegui caralho, 2 noites quase sem dormir kksksksk<p>";
+
+                //CONFIGURAÇÃO COM PORTA
+                SmtpClient _smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32("587"));
+
+                //CONFIGURAÇÃO SEM PORTA
+                // SmtpClient _smtpClient = new SmtpClient(UtilRsource.ConfigSmtp);
+
+                // Credencial para envio por SMTP Seguro (Quando o servidor exige autenticação)
+                _smtpClient.UseDefaultCredentials = false;
+                _smtpClient.Credentials = new NetworkCredential("rafael78@ba.estudante.senai.br", "Rafaelsilva19");
+
+                _smtpClient.EnableSsl = true;
+
+                _smtpClient.Send(_mailMessage);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         // GET: Usuarios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -149,14 +198,14 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             {
                 _context.usuarios.Remove(usuarios);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UsuariosExists(int id)
         {
-          return (_context.usuarios?.Any(e => e.UsuarioId == id)).GetValueOrDefault();
+            return (_context.usuarios?.Any(e => e.UsuarioId == id)).GetValueOrDefault();
         }
     }
 }
