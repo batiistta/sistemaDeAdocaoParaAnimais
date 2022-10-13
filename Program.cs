@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using sistemaDeAdocaoParaAnimais.Models;
+using sistemaDeAdocaoParaAnimais.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ builder.Services.AddDbContext<SistemaDeAdocaoParaAnimaisContext>(opt =>
 {
     opt.UseMySql(mysqlconnection, ServerVersion.AutoDetect(mysqlconnection));
 });
+
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

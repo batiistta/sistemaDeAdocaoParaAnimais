@@ -21,6 +21,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         }
 
         // GET: Usuarios
+                
         public async Task<IActionResult> Index()
         {
             return _context.usuarios != null ?

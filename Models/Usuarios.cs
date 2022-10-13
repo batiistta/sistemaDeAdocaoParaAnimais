@@ -50,7 +50,6 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Required]
         [Display(Name = "Data de Nascimento")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public string DtNascimento { get; set; }
 
         [Required(ErrorMessage = "Preenchimento obrigatório.")]
@@ -96,7 +95,10 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Range(typeof(bool), "true", "true", ErrorMessage = "Aceite os termos e condições.")]
         public bool TermosCondições { get; set; }
     
-      
+        public bool SenhaValida(string senha)
+        {
+            return Senha == senha; 
+        }
  
     }
 }
