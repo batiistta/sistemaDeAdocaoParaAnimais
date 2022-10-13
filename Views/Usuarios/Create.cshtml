@@ -49,19 +49,14 @@
                 <span asp-validation-for="DtNascimento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <select>
-                    <label asp-for="Genero" class="control-label"></label>
-                    <optgroup asp-for="Genero" label="Grupo 1" class="form-control">
-                        <option>Masculino</option>
-                        <option>Feminino</option>
-                        <option>Outros</option>
-                    </optgroup>
-                    <span asp-validation-for="Genero" class="text-danger"></span>
+                <label asp-for="Genero" class="control-label"></label>
+                <label asp-for="Genero" class="control-label"></label>
+                <input asp-for="Genero" class="form-control" />
+                <span asp-validation-for="Genero" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Celular" class="control-label"></label>
-                <input asp-for="Celular" placeholder="(xx) xxxxx-xxxx" class="form-control" size="20" maxlength="15"
-                    onkeypress="mascara(this)" />
+                <input asp-for="Celular" placeholder="(xx) xxxxx-xxxx" class="form-control" size="20" maxlength="15" />
                 <span asp-validation-for="Celular" class="text-danger"></span>
             </div>
             <div class="form-group">
