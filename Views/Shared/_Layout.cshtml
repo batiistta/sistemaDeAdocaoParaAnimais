@@ -15,7 +15,8 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
+
+            <div class="container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,20 +27,22 @@
                             <a asp-area="" asp-controller="Home" asp-action="Index" aria-current="page">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a sp-controller="Home" asp-action="Duvidas">Adotar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-controller="Home" asp-action="Duvidas">Divulgar</a>
+                            <a asp-controller="Home" asp-action="Duvidas">Adotar</a>
                         </li>
                         <li class="nav-item">
                             <a asp-area="" asp-controller="Home" asp-action="Duvidas">Dúvidas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Login" asp-action="Sair">Divulgar</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="d-grid gap-1 d-md-flex justify-content-md-end">
-                <a asp-area="" asp-controller="User" asp-action="Login"><button class="btn btn-primary me-md-1" type="button">Entre</button> </a>
-                <a asp-area="" asp-controller="User" asp-action="Register"><button class="btn btn-primary me-md-1" type="button">Cadastre</button></a>
+                <a asp-area="" asp-controller="User" asp-action="Login"><button class="btn btn-primary me-md-1"
+                        type="button">Entre</button> </a>
+                <a asp-area="" asp-controller="User" asp-action="Register"><button class="btn btn-primary me-md-1"
+                        type="button">Cadastre</button></a>
             </div>
         </nav>
     </header>
