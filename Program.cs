@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using sistemaDeAdocaoParaAnimais.Helper;
 using sistemaDeAdocaoParaAnimais.Models;
 using sistemaDeAdocaoParaAnimais.Services;
 
@@ -10,8 +11,15 @@ builder.Services.AddDbContext<SistemaDeAdocaoParaAnimaisContext>(opt =>
 {
     opt.UseMySql(mysqlconnection, ServerVersion.AutoDetect(mysqlconnection));
 });
-
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+builder.Services.AddScoped<ISessao, Sessao>();
+
+builder.Services.AddSession(o => 
+{
+    o.Cookie.HttpOnly = true; 
+    o.Cookie.IsEssential = true; 
+}); 
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -32,6 +40,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
