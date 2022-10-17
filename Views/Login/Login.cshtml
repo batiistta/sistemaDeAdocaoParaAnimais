@@ -1,5 +1,9 @@
 @model sistemaDeAdocaoParaAnimais.Models.Login
 
+@{
+  Layout = "_LayoutDeslogado";
+}
+
 @if(TempData["MensagemErro"] != null)
 {
 <div class="alert alert-danger" role="alert">

@@ -109,6 +109,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuarios.SetSenhaHash();
                 _context.Add(usuarios);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
