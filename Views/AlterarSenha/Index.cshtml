@@ -1,0 +1,52 @@
+@model sistemaDeAdocaoParaAnimais.Models.AlterarSenha
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_LayoutDeslogado";
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert"
+        aria-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+
+@if(TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+    @TempData["MensagemSucesso"]
+    </div>
+}
+
+<h1>Alterar Senha</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="AlterarSenha" asp-action="Alterar" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SenhaAtual" class="form-label"></label>
+                <input asp-for="SenhaAtual" class="form-control" placeholder="Digite a senha atual" />
+                <span asp-validation-for="SenhaAtual" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NovaSenha" class="form-label"></label>
+                <input asp-for="NovaSenha" class="form-control" placeholder="Digite sua nova senha" />
+                <span asp-validation-for="NovaSenha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmarNovaSenha" class="form-label"></label>
+                <input asp-for="ConfirmarNovaSenha" class="form-control" placeholder="Confirme sua nova senha"/>
+                <span asp-validation-for="ConfirmarNovaSenha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Alterar</button>
+            </div>
+        </form>
+    </div>
+</div>

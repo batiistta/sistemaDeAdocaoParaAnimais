@@ -14,7 +14,7 @@ builder.Services.AddDbContext<SistemaDeAdocaoParaAnimaisContext>(opt =>
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 builder.Services.AddScoped<ISessao, Sessao>();
-
+builder.Services.AddScoped<IEmail, Email>();
 builder.Services.AddSession(o => 
 {
     o.Cookie.HttpOnly = true; 
@@ -45,6 +45,6 @@ app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Login}/{id?}");
 
 app.Run();

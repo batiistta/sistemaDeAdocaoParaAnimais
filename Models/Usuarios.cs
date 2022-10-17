@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using sistemaDeAdocaoParaAnimais.Helper;
 
 namespace sistemaDeAdocaoParaAnimais.Models
 {
@@ -97,8 +98,25 @@ namespace sistemaDeAdocaoParaAnimais.Models
     
         public bool SenhaValida(string senha)
         {
-            return Senha == senha; 
+            return Senha == senha.GerarHash(); 
         }
- 
+    
+        public void SetSenhaHash()
+        {
+            Senha = Senha.GerarHash();
+            ConfirmeSenha = Senha.GerarHash();
+        }
+
+        public void SetNovaSenha(string novaSenha)
+        {
+            Senha = novaSenha.GerarHash();
+        }
+
+        public string GerarNovaSenha()
+        {
+            string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);
+            Senha = novaSenha.GerarHash();
+            return novaSenha;
+        }
     }
 }

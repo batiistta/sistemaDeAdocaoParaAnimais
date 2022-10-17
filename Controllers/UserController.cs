@@ -9,5 +9,10 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         {
             return View();
         }
+
+        public IActionResult Recovery()
+        {
+            return View();
+        }
     }
 }

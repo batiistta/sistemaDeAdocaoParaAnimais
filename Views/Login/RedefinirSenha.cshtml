@@ -1,0 +1,44 @@
+@model sistemaDeAdocaoParaAnimais.Models.Login
+
+@{
+    Layout = "_LayoutDeslogado";
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert"
+        aria-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+
+@if(TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+    @TempData["MensagemErro"]
+    </div>
+}
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content rounded-4 shadow">
+        <div class="modal-header p-5 pb-4 border-bottom-0">
+            <!-- <h5 class="modal-title">Modal title</h5> -->
+            <h2 class="fw-bold mb-0">Redefina sua Senha</h2>
+        </div>
+
+        <div class="modal-body p-5 pt-0">
+            <form asp-controller="Login" asp-action="EnviarLinkParaRedefinirSenha" method="post">
+                <div class="form-floating mb-3">
+                    <input asp-for="Email" type="email" class="form-control rounded-3" id="email"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Email</label>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Redefinir Senha</button>
+                <hr class="my-4">
+            </form>
+        </div>
+    </div>
+</div>
