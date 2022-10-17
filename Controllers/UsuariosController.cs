@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using sistemaDeAdocaoParaAnimais.Helper;
 using sistemaDeAdocaoParaAnimais.Models;
 
 namespace sistemaDeAdocaoParaAnimais.Controllers
@@ -14,10 +15,12 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
     public class UsuariosController : Controller
     {
         private readonly SistemaDeAdocaoParaAnimaisContext _context;
+        private readonly IEmail _email;         
 
-        public UsuariosController(SistemaDeAdocaoParaAnimaisContext context)
+        public UsuariosController(SistemaDeAdocaoParaAnimaisContext context, IEmail email)
         {
             _context = context;
+            _email = email;
         }
 
         // GET: Usuarios
@@ -27,54 +30,6 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return _context.usuarios != null ?
                         View(await _context.usuarios.ToListAsync()) :
                         Problem("Entity set 'SistemaDeAdocaoParaAnimaisContext.usuarios'  is null.");
-        }
-
-        [HttpPost]
-        public ActionResult EnviaEmail()
-        {
-            string emailDestinatario = Request.Form["txtEmail"];
-            SendMail(emailDestinatario);
-            return RedirectToAction("Index");
-        }
-
-        public bool SendMail(string email)
-        {
-            try
-            {
-                // Estancia da Classe de Mensagem
-                MailMessage _mailMessage = new MailMessage();
-                // Remetente
-                _mailMessage.From = new MailAddress("rafael78@ba.estudante.senai.br");
-
-                // Destinatario seta no metodo abaixo
-
-                //Contrói o MailMessage
-                _mailMessage.CC.Add(email);
-                _mailMessage.Subject = "Teste envio de email";
-                _mailMessage.IsBodyHtml = true;
-                _mailMessage.Body = "<p>Consegui caralho, 2 noites quase sem dormir kksksksk<p>";
-
-                //CONFIGURAÇÃO COM PORTA
-                SmtpClient _smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32("587"));
-
-                //CONFIGURAÇÃO SEM PORTA
-                // SmtpClient _smtpClient = new SmtpClient(UtilRsource.ConfigSmtp);
-
-                // Credencial para envio por SMTP Seguro (Quando o servidor exige autenticação)
-                _smtpClient.UseDefaultCredentials = false;
-                _smtpClient.Credentials = new NetworkCredential("rafael78@ba.estudante.senai.br", "Rafaelsilva19");
-
-                _smtpClient.EnableSsl = true;
-
-                _smtpClient.Send(_mailMessage);
-
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
         }
         // GET: Usuarios/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -112,6 +67,8 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 usuarios.SetSenhaHash();
                 _context.Add(usuarios);
                 await _context.SaveChangesAsync();
+                string mensagem = $"Olá, seja bem vindo {usuarios.Nome}. <br> Faça um pet mais feliz!";
+                _email.Enviar(usuarios.Email, "Animal Petz - Bem vindo", mensagem);
                 return RedirectToAction(nameof(Index));
             }
             return View(usuarios);
