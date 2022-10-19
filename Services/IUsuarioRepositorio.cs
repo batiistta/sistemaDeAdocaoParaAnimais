@@ -9,5 +9,6 @@ namespace sistemaDeAdocaoParaAnimais.Services
         Usuarios BuscarPorEmail(string email);
         Usuarios Atualizar(Usuarios usuarios);
         Usuarios AlterarSenha(AlterarSenha alterarSenha);
+        Usuarios BuscarPorUsuario(string cpf);
     }
 }
