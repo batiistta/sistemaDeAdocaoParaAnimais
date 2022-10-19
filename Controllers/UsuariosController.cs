@@ -9,22 +9,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sistemaDeAdocaoParaAnimais.Helper;
 using sistemaDeAdocaoParaAnimais.Models;
+using sistemaDeAdocaoParaAnimais.Services;
 
 namespace sistemaDeAdocaoParaAnimais.Controllers
 {
     public class UsuariosController : Controller
     {
         private readonly SistemaDeAdocaoParaAnimaisContext _context;
-        private readonly IEmail _email;         
+        private readonly IEmail _email;
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
 
-        public UsuariosController(SistemaDeAdocaoParaAnimaisContext context, IEmail email)
+
+        public UsuariosController(SistemaDeAdocaoParaAnimaisContext context, IEmail email, IUsuarioRepositorio usuarioRepositorio)
         {
             _context = context;
             _email = email;
+            _usuarioRepositorio = usuarioRepositorio;
         }
 
         // GET: Usuarios
-                
+
         public async Task<IActionResult> Index()
         {
             return _context.usuarios != null ?
@@ -62,14 +66,36 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UsuarioId,Nome,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,TermosCondições")] Usuarios usuarios)
         {
-            if (ModelState.IsValid)
+            try
             {
-                usuarios.SetSenhaHash();
-                _context.Add(usuarios);
-                await _context.SaveChangesAsync();
-                string mensagem = $"Olá, seja bem vindo {usuarios.Nome}. <br> Faça um pet mais feliz!";
-                _email.Enviar(usuarios.Email, "Animal Petz - Bem vindo", mensagem);
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    Usuarios usuarios1 = _usuarioRepositorio.BuscarPorUsuario(usuarios.CPF);
+                    Usuarios usuarios2 = _usuarioRepositorio.BuscarPorEmail(usuarios.Email);
+
+                    if (usuarios1 == null)
+                    {
+                        if (usuarios2 == null)
+                        {
+                            usuarios.SetSenhaHash();
+                            _context.Add(usuarios);
+                            await _context.SaveChangesAsync();
+                            string mensagem = $"Olá, seja bem vindo {usuarios.Nome}. <br> Faça um pet mais feliz!";
+                            _email.Enviar(usuarios.Email, "Animal Petz - Bem vindo", mensagem);
+                            TempData["MensagemSucesso"] = $"Usuário Cadastrado com sucesso";
+                            return RedirectToAction("Login", "Login");
+                        }
+                        TempData["MensagemErro"] = $"O email informado já está cadastrado";
+                        return RedirectToAction("Create");
+                    }
+                    TempData["MensagemErro"] = $"Ops, já existe um usuário com o CPF cadastrado";
+                    return RedirectToAction("Create");
+                }
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, aconteceu um erro. Tente novamente mais tarde!";
+                return RedirectToAction("Index", "Home");
             }
             return View(usuarios);
         }

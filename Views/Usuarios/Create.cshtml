@@ -5,6 +5,24 @@
     Layout = "_LayoutDeslogado";
 }
 
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert"
+        aria-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert"
+        aria-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
 
 <h1>Create</h1>
 
