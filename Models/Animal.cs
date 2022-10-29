@@ -12,17 +12,17 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [ForeignKey("Usuarios")]
         [Required]
         public int FkUsuarios { get; set; }
-        public virtual Usuarios Usuarios { get; set; }
+        public virtual Usuarios? Usuarios { get; set; }
 
         [ForeignKey("Especie")]
         [Required]
         public int FkEspecie { get; set; }
-        public virtual Especie Especies { get; set; }
+        public virtual Especie? Especies { get; set; }
 
         [ForeignKey("Caracteristica")]
         [Required]
         public int FkCaracteristica { get; set; }
-        public virtual Caracteristica Caracteristicas { get; set; }
+        public virtual Caracteristica? Caracteristicas { get; set; }
 
         [Required]
         [Display (Name = "Insira uma imagem")]

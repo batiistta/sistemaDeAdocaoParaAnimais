@@ -14,6 +14,6 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public string Tipo { get; set; }
 
         [Required]
-        public virtual ICollection<Animal> Animals { get; set; }
+        public virtual ICollection<Animal>? Animals { get; set; }
     }
 }
