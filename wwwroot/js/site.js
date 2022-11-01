@@ -127,3 +127,28 @@ function validarCpf()
         telefone.value = telefone.value + '-'; //quando o campo já tiver 8 caracteres, o script irá inserir um tracinho, para melhor visualização do telefone.
 }
 
+const inputPath = document.getElementById("photoInput");
+const preview = document.getElementById("photoPreview");
+const photo = document.getElementById("photo");
+
+inputPath.addEventListener("change", function(){
+    var path = document.getElementById("photoInput").files;
+    console.log(path);
+
+   if (path.length > 0){
+        var loadImage = path[0];
+        console.log(loadImage);
+
+        var readFile = new FileReader();
+
+        readFile.onload = function(e){
+            var imagemBase64 = e.target.result;
+            console.log(imagemBase64);
+            photo.value = imagemBase64;
+            preview.classList.remove("d-nome");
+            preview.src = imagemBase64;
+        }
+
+        readFile.readAsDataURL(loadImage);
+   }
+})

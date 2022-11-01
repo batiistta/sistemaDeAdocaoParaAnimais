@@ -70,6 +70,7 @@
                 @Html.DisplayNameFor(model => model.Vermifugado)
             </th>
             <th>
+
                 @Html.DisplayNameFor(model => model.ImagensPet)
             </th>
             <th></th>
@@ -136,7 +137,7 @@
                 @Html.DisplayFor(modelItem => item.Vermifugado)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImagensPet)
+                <img src="@Html.DisplayFor(modelItem => item.ImagensPet)">
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
