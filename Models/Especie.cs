@@ -13,7 +13,6 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Display(Name = "Tipo")]
         public string Tipo { get; set; }
 
-        [Required]
         public virtual ICollection<Animal>? Animals { get; set; }
     }
 }
