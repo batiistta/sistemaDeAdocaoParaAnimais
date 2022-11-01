@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sistemaDeAdocaoParaAnimais.Models;
 
@@ -10,9 +11,10 @@ using sistemaDeAdocaoParaAnimais.Models;
 namespace sistemaDeAdocaoParaAnimais.Migrations
 {
     [DbContext(typeof(SistemaDeAdocaoParaAnimaisContext))]
-    partial class SistemaDeAdocaoParaAnimaisContextModelSnapshot : ModelSnapshot
+    [Migration("20221101221031_CimatecUm")]
+    partial class CimatecUm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

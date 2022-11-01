@@ -1,0 +1,149 @@
+@model IEnumerable<sistemaDeAdocaoParaAnimais.Models.Animal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuarios)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkEspecie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Raca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Porte)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filhote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adulto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Energia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Humor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apego)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inteligencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brincadeira)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adestramento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vacinado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Castrado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vermifugado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagensPet)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuarios.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkEspecie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Raca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Porte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filhote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adulto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Energia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Humor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apego)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inteligencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brincadeira)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adestramento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vacinado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Castrado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vermifugado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagensPet)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -47,7 +47,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // GET: Animais/Create
         public IActionResult Create()
         {
-            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Celular");
+            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Bairro");
             return View();
         }
 
@@ -56,7 +56,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FkUsuarios,FkEspecie,FkCaracteristica,ImagensPet,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto")] Animal animal)
+        public async Task<IActionResult> Create([Bind("Id,FkUsuarios,FkEspecie,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto,Energia,Humor,Apego,Latido,Inteligencia,Brincadeira,Adestramento,Vacinado,Castrado,Vermifugado,ImagensPet")] Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +64,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Celular", animal.FkUsuarios);
+            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Bairro", animal.FkUsuarios);
             return View(animal);
         }
 
@@ -81,7 +81,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             {
                 return NotFound();
             }
-            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Celular", animal.FkUsuarios);
+            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Bairro", animal.FkUsuarios);
             return View(animal);
         }
 
@@ -90,7 +90,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FkUsuarios,FkEspecie,FkCaracteristica,ImagensPet,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto")] Animal animal)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FkUsuarios,FkEspecie,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto,Energia,Humor,Apego,Latido,Inteligencia,Brincadeira,Adestramento,Vacinado,Castrado,Vermifugado,ImagensPet")] Animal animal)
         {
             if (id != animal.Id)
             {
@@ -117,7 +117,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Celular", animal.FkUsuarios);
+            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Bairro", animal.FkUsuarios);
             return View(animal);
         }
 
@@ -161,7 +161,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         private bool AnimalExists(int id)
         {
-          return _context.animals.Any(e => e.Id == id);
+          return (_context.animals?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

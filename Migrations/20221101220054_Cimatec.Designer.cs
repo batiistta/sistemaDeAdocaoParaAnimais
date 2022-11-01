@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sistemaDeAdocaoParaAnimais.Models;
 
@@ -10,9 +11,10 @@ using sistemaDeAdocaoParaAnimais.Models;
 namespace sistemaDeAdocaoParaAnimais.Migrations
 {
     [DbContext(typeof(SistemaDeAdocaoParaAnimaisContext))]
-    partial class SistemaDeAdocaoParaAnimaisContextModelSnapshot : ModelSnapshot
+    [Migration("20221101220054_Cimatec")]
+    partial class Cimatec
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,20 +27,11 @@ namespace sistemaDeAdocaoParaAnimais.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Adestramento")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Adulto")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("Apego")
+                    b.Property<int?>("CaracteristicasId")
                         .HasColumnType("int");
-
-                    b.Property<int>("Brincadeira")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Castrado")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Cor")
                         .IsRequired()
@@ -48,14 +41,14 @@ namespace sistemaDeAdocaoParaAnimais.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Energia")
-                        .HasColumnType("int");
-
                     b.Property<int?>("EspeciesEspecieId")
                         .HasColumnType("int");
 
                     b.Property<bool>("Filhote")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("FkCaracteristica")
+                        .HasColumnType("int");
 
                     b.Property<int>("FkEspecie")
                         .HasColumnType("int");
@@ -63,18 +56,9 @@ namespace sistemaDeAdocaoParaAnimais.Migrations
                     b.Property<int>("FkUsuarios")
                         .HasColumnType("int");
 
-                    b.Property<int>("Humor")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImagensPet")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<int>("Inteligencia")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Latido")
-                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -87,6 +71,47 @@ namespace sistemaDeAdocaoParaAnimais.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.HasKey("Id");
+
+                    b.HasIndex("CaracteristicasId");
+
+                    b.HasIndex("EspeciesEspecieId");
+
+                    b.HasIndex("FkUsuarios");
+
+                    b.ToTable("animals");
+                });
+
+            modelBuilder.Entity("sistemaDeAdocaoParaAnimais.Models.Caracteristica", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Adestramento")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Apego")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Brincadeira")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Castrado")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("Energia")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Humor")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Inteligencia")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Latido")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Vacinado")
                         .HasColumnType("tinyint(1)");
 
@@ -95,11 +120,7 @@ namespace sistemaDeAdocaoParaAnimais.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EspeciesEspecieId");
-
-                    b.HasIndex("FkUsuarios");
-
-                    b.ToTable("animals");
+                    b.ToTable("caracteristicas");
                 });
 
             modelBuilder.Entity("sistemaDeAdocaoParaAnimais.Models.Especie", b =>
@@ -198,6 +219,10 @@ namespace sistemaDeAdocaoParaAnimais.Migrations
 
             modelBuilder.Entity("sistemaDeAdocaoParaAnimais.Models.Animal", b =>
                 {
+                    b.HasOne("sistemaDeAdocaoParaAnimais.Models.Caracteristica", "Caracteristicas")
+                        .WithMany("Animals")
+                        .HasForeignKey("CaracteristicasId");
+
                     b.HasOne("sistemaDeAdocaoParaAnimais.Models.Especie", "Especies")
                         .WithMany("Animals")
                         .HasForeignKey("EspeciesEspecieId");
@@ -208,9 +233,16 @@ namespace sistemaDeAdocaoParaAnimais.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Caracteristicas");
+
                     b.Navigation("Especies");
 
                     b.Navigation("Usuarios");
+                });
+
+            modelBuilder.Entity("sistemaDeAdocaoParaAnimais.Models.Caracteristica", b =>
+                {
+                    b.Navigation("Animals");
                 });
 
             modelBuilder.Entity("sistemaDeAdocaoParaAnimais.Models.Especie", b =>
