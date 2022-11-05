@@ -18,6 +18,13 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult>CardsPets()
+        {
+            var pets = _context.animals; 
+            ViewBag.pets = pets;
+            return View();
+        }
+
         // GET: Animais
         public async Task<IActionResult> Index()
         {
@@ -56,7 +63,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FkUsuarios,FkEspecie,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto,Energia,Humor,Apego,Latido,Inteligencia,Brincadeira,Adestramento,Vacinado,Castrado,Vermifugado,ImagensPet")] Animal animal)
+        public async Task<IActionResult> Create([Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto,Energia,Humor,Apego,Adestramento,Vacinado,Castrado,Vermifugado,ImagensPet")] Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +97,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FkUsuarios,FkEspecie,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto,Energia,Humor,Apego,Latido,Inteligencia,Brincadeira,Adestramento,Vacinado,Castrado,Vermifugado,ImagensPet")] Animal animal)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto,Energia,Humor,Apego,Adestramento,Vacinado,Castrado,Vermifugado,ImagensPet")] Animal animal)
         {
             if (id != animal.Id)
             {
@@ -161,7 +168,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         private bool AnimalExists(int id)
         {
-          return (_context.animals?.Any(e => e.Id == id)).GetValueOrDefault();
+          return _context.animals.Any(e => e.Id == id);
         }
     }
 }

@@ -1,7 +1,7 @@
 @model IEnumerable<sistemaDeAdocaoParaAnimais.Models.Usuarios>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Create";
     Layout = "_LayoutDeslogado";
 }
 
@@ -14,7 +14,16 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Avatar)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sobrenome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeSocial)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CPF)
@@ -62,6 +71,18 @@
                 @Html.DisplayNameFor(model => model.Estado)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Energia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Humor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apego)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adestramento)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.TermosCondições)
             </th>
             <th></th>
@@ -71,7 +92,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Avatar)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeSocial)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CPF)
@@ -117,6 +147,18 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Energia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Humor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apego)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adestramento)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TermosCondições)

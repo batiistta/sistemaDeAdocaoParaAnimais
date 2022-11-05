@@ -148,7 +148,6 @@ inputPath.addEventListener("change", function(){
             preview.classList.remove("d-nome");
             preview.src = imagemBase64;
         }
-
         readFile.readAsDataURL(loadImage);
    }
 })

@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using sistemaDeAdocaoParaAnimais.Helper;
 using sistemaDeAdocaoParaAnimais.Models;
 using sistemaDeAdocaoParaAnimais.Services;
@@ -28,13 +27,11 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         }
 
         // GET: Usuarios
-
         public async Task<IActionResult> Index()
         {
-            return _context.usuarios != null ?
-                        View(await _context.usuarios.ToListAsync()) :
-                        Problem("Entity set 'SistemaDeAdocaoParaAnimaisContext.usuarios'  is null.");
+            return View(await _context.usuarios.ToListAsync());
         }
+
         // GET: Usuarios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -59,12 +56,23 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return View();
         }
 
+        public IActionResult Profile()
+        {
+            string sessaoUsuario = HttpContext.Session.GetString("sessaoUsuariologado");
+
+            if (string.IsNullOrEmpty(sessaoUsuario)) return null;
+
+            Usuarios usuarios = JsonConvert.DeserializeObject<Usuarios>(sessaoUsuario);
+
+            return View(usuarios);
+        }
+
         // POST: Usuarios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UsuarioId,Nome,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,TermosCondições")] Usuarios usuarios)
+        public async Task<IActionResult> Create([Bind("UsuarioId,Avatar,Nome,Sobrenome,NomeSocial,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,Energia,Humor,Apego,Adestramento,TermosCondições")] Usuarios usuarios)
         {
             try
             {
@@ -100,6 +108,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return View(usuarios);
         }
 
+
         // GET: Usuarios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -121,7 +130,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,Nome,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,TermosCondições")] Usuarios usuarios)
+        public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,Avatar,Nome,Sobrenome,NomeSocial,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,Energia,Humor,Apego,Adestramento,TermosCondições")] Usuarios usuarios)
         {
             if (id != usuarios.UsuarioId)
             {
@@ -190,7 +199,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         private bool UsuariosExists(int id)
         {
-            return (_context.usuarios?.Any(e => e.UsuarioId == id)).GetValueOrDefault();
+            return _context.usuarios.Any(e => e.UsuarioId == id);
         }
     }
 }

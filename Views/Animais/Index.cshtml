@@ -1,7 +1,8 @@
 @model IEnumerable<sistemaDeAdocaoParaAnimais.Models.Animal>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Create";
+    Layout = "_LayoutDeslogado";
 }
 
 <h1>Index</h1>
@@ -14,9 +15,6 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Usuarios)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FkEspecie)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
@@ -49,15 +47,6 @@
                 @Html.DisplayNameFor(model => model.Apego)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Latido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Inteligencia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brincadeira)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Adestramento)
             </th>
             <th>
@@ -70,7 +59,6 @@
                 @Html.DisplayNameFor(model => model.Vermifugado)
             </th>
             <th>
-
                 @Html.DisplayNameFor(model => model.ImagensPet)
             </th>
             <th></th>
@@ -81,9 +69,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Usuarios.Bairro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FkEspecie)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
@@ -116,15 +101,6 @@
                 @Html.DisplayFor(modelItem => item.Apego)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Latido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Inteligencia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brincadeira)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Adestramento)
             </td>
             <td>
@@ -137,7 +113,7 @@
                 @Html.DisplayFor(modelItem => item.Vermifugado)
             </td>
             <td>
-                <img src="@Html.DisplayFor(modelItem => item.ImagensPet)">
+                @Html.DisplayFor(modelItem => item.ImagensPet)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

@@ -32,74 +32,30 @@
                 class="fa-solid fa-heart"></i></span>
     </div>
 
-    <div class="card-group">
-        <div class="card">
-            <img src="~/img/cachorro.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="~/img/cachorro.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="~/img/cachorro.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="~/img/cachorro.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-        </div>
-    </div>
+    <div class="card-group" style="width: 100%;">
+        @{
+            var animais = ViewBag.pets;
+        }
 
-    <div class="card-group">
-        <div class="card">
-            <img src="~/img/cachorro.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="~/img/cachorro.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="~/img/cachorro.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="~/img/cachorro.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-        </div>
+        @{
+            if (animais != null)
+            {
+                @foreach (var animal in animais)
+                {
+                    <div class="card">
+                        <div class="card-animal">
+                            <img src="@animal.ImagensPet" alt="Imagem de capa do card" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">@animal.Nome</h5>
+                                <p class="card-text">@animal.Descricao</p>
+                                <a href="#" class="btn btn-primary"></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
     </div>
-
     <div class="button_VerMais">
         <button type="button" class="btn_VerMais">Ver mais</button>
     </div>
@@ -114,10 +70,15 @@
             <img src="~/img/BeneficiosAdocao.jpg" alt="">
         </div>
         <ul class="list-beneficios">
-            <li class="list-beneficios-item"><i class="fa-solid fa-paw"></i> Ter um animalzinho de estimação é ter uma amizade verdadeira e leal.</li>
-            <li class="list-beneficios-item"><i class="fa-solid fa-paw"></i> Adotar é, sem dúvidas, um gesto que envolve muito amor, maturidade e responsabilidade.</li>
-            <li class="list-beneficios-item"><i class="fa-solid fa-paw"></i> Adotar é um gesto de amor! É dar a chance de um animalzinho ter uma família, Adotar é salvar vidas!</li>   
-            <li class="list-beneficios-item"><i class="fa-solid fa-paw"></i> Ter um animal é uma excelente maneira de ajudar pessoas com depressão, pois a essa convivência reduz a sensação de solidão, a ansiedade  e melhora o bom-humor.</li>
+            <li class="list-beneficios-item"><i class="fa-solid fa-paw"></i> Ter um animalzinho de estimação é ter uma
+                amizade verdadeira e leal.</li>
+            <li class="list-beneficios-item"><i class="fa-solid fa-paw"></i> Adotar é, sem dúvidas, um gesto que envolve
+                muito amor, maturidade e responsabilidade.</li>
+            <li class="list-beneficios-item"><i class="fa-solid fa-paw"></i> Adotar é um gesto de amor! É dar a chance
+                de um animalzinho ter uma família, Adotar é salvar vidas!</li>
+            <li class="list-beneficios-item"><i class="fa-solid fa-paw"></i> Ter um animal é uma excelente maneira de
+                ajudar pessoas com depressão, pois a essa convivência reduz a sensação de solidão, a ansiedade e melhora
+                o bom-humor.</li>
         </ul>
     </div>
 </section>
@@ -131,10 +92,15 @@
             <img src="~/img/Cuidados_Pet.png" alt="">
         </div>
         <ul class="list-cuidados">
-            <li class="list-cuidados-item"><i class="fa-solid fa-paw"></i> É dever do proprietário proteger seu animal do sol e da chuva, além de impedir que os bichinhos fujam ou saiam sozinhos na rua.</li>
-            <li class="list-cuidados-item"><i class="fa-solid fa-paw"></i> Oferecer sempre uma ração de boa qualidade, respeitando as características de cada animal e faixa etária. E sempre disponibilizar água limpa e fresca.</li>
-            <li class="list-cuidados-item"><i class="fa-solid fa-paw"></i> A castração é sempre aconselhável quando não se quer um filhote. Com isso, evitamos superpopulação, abandonos e doenças uterinas...</li>   
-            <li class="list-cuidados-item"><i class="fa-solid fa-paw"></i> As vacinas previnem doenças graves que podem levar o animal à morte!  </li>
+            <li class="list-cuidados-item"><i class="fa-solid fa-paw"></i> É dever do proprietário proteger seu animal
+                do sol e da chuva, além de impedir que os bichinhos fujam ou saiam sozinhos na rua.</li>
+            <li class="list-cuidados-item"><i class="fa-solid fa-paw"></i> Oferecer sempre uma ração de boa qualidade,
+                respeitando as características de cada animal e faixa etária. E sempre disponibilizar água limpa e
+                fresca.</li>
+            <li class="list-cuidados-item"><i class="fa-solid fa-paw"></i> A castração é sempre aconselhável quando não
+                se quer um filhote. Com isso, evitamos superpopulação, abandonos e doenças uterinas...</li>
+            <li class="list-cuidados-item"><i class="fa-solid fa-paw"></i> As vacinas previnem doenças graves que podem
+                levar o animal à morte! </li>
         </ul>
     </div>
 </section>
