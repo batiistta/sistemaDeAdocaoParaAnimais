@@ -1,8 +1,8 @@
 @model sistemaDeAdocaoParaAnimais.Models.Usuarios
 
 @{
-    ViewData["Title"] = "Delete";
-       Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Create";
+    Layout = "_LayoutDeslogado";
 }
 
 <h1>Delete</h1>
@@ -13,10 +13,28 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Avatar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Avatar)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sobrenome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sobrenome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeSocial)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomeSocial)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CPF)
@@ -107,6 +125,30 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Estado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Energia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Energia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Humor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Humor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Apego)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Apego)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Adestramento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Adestramento)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TermosCondições)

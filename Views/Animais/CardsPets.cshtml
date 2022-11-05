@@ -1,0 +1,31 @@
+@model sistemaDeAdocaoParaAnimais.Models.Animal
+
+@{
+  Layout = "_LayoutDeslogado";
+}
+
+<section class="cardsPetsExibir">
+  <div class="card-group">
+    @{
+      var animais = ViewBag.pets;
+    }
+
+    @{
+      if (animais != null)
+      {
+        @foreach (var animal in animais)
+        {
+
+          <div class="card">
+            <img src="@animal.ImagensPet" alt="Imagem de capa do card" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">@animal.Nome</h5>
+              <p class="card-text">@animal.Descricao</p>
+              <a href="#" class="btn btn-primary"></a>
+            </div>
+          </div>
+        }
+      }
+    }
+  </div>
+</section>

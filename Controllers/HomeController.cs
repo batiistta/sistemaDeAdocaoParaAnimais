@@ -9,14 +9,18 @@ namespace sistemaDeAdocaoParaAnimais.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly SistemaDeAdocaoParaAnimaisContext _context; 
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, SistemaDeAdocaoParaAnimaisContext context)
     {
         _logger = logger;
+        _context = context; 
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        var pets = _context.animals; 
+        ViewBag.pets = pets; 
         return View();
     }
 

@@ -14,10 +14,18 @@ namespace sistemaDeAdocaoParaAnimais.Models
 
         public virtual ICollection<Animal>? Animals { get; set; }
 
+        public string? Avatar { get; set; }
+
         [Required]
-        [Display(Name = "Nome Completo")]
-        [StringLength(32, MinimumLength = 5, ErrorMessage = "O nome tem que ter entre 5 e 32 caracteres")]
+        [Display(Name = "Nome")]
         public string Nome { get; set; }
+
+        [Required]
+        [Display(Name = "Sobrenome")]
+        public string Sobrenome { get; set; }
+
+        [Display(Name = "Nome Social")]
+        public string? NomeSocial { get; set; }
 
         [Required]
         [Display(Name = "CPF")]
@@ -92,15 +100,35 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public string Estado { get; set; }
 
         [Required]
+        [Display(Name = "Qual o nivel de energia do pet que você quer?")]
+        [Range(1, 5)]
+        public int Energia { get; set; }
+
+        [Required]
+        [Display(Name = "Qual o nivel do humor do pet que você quer?")]
+        [Range(1, 5)]
+        public int Humor { get; set; }
+
+        [Required]
+        [Display(Name = "Qual o nivel de apego do pet que você quer?")]
+        [Range(1, 5)]
+        public int Apego { get; set; }
+
+        [Required]
+        [Display(Name = "Qual o nivel de adestramento do pet que você quer?")]
+        [Range(1, 5)]
+        public int Adestramento { get; set; }
+
+        [Required]
         [Display(Name = "Termos & Condições")]
         [Range(typeof(bool), "true", "true", ErrorMessage = "Aceite os termos e condições.")]
         public bool TermosCondições { get; set; }
-    
+
         public bool SenhaValida(string senha)
         {
-            return Senha == senha.GerarHash(); 
+            return Senha == senha.GerarHash();
         }
-    
+
         public void SetSenhaHash()
         {
             Senha = Senha.GerarHash();

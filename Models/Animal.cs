@@ -14,11 +14,6 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public int FkUsuarios { get; set; }
         public virtual Usuarios? Usuarios { get; set; }
 
-        [ForeignKey("Especie")]
-        [Required]
-        public int FkEspecie { get; set; }
-        public virtual Especie? Especies { get; set; }
-
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [Display(Name = "Nome")]
         public string Nome { get; set; }
@@ -32,7 +27,7 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public string Cor { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
-        [Display(Name = "Descrição")]
+        [Display(Name = "Conte um pouco da sua historia com o pet")]
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
@@ -49,56 +44,40 @@ namespace sistemaDeAdocaoParaAnimais.Models
 
         [Required]
         [Display(Name = "Energia")]
-        [Range(1,5)]
+        [Range(1, 5)]
         public int Energia { get; set; }
 
         [Required]
         [Display(Name = "Humor")]
-        [Range(1,5)]
+        [Range(1, 5)]
         public int Humor { get; set; }
 
         [Required]
         [Display(Name = "Apego")]
-        [Range(1,5)]
+        [Range(1, 5)]
         public int Apego { get; set; }
 
         [Required]
-        [Range(1,5)]
-        [Display(Name = "Latido")]
-        public int Latido { get; set; }
-
-        [Required]
-        [Display(Name = "Inteligência")]
-        [Range(1,5)]
-        public int Inteligencia { get; set; }
-
-        [Required]
-        [Display(Name = "Brincadeira")]
-        [Range(1,5)]
-        public int Brincadeira { get; set; }
-
-        [Required]
         [Display(Name = "Adestramento")]
-        [Range(1,5)]
+        [Range(1, 5)]
         public int Adestramento { get; set; }
 
         [Required]
         [Display(Name = "Vacinado ?")]
-        [Range(1,5)]
+        [Range(1, 5)]
         public bool Vacinado { get; set; }
 
         [Required]
         [Display(Name = "Castrado ?")]
-        [Range(1,5)]
+        [Range(1, 5)]
         public bool Castrado { get; set; }
 
         [Required]
         [Display(Name = "Vermifugado ?")]
-        [Range(1,5)]
+        [Range(1, 5)]
         public bool Vermifugado { get; set; }
-
-        [Required]
-        [Display (Name = "Insira uma imagem")]
+        [Required(ErrorMessage = "É obrigatório enviar uma foto do pet")]
+        [Display(Name = "Insira uma foto do pet")]
         public string ImagensPet { get; set; }
 
     }

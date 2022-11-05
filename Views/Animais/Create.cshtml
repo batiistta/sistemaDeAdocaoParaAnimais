@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "_LayoutDeslogado";
 }
 
 <h1>Create</h1>
@@ -14,12 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FkUsuarios" class="control-label"></label>
-                <select asp-for="FkUsuarios" class ="form-control" asp-items="ViewBag.FkUsuarios"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="FkEspecie" class="control-label"></label>
-                <input asp-for="FkEspecie" class="form-control" />
-                <span asp-validation-for="FkEspecie" class="text-danger"></span>
+                <select asp-for="FkUsuarios" class="form-control" asp-items="ViewBag.FkUsuarios"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
@@ -72,21 +68,6 @@
                 <span asp-validation-for="Apego" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Latido" class="control-label"></label>
-                <input asp-for="Latido" class="form-control" />
-                <span asp-validation-for="Latido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Inteligencia" class="control-label"></label>
-                <input asp-for="Inteligencia" class="form-control" />
-                <span asp-validation-for="Inteligencia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Brincadeira" class="control-label"></label>
-                <input asp-for="Brincadeira" class="form-control" />
-                <span asp-validation-for="Brincadeira" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Adestramento" class="control-label"></label>
                 <input asp-for="Adestramento" class="form-control" />
                 <span asp-validation-for="Adestramento" class="text-danger"></span>
@@ -103,13 +84,14 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Vermifugado" /> @Html.DisplayNameFor(model => model.Vermifugado)
+                    <input class="form-check-input" asp-for="Vermifugado" /> @Html.DisplayNameFor(model =>
+                    model.Vermifugado)
                 </label>
             </div>
             <div class="mb-3">
-  <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-  <input class="form-control" type="file" id="photoInput" multiple>
-</div>
+                <label for="formFileMultiple" class="form-label">Escolha sua foto de perfil</label>
+                <input class="form-control" type="file" id="photoInput">
+            </div>
             <div class="form-group">
                 <label asp-for="ImagensPet" class="control-label"></label>
                 <input asp-for="ImagensPet" id="photo" class="form-control" />
@@ -118,9 +100,6 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
-            <div>
-            <img id="photoPreview" src="">
-            </div>
         </form>
     </div>
 </div>
@@ -128,4 +107,3 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-

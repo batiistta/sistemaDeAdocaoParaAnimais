@@ -13,6 +13,8 @@ namespace sistemaDeAdocaoParaAnimais.Models
 
         [Required(ErrorMessage = "Digite a nova senha do usuário")]
         [DataType(DataType.Password)]
+        [RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
+        ErrorMessage = "Deve conter pelo menos 8 caracteres, pelo menos 1 número e letras minúsculas, maiúsculas e caracteres especiais(!@#$).")]
         [Display(Name = "Nova Senha")]
         public string NovaSenha { get; set; }
 
