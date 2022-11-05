@@ -134,7 +134,7 @@ const photo = document.getElementById("photo");
 inputPath.addEventListener("change", function(){
     var path = document.getElementById("photoInput").files;
     console.log(path);
-
+    
    if (path.length > 0){
         var loadImage = path[0];
         console.log(loadImage);
