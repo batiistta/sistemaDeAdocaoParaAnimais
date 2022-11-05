@@ -32,7 +32,7 @@
                 class="fa-solid fa-heart"></i></span>
     </div>
 
-    <div class="card-group" style="width: 100%;">
+    <div class="exibirLado">
         @{
             var animais = ViewBag.pets;
         }
@@ -42,13 +42,14 @@
             {
                 @foreach (var animal in animais)
                 {
-                    <div class="card">
-                        <div class="card-animal">
-                            <img src="@animal.ImagensPet" alt="Imagem de capa do card" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">@animal.Nome</h5>
-                                <p class="card-text">@animal.Descricao</p>
-                                <a href="#" class="btn btn-primary"></a>
+                    <div>
+                        <div class="card" style="width: 18rem;">
+                            <div class="petsss">
+                                <img src="@animal.ImagensPet" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h4 class="card-text">@animal.Nome</h4>
+                                    <p class="card-text">@animal.Descricao</p>
+                                </div>
                             </div>
                         </div>
                     </div>
