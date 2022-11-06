@@ -47,7 +47,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                         if (usuarios.SenhaValida(login.Senha))
                         {
                             _sessao.CriarSessaoDoUsuario(usuarios);
-                            return RedirectToAction("Profile", "User");
+                            return RedirectToAction("Profile", "Usuarios");
                         }
 
                         TempData["MensagemErro"] = $"Senha do usuário é inválida, tente novamente.";

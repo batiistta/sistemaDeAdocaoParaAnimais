@@ -4,8 +4,86 @@
   Layout = "_LayoutDeslogado";
 }
 
-<section>
-<div class="exibirLado">
+<br>
+    <div class="flex flex-col gap-2 mb-6 sm:flex-row sm:justify-between sm:items-center">
+    <h1 class="title-lg">Encontre seu novo amigo</h1>
+    </div>
+<br>
+    <div class="row d-flex justify-content-center">
+            <div class="col-md-4">
+                <select class="form-select" aria-label="Default select example">
+                <option selected>Todos os sexos</option>
+                <option value="1">Macho</option>
+                <option value="2">Fêmea</option>
+                </select>
+            </div>
+           <div class="col-md-4">
+                <select class="form-select" aria-label="Default select example">
+                <option selected>Todos os portes</option>
+                <option value="1">Pequeno</option>
+                <option value="2">Médio</option>
+                <option value="3">Grande</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" aria-label="Default select example">
+                <option selected>Todos os estados</option>
+                <option value="">Acre</option>
+                <option value="">Alagoas</option>
+                <option value="3">Amapá</option>
+                <option value="1">Amazonas</option>
+                <option value="2">Bahia</option>
+                <option value="3">Ceará</option>
+                <option value="1">Distrito Federal</option>
+                <option value="2">Espírito Santo</option>
+                <option value="3">Goiás</option>
+                <option value="1">Maranhão</option>
+                <option value="2">Mato Grosso</option>
+                <option value="3">Mato Grosso do Sul</option>
+                <option value="1">Minas Gerais</option>
+                <option value="2">Pará</option>
+                <option value="3">Paraíba</option>
+                <option value="1">Paraná</option>
+                <option value="2">Pernambuco</option>
+                <option value="3">Piauí</option>
+                <option value="1">Rio de Janeiro</option>
+                <option value="2">Rio Grande do Norte</option>
+                <option value="3">Rio Grande do Sul</option>
+                <option value="1">Rondônia</option>
+                <option value="2">Roraima</option>
+                <option value="3">Santa Catarina</option>
+                <option value="3">São Paulo</option>
+                <option value="3">Sergipe</option>
+                <option value="3">Tocantins</option>
+                </select>
+            </div>
+        </div>
+
+<br>
+
+        <div class="row d-flex justify-content-center">
+        
+            <div class="col-md-4">
+                <select class="form-select" aria-label="Default select example">
+                <option selected>Todas as cidades</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                </select>
+            </div>
+             <div class="col-md-4">
+                <input type="email" class="form-control" id="floatingInput" placeholder="Nome do pet">
+            </div>
+               <div class="col-md-4">
+                 <div class="d-grid gap-1">
+                        <button type="submit" class="btn btn-outline-success">Buscar</button>
+                 </div>
+            </div>
+        </div>
+        
+<br>
+
+     <div class="exibirLado">
         @{
             var animais = ViewBag.pets;
         }
@@ -17,8 +95,8 @@
                 {
                     <div>
                         <div class="card" style="width: 18rem;">
-                            <div class="petsss">
-                                <img src="@animal.ImagensPet" class="card-img-top" alt="...">
+                            <div class="cardPets">
+                                <img src="@animal.ImagensPet" class="img-fluid h-25 rounded" alt="Pets" >
                                 <div class="card-body">
                                     <h4 class="card-text">@animal.Nome</h4>
                                     <p class="card-text">@animal.Descricao</p>
@@ -30,4 +108,3 @@
             }
         }
     </div>
-</section>
