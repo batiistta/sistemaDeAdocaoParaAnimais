@@ -1,8 +1,7 @@
 @model sistemaDeAdocaoParaAnimais.Models.Animal
 
 @{
-    ViewData["Title"] = "Create";
-    Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Details";
 }
 
 <h1>Details</h1>
@@ -100,6 +99,12 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Vermifugado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EstadoAdocaoPet)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EstadoAdocaoPet)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ImagensPet)

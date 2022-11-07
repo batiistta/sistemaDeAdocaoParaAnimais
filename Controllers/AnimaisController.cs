@@ -18,12 +18,13 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult>CardsPets()
+        public async Task<IActionResult> CardsPets()
         {
-            var pets = _context.animals; 
-            ViewBag.pets = pets;
+            List<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a=> a.EstadoAdocaoPet == "Disponível"));
+            ViewBag.pets = petsDisponiveis;
             return View();
         }
+
 
         // GET: Animais
         public async Task<IActionResult> Index()
@@ -63,7 +64,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto,Energia,Humor,Apego,Adestramento,Vacinado,Castrado,Vermifugado,ImagensPet")] Animal animal)
+        public async Task<IActionResult> Create([Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto,Energia,Humor,Apego,Adestramento,Vacinado,Castrado,Vermifugado,EstadoAdocaoPet,ImagensPet")] Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +98,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto,Energia,Humor,Apego,Adestramento,Vacinado,Castrado,Vermifugado,ImagensPet")] Animal animal)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Filhote,Adulto,Energia,Humor,Apego,Adestramento,Vacinado,Castrado,Vermifugado,EstadoAdocaoPet,ImagensPet")] Animal animal)
         {
             if (id != animal.Id)
             {
@@ -161,14 +162,14 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             {
                 _context.animals.Remove(animal);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AnimalExists(int id)
         {
-          return _context.animals.Any(e => e.Id == id);
+            return (_context.animals?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

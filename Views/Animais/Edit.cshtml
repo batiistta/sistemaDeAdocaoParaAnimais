@@ -5,7 +5,6 @@
     Layout = "_LayoutDeslogado";
 }
 
-
 <h1>Edit</h1>
 
 <h4>Animal</h4>
@@ -87,8 +86,18 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Vermifugado" /> @Html.DisplayNameFor(model => model.Vermifugado)
+                    <input class="form-check-input" asp-for="Vermifugado" /> @Html.DisplayNameFor(model =>
+                    model.Vermifugado)
                 </label>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="EstadoAdocaoPet" class="form-label"></label>
+                <select asp-for="EstadoAdocaoPet" style="width: 355px;" class="form-select" aria-label="Default select example">
+                    <option class="form-label" selected></option>
+                    <option value="Disponível">Disponível</option>
+                    <option value="Adotado">Adotado</option>
+                </select>
+                <span asp-validation-for="EstadoAdocaoPet" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ImagensPet" class="control-label"></label>
@@ -105,4 +114,3 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
