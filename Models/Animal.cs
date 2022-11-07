@@ -76,6 +76,11 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Display(Name = "Vermifugado ?")]
         [Range(1, 5)]
         public bool Vermifugado { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatorio")]
+        [Display(Name = "Status do Pet")]
+        public string EstadoAdocaoPet { get; set; }
+
         [Required(ErrorMessage = "É obrigatório enviar uma foto do pet")]
         [Display(Name = "Insira uma foto do pet")]
         public string ImagensPet { get; set; }
