@@ -56,14 +56,15 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return View();
         }
 
+       
         public IActionResult Profile()
         {
             string sessaoUsuario = HttpContext.Session.GetString("sessaoUsuariologado");
 
             if (string.IsNullOrEmpty(sessaoUsuario)) return null;
-            
+
             Usuarios usuarios = JsonConvert.DeserializeObject<Usuarios>(sessaoUsuario);
-            
+
             return View(usuarios);
         }
 
