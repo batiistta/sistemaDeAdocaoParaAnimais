@@ -44,15 +44,25 @@
                 <input asp-for="Porte" class="form-control" />
                 <span asp-validation-for="Porte" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Filhote" /> @Html.DisplayNameFor(model => model.Filhote)
-                </label>
+            <div class="form-group">
+                <label asp-for="Especie" class="control-label"></label>
+                <input asp-for="Especie" class="form-control" />
+                <span asp-validation-for="Especie" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Adulto" /> @Html.DisplayNameFor(model => model.Adulto)
-                </label>
+            <div class="form-group">
+                <label asp-for="Sexo" class="control-label"></label>
+                <input asp-for="Sexo" class="form-control" />
+                <span asp-validation-for="Sexo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cidade" class="control-label"></label>
+                <input asp-for="Cidade" class="form-control" />
+                <span asp-validation-for="Cidade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Energia" class="control-label"></label>
@@ -86,17 +96,12 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Vermifugado" /> @Html.DisplayNameFor(model =>
-                    model.Vermifugado)
+                    <input class="form-check-input" asp-for="Vermifugado" /> @Html.DisplayNameFor(model => model.Vermifugado)
                 </label>
             </div>
-            <div class="col-md-4">
-                <label asp-for="EstadoAdocaoPet" class="form-label"></label>
-                <select asp-for="EstadoAdocaoPet" style="width: 355px;" class="form-select" aria-label="Default select example">
-                    <option class="form-label" selected></option>
-                    <option value="Disponível">Disponível</option>
-                    <option value="Adotado">Adotado</option>
-                </select>
+            <div class="form-group">
+                <label asp-for="EstadoAdocaoPet" class="control-label"></label>
+                <input asp-for="EstadoAdocaoPet" class="form-control" />
                 <span asp-validation-for="EstadoAdocaoPet" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -114,3 +119,4 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+

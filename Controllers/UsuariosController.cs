@@ -61,9 +61,9 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             string sessaoUsuario = HttpContext.Session.GetString("sessaoUsuariologado");
 
             if (string.IsNullOrEmpty(sessaoUsuario)) return null;
-
+            
             Usuarios usuarios = JsonConvert.DeserializeObject<Usuarios>(sessaoUsuario);
-
+            
             return View(usuarios);
         }
 
