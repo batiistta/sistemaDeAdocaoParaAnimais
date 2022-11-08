@@ -47,11 +47,6 @@
                 <input asp-for="Especie" class="form-control" />
                 <span asp-validation-for="Especie" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Sexo" class="control-label"></label>
-                <input asp-for="Sexo" class="form-control" />
-                <span asp-validation-for="Sexo" class="text-danger"></span>
-            </div>
             <div class="col-md-4">
                 <label asp-for="Estado" class="control-label"></label>
                 <select name="estado" id="estado" class="form-select" style="width: 355px;" asp-for="Estado" aria-label="Default select example">
@@ -121,7 +116,7 @@
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select> 
-                <span asp-validation-for="Sexo" class="text-danger"></span>
+                <span asp-validation-for="Vacinado" class="text-danger"></span>
             </div>
 
             <div class="col-md-4">
@@ -132,7 +127,7 @@
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select> 
-                <span asp-validation-for="Sexo" class="text-danger"></span>
+                <span asp-validation-for="Castrado" class="text-danger"></span>
             </div>
             
             <div class="col-md-4">
@@ -143,7 +138,7 @@
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select> 
-                <span asp-validation-for="Sexo" class="text-danger"></span>
+                <span asp-validation-for="Vermifugado" class="text-danger"></span>
             </div>
         
             <div class="col-md-4">

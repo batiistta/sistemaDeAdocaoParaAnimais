@@ -9,78 +9,79 @@
     <h1 class="title-lg">Encontre seu novo amigo</h1>
 </div>
 <br>
-<div class="row d-flex justify-content-center">
-    <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Todos os sexos</option>
-            <option value="1">Macho</option>
-            <option value="2">Fêmea</option>
-        </select>
-    </div>
-    <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Todos os portes</option>
-            <option value="1">Pequeno</option>
-            <option value="2">Médio</option>
-            <option value="3">Grande</option>
-        </select>
-    </div>
-    <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Todos os estados</option>
-            <option value="Acre">Acre</option>
-            <option value="Alagoas">Alagoas</option>
-            <option value="Amapá">Amapá</option>
-            <option value="Amazonas">Amazonas</option>
-            <option value="Bahia">Bahia</option>
-            <option value="Ceará">Ceará</option>
-            <option value="Distrito Federal">Distrito Federal</option>
-            <option value="Espírito Santo">Espírito Santo</option>
-            <option value="Goiás">Goiás</option>
-            <option value="Maranhão">Maranhão</option>
-            <option value="Mato Grosso">Mato Grosso</option>
-            <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
-            <option value="Minas Gerais">Minas Gerais</option>
-            <option value="Pará">Pará</option>
-            <option value="Paraíba">Paraíba</option>
-            <option value="Paraná">Paraná</option>
-            <option value="Pernambuco">Pernambuco</option>
-            <option value="Piauí">Piauí</option>
-            <option value="Rio de Janeiro">Rio de Janeiro</option>
-            <option value="Rio Grande do Norte">Rio Grande do Norte</option>
-            <option value="Rio Grande do Sul">Rio Grande do Sul</option>
-            <option value="Rondônia">Rondônia</option>
-            <option value="Roraima">Roraima</option>
-            <option value="Santa Catarina">Santa Catarina</option>
-            <option value="São Paulo">São Paulo</option>
-            <option value="Sergipe">Sergipe</option>
-            <option value="Tocantins">Tocantins</option>
-        </select>
-    </div>
-</div>
-
-<br>
-
-<div class="row d-flex justify-content-center">
-
-    <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Todas as cidades</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-    </div>
-    <div class="col-md-4">
-        <input type="email" class="form-control" id="floatingInput" placeholder="Nome do pet">
-    </div>
-    <div class="col-md-4">
-        <div class="d-grid gap-1">
-            <button type="submit" class="btn btn-outline-success">Buscar</button>
+<form asp-action="Buscar">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-4">
+            <select id="txtOption" name="txtOption" class="form-select" aria-label="Default select example">
+                <option selected>Todos os sexos</option>
+                <option value="Macho">Macho</option>
+                <option value="Fêmea">Fêmea</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Todos os portes</option>
+                <option value="1">Pequeno</option>
+                <option value="2">Médio</option>
+                <option value="3">Grande</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select id="txtEstado" name="txtEstado" class="form-select" aria-label="Default select example">
+                <option selected>Todos os estados</option>
+                <option value="Acre">Acre</option>
+                <option value="Alagoas">Alagoas</option>
+                <option value="Amapá">Amapá</option>
+                <option value="Amazonas">Amazonas</option>
+                <option value="Bahia">Bahia</option>
+                <option value="Ceará">Ceará</option>
+                <option value="Distrito Federal">Distrito Federal</option>
+                <option value="Espírito Santo">Espírito Santo</option>
+                <option value="Goiás">Goiás</option>
+                <option value="Maranhão">Maranhão</option>
+                <option value="Mato Grosso">Mato Grosso</option>
+                <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                <option value="Minas Gerais">Minas Gerais</option>
+                <option value="Pará">Pará</option>
+                <option value="Paraíba">Paraíba</option>
+                <option value="Paraná">Paraná</option>
+                <option value="Pernambuco">Pernambuco</option>
+                <option value="Piauí">Piauí</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                <option value="Rondônia">Rondônia</option>
+                <option value="Roraima">Roraima</option>
+                <option value="Santa Catarina">Santa Catarina</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Sergipe">Sergipe</option>
+                <option value="Tocantins">Tocantins</option>
+            </select>
         </div>
     </div>
-</div>
 
+    <br>
+
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-md-4">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Todas as cidades</option>
+                <option value="Salvador">Salvador</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <input type="email" class="form-control" id="floatingInput" placeholder="Nome do pet">
+        </div>
+        <div class="col-md-4">
+            <div class="d-grid gap-1">
+                <input type="submit" value="Buscar" class="btn btn-outline-success" />
+            </div>
+        </div>
+    </div>
+</form>
 <br>
 
 <div class="exibirLado">
@@ -102,7 +103,37 @@
                                 <p class="card-text">@animal.Descricao</p>
                                 <p class="card-text">@animal.EstadoAdocaoPet</p>
                                 <p class="card-text">@animal.Estado</p>
-                                <p  class="card-text">@animal.Cidade</p>
+                                <p class="card-text">@animal.Cidade</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>
+
+
+<div class="exibirLado">
+    @{
+        var anima =  ViewBag.pet;
+    }
+
+    @{
+        if (anima != null)
+        {
+            @foreach (var animal in anima)
+            {
+                <div>
+                    <div class="card" style="width: 18rem;">
+                        <div class="cardPets">
+                            <img src="@animal.ImagensPet" class="img-fluid h-25 rounded" alt="Pets">
+                            <div class="card-body">
+                                <h4 class="card-text">@animal.Nome</h4>
+                                <p class="card-text">@animal.Descricao</p>
+                                <p class="card-text">@animal.EstadoAdocaoPet</p>
+                                <p class="card-text">@animal.Estado</p>
+                                <p class="card-text">@animal.Cidade</p>
                             </div>
                         </div>
                     </div>

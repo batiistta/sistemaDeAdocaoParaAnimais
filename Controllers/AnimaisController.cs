@@ -18,7 +18,16 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             _context = context;
         }
 
-         public async Task<IActionResult> CardsPets()
+        [HttpPost]
+        public async Task<IActionResult> Buscar(string sexo, string estado)
+        {
+            sexo = Request.Form["txtOption"];
+            estado = Request.Form["txtEstado"];    
+            List<Animal> petsBuscar = new List<Animal>(_context.animals.Where(a => a.Sexo == sexo));
+            ViewBag.pet = petsBuscar;
+            return View("CardsPets");
+        }
+        public async Task<IActionResult> CardsPets()
         {
             List<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
             ViewBag.pets = petsDisponiveis;
@@ -161,14 +170,14 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             {
                 _context.animals.Remove(animal);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AnimalExists(int id)
         {
-          return _context.animals.Any(e => e.Id == id);
+            return _context.animals.Any(e => e.Id == id);
         }
     }
 }
