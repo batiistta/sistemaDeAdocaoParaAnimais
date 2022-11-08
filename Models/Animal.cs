@@ -32,15 +32,23 @@ namespace sistemaDeAdocaoParaAnimais.Models
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [Display(Name = "Porte")]
-        public int Porte { get; set; }
+        public string Porte { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório.")]
-        [Display(Name = "Filhote")]
-        public bool Filhote { get; set; }
+        [Required]
+        [Display(Name = ("Espécie"))]
+        public string Especie { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório.")]
-        [Display(Name = "Adulto")]
-        public bool Adulto { get; set; }
+        [Required]
+        [Display(Name = ("Informe o sexo do pet"))]
+        public string Sexo { get; set; }
+
+        [Required]
+        [Display(Name = "Estado")]
+        public string Estado { get; set; }
+        
+        [Required]
+        [Display(Name = "Cidade")]
+        public string Cidade { get; set; }
 
         [Required]
         [Display(Name = "Energia")]
@@ -64,18 +72,15 @@ namespace sistemaDeAdocaoParaAnimais.Models
 
         [Required]
         [Display(Name = "Vacinado ?")]
-        [Range(1, 5)]
-        public bool Vacinado { get; set; }
+        public string Vacinado { get; set; }
 
         [Required]
         [Display(Name = "Castrado ?")]
-        [Range(1, 5)]
-        public bool Castrado { get; set; }
+        public string Castrado { get; set; }
 
         [Required]
         [Display(Name = "Vermifugado ?")]
-        [Range(1, 5)]
-        public bool Vermifugado { get; set; }
+        public string Vermifugado { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatorio")]
         [Display(Name = "Status do Pet")]

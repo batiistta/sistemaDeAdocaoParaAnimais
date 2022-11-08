@@ -150,4 +150,6 @@ inputPath.addEventListener("change", function(){
         }
         readFile.readAsDataURL(loadImage);
    }
-})
+});
+
+
