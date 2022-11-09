@@ -13,7 +13,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UsuarioId" />
-            <div class="form-group">
+            <div class="form-group" style="visibility: hidden;">
                 <label asp-for="Avatar" class="control-label"></label>
                 <input asp-for="Avatar" class="form-control" />
                 <span asp-validation-for="Avatar" class="text-danger"></span>
@@ -108,29 +108,64 @@
                 <input asp-for="Estado" class="form-control" />
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Energia" class="control-label"></label>
-                <input asp-for="Energia" class="form-control" />
+            <div class="col-md-4">
+                <label asp-for="Energia" style="width: 500px;" class="form-label"></label>
+                <select asp-for="Energia" style="width: 355px;" class="form-select" aria-label="Default select example">
+                    <option class="form-label" selected>Selecione</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+
+                </select>
                 <span asp-validation-for="Energia" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Humor" class="control-label"></label>
-                <input asp-for="Humor" class="form-control" />
+
+            <div class="col-md-4">
+                <label asp-for="Humor" style="width: 500px;" class="form-label"></label>
+                <select asp-for="Humor" style="width: 355px;" class="form-select" aria-label="Default select example">
+                    <option class="form-label" selected>Selecione</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+
+                </select>
                 <span asp-validation-for="Humor" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Apego" class="control-label"></label>
-                <input asp-for="Apego" class="form-control" />
+            <div class="col-md-4">
+                <label asp-for="Apego" style="width: 500px;" class="form-label"></label>
+                <select asp-for="Apego" style="width: 355px;" class="form-select" aria-label="Default select example">
+                    <option class="form-label" selected>Selecione</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+
+                </select>
                 <span asp-validation-for="Apego" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Adestramento" class="control-label"></label>
-                <input asp-for="Adestramento" class="form-control" />
+            <div class="col-md-4">
+                <label asp-for="Adestramento" style="width: 500px;" class="form-label"></label>
+                <select asp-for="Adestramento" style="width: 355px;" class="form-select"
+                    aria-label="Default select example">
+                    <option class="form-label" selected>Selecione</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+
+                </select>
                 <span asp-validation-for="Adestramento" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="TermosCondições" /> @Html.DisplayNameFor(model => model.TermosCondições)
+                    <input class="form-check-input" asp-for="TermosCondições" /> @Html.DisplayNameFor(model =>
+                    model.TermosCondições)
                 </label>
             </div>
             <div class="form-group">
@@ -143,4 +178,3 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-

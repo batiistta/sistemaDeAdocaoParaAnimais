@@ -252,7 +252,7 @@ body {
   border-radius: .25rem;
 }
 
-.exibirLado{
+.exibirLado {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap-reverse;
@@ -305,9 +305,3 @@ body {
 /* Fim do Css profile */
 
 
-/* Inicio dos cardsPetsx*/
-
-
-
-
-/* Fim dos cardsPets*/
