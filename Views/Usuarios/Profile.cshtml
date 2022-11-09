@@ -1,5 +1,7 @@
 @model sistemaDeAdocaoParaAnimais.Models.Usuarios
 
+
+
 <div class="container-pets">
   <div class="main-body">
     <div class="row gutters-sm">
@@ -68,7 +70,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <a class="btn btn-info " target="__blank"
-                  href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Editar</a>
+                   asp-action="Edit" asp-route-id="@Model.UsuarioId">Editar</a>
               </div>
             </div>
           </div>
