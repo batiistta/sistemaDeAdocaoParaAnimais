@@ -17,13 +17,15 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         private readonly SistemaDeAdocaoParaAnimaisContext _context;
         private readonly IEmail _email;
         private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly ISessao _sessao;
 
 
-        public UsuariosController(SistemaDeAdocaoParaAnimaisContext context, IEmail email, IUsuarioRepositorio usuarioRepositorio)
+        public UsuariosController(SistemaDeAdocaoParaAnimaisContext context, IEmail email, IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
         {
             _context = context;
             _email = email;
             _usuarioRepositorio = usuarioRepositorio;
+            _sessao = sessao; 
         }
 
         // GET: Usuarios
