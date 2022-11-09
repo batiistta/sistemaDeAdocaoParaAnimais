@@ -21,17 +21,24 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         [HttpPost]
         public async Task<IActionResult> Buscar(string sexo, string estado)
         {
-            sexo = Request.Form["txtOption"];
-            estado = Request.Form["txtEstado"];    
-            List<Animal> petsBuscar = new List<Animal>(_context.animals.Where(a => a.Sexo == sexo));
-            ViewBag.pet = petsBuscar;
-            return View("CardsPets");
+
+            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
+            if (sexo != "Todos os sexos")
+            {
+                petsDisponiveis = petsDisponiveis.Where(a => a.Sexo == sexo);
+            }
+            if (estado != "Todos os estados")
+            {
+                petsDisponiveis = petsDisponiveis.Where(a => a.Estado == estado);
+            }
+
+            return View(petsDisponiveis);
         }
-        public async Task<IActionResult> CardsPets()
+
+        public async Task<IActionResult> Buscar()
         {
-            List<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
-            ViewBag.pets = petsDisponiveis;
-            return View();
+            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
+            return View(petsDisponiveis);
         }
 
         // GET: Animais
