@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Create";
-    Layout = "_LayoutDeslogado";
 }
 
 <h1>Create</h1>
@@ -14,7 +13,7 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group" style="visibility: hidden;">
+            <div class="form-group">
                 <label asp-for="FkUsuarios" class="control-label"></label>
                 <select asp-for="FkUsuarios" class="form-control" asp-items="ViewBag.FkUsuarios"></select>
             </div>
@@ -192,6 +191,7 @@
                     </select>
                     <span asp-validation-for="Sexo" class="text-danger"></span>
                 </div>
+
                 <div class="col-md-4">
                     <label asp-for="EstadoAdocaoPet" class="form-label"></label>
                     <select asp-for="EstadoAdocaoPet" style="width: 355px;" class="form-select"
@@ -202,9 +202,15 @@
                     </select>
                     <span asp-validation-for="EstadoAdocaoPet" class="text-danger"></span>
                 </div>
+
                 <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">Escolha a foto do seu pet</label>
                     <input class="form-control" type="file" id="photoInput">
+                </div>
+                <div class="form-group" style="visibility: hidden;">
+                    <label asp-for="ImagensPet" class="control-label"></label>
+                    <input asp-for="ImagensPet" id="photo" class="form-control" />
+                    <span asp-validation-for="ImagensPet" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />
@@ -216,10 +222,4 @@
 <br>
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
-
-<div class="form-group" style="visibility: hidden;">
-    <label asp-for="ImagensPet" class="control-label"></label>
-    <input asp-for="ImagensPet" id="photo" class="form-control" />
-    <span asp-validation-for="ImagensPet" class="text-danger"></span>
 </div>

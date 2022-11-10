@@ -61,13 +61,18 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
        
         public IActionResult Profile()
         {
+
+            Usuarios usuarios1 = _sessao.BuscarSessaoDoUsuario();
+            var petsUsuario = _context.animals.Where(a=> a.FkUsuarios == usuarios1.UsuarioId);
+            ViewBag.pets = petsUsuario; 
+            
             string sessaoUsuario = HttpContext.Session.GetString("sessaoUsuariologado");
 
             if (string.IsNullOrEmpty(sessaoUsuario)) return null;
 
             Usuarios usuarios = JsonConvert.DeserializeObject<Usuarios>(sessaoUsuario);
 
-            return View(usuarios);
+            return View(usuarios1);
         }
 
         // POST: Usuarios/Create
