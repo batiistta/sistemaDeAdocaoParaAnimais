@@ -6,6 +6,16 @@ h2 {
   flex-direction: column;
 }
 
+.textArea{
+  margin-top: 20px;
+  margin-left: 95px;
+  width: 925px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
 .circle {
   display: flex;
   justify-content: center;
@@ -301,6 +311,63 @@ body {
 .shadow-none {
   box-shadow: none !important;
 }
+
+body{
+  font-size: larger;
+}
+
+div#esquerda{
+  position:relative;
+  float: left;   /*left*/
+  padding-left: 15rem;
+  padding-top: 5px;
+  padding-right: 25px;
+}
+
+img#esquerda{
+  width: 450px;
+  height: 250px;
+}
+
+div#direita{
+  position:relative;
+  padding-left: 1rem;
+  padding-right: 0.5rem;  
+  padding-top: 1px;
+}
+
+.icons{
+  width: 1.0rem;
+  padding-left: 1rem;
+  padding-right: 0.5rem;  
+}
+
+
+
+button#adotar{
+  background-color: rgb(68, 241, 45);
+  position: relative;
+  float: right;
+  border: 0 solid;
+  border-radius: 5px; 
+  height: 50px;
+width: 600px;
+}
+
+
+
+img#perfil{
+  max-width:600px;
+  max-height:650px; 
+  border-radius: 15px;
+}
+
+div#conte-historia{
+  /* deixar texto alinhado */   
+}
+
+
+
 
 /* Fim do Css profile */
 

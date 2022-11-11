@@ -51,6 +51,13 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return View(await sistemaDeAdocaoParaAnimaisContext.ToListAsync());
         }
 
+        public async Task<IActionResult> ExibirPet(int? id)
+        {
+            var pet = _context.animals.Where(a=> a.Id == id);
+            ViewBag.pets = pet;
+            return View();
+        }
+
         // GET: Animais/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -86,6 +93,8 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         {
             if (ModelState.IsValid)
             {
+                Usuarios usuario1 = _sessao.BuscarSessaoDoUsuario();
+                animal.FkUsuarios = usuario1.UsuarioId;
                 _context.Add(animal);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
