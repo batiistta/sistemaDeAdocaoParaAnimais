@@ -10,43 +10,50 @@
 <h4>Animal</h4>
 <hr />
 
-<div class="row">
-    <div class="col-md-4">
+
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FkUsuarios" class="control-label"></label>
+            <div class="form-group" style="visibility: hidden;">
+                <label asp-for="FkUsuarios" class="control-label" ></label>
                 <select asp-for="FkUsuarios" class="form-control" asp-items="ViewBag.FkUsuarios"></select>
             </div>
-            <div id="div1">
-                <div class="form-group">
+<div class="row d-flex justify-content-center">
+                <div class="col-md-4">
                     <label asp-for="Nome" class="control-label"></label>
                     <input asp-for="Nome" class="form-control" />
                     <span asp-validation-for="Nome" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="col-md-4">
                     <label asp-for="Raca" class="control-label"></label>
                     <input asp-for="Raca" class="form-control" />
                     <span asp-validation-for="Raca" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="col-md-4">
                     <label asp-for="Cor" class="control-label"></label>
-                    <input asp-for="Cor" class="form-control" />
+                    <input asp-for="Cor" class="form-control" type="text"/>
                     <span asp-validation-for="Cor" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Descricao" class="control-label"></label>
-                    <input asp-for="Descricao" class="form-control" />
-                    <span asp-validation-for="Descricao" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Porte" class="control-label"></label>
-                    <input asp-for="Porte" class="form-control" />
+</div>      
+
+ <div class="row d-flex justify-content-center">
+                <div class="col-md-4">
+                    <label asp-for="Porte" style="width: 500px;" class="form-label"></label>
+                     <select asp-for="Porte" style="width: 355px;" class="form-select">
+                        <option selected>Selecione</option>
+                        <option value="1">Pequeno</option>
+                        <option value="2">Médio</option>
+                        <option value="3">Grande</option>
+                    </select>
                     <span asp-validation-for="Porte" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Especie" class="control-label"></label>
-                    <input asp-for="Especie" class="form-control" />
+                <div class="col-md-4">
+                    <label asp-for="Especie" style="width: 500px;" class="form-label"></label>
+                    <select asp-for="Especie" style="width: 355px;" class="form-select"
+                        aria-label="Default select example">
+                        <option class="form-label" selected>Selecione</option>
+                        <option value="1">Cachorro</option>
+                        <option value="2">Gato</option>
+                    </select>
                     <span asp-validation-for="Especie" class="text-danger"></span>
                 </div>
                 <div class="col-md-4">
@@ -84,9 +91,11 @@
                     </select>
                     <span asp-validation-for="Estado" class="text-danger"></span>
                 </div>
+</div>
 
-                <div class="form-group">
-                    <label asp-for="Cidade" class="control-label"></label>
+ <div class="row d-flex justify-content-center">
+                <div class="col-md-4">
+                    <label asp-for="Cidade" class="form-label"></label>
                     <input asp-for="Cidade" class="form-control" />
                     <span asp-validation-for="Cidade" class="text-danger"></span>
                 </div>
@@ -104,8 +113,6 @@
                     </select>
                     <span asp-validation-for="Energia" class="text-danger"></span>
                 </div>
-            </div>
-            <div id="div2">
                 <div class="col-md-4">
                     <label asp-for="Humor" style="width: 500px;" class="form-label"></label>
                     <select asp-for="Humor" style="width: 355px;" class="form-select"
@@ -120,6 +127,9 @@
                     </select>
                     <span asp-validation-for="Humor" class="text-danger"></span>
                 </div>
+</div>         
+
+<div class="row d-flex justify-content-center">
                 <div class="col-md-4">
                     <label asp-for="Apego" style="width: 500px;" class="form-label"></label>
                     <select asp-for="Apego" style="width: 355px;" class="form-select"
@@ -148,7 +158,6 @@
                     </select>
                     <span asp-validation-for="Adestramento" class="text-danger"></span>
                 </div>
-
                 <div class="col-md-4">
                     <label asp-for="Vacinado" style="width: 500px;" class="form-label"></label>
                     <select asp-for="Vacinado" style="width: 355px;" class="form-select"
@@ -159,7 +168,9 @@
                     </select>
                     <span asp-validation-for="Vacinado" class="text-danger"></span>
                 </div>
+</div>
 
+<div class="row d-flex justify-content-center">
                 <div class="col-md-4">
                     <label asp-for="Castrado" style="width: 500px;" class="form-label"></label>
                     <select asp-for="Castrado" style="width: 355px;" class="form-select"
@@ -192,7 +203,9 @@
                     </select>
                     <span asp-validation-for="Sexo" class="text-danger"></span>
                 </div>
+</div>
 
+<div class="row d-flex justify-content-center">
                 <div class="col-md-4">
                     <label asp-for="EstadoAdocaoPet" class="form-label"></label>
                     <select asp-for="EstadoAdocaoPet" style="width: 355px;" class="form-select"
@@ -204,22 +217,27 @@
                     <span asp-validation-for="EstadoAdocaoPet" class="text-danger"></span>
                 </div>
 
-                <div class="mb-3">
+                <div class="col-md-4">
                     <label for="formFileMultiple" class="form-label">Escolha a foto do seu pet</label>
                     <input class="form-control" type="file" id="photoInput">
                 </div>
-                <div class="form-group" style="visibility: hidden;">
+                <div class="col-md-4">
+                    <label asp-for="Descricao" class="form-label"></label>
+                    <input asp-for="Descricao" class="form-control" />
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+</div>                
+    
+                 <div class="col-md-4" style="visibility: hidden;">
                     <label asp-for="ImagensPet" class="control-label"></label>
                     <input asp-for="ImagensPet" id="photo" class="form-control" />
                     <span asp-validation-for="ImagensPet" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="col-md-3">
                     <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-            </div>
+                </div>   
         </form>
-    </div>
-</div>
+
 <br>
 <div>
     <a asp-action="Index">Back to List</a>

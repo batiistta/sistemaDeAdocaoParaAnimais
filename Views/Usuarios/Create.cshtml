@@ -13,14 +13,14 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="mb-3">
-                <label for="formFileMultiple" class="form-label">Escolha sua foto de perfil</label>
-                <input class="form-control" type="file" id="photoInput">
-            </div>
-            <div class="form-group">
+            <div class="form-group" style="visibility: hidden;">
                 <label asp-for="Avatar" class="control-label"></label>
                 <input id="photo" asp-for="Avatar" class="form-control" />
                 <span asp-validation-for="Avatar" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Escolha sua foto de perfil</label>
+                <input class="form-control" type="file" id="photoInput">
             </div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
