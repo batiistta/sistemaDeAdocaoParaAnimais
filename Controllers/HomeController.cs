@@ -19,7 +19,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var pets = _context.animals; 
+        var pets = _context.animals.Where(a=> a.EstadoAdocaoPet == "Disponível"); 
         ViewBag.pets = pets; 
         return View();
     }

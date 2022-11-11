@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using sistemaDeAdocaoParaAnimais.Helper;
 using sistemaDeAdocaoParaAnimais.Models;
 
 namespace sistemaDeAdocaoParaAnimais.Controllers
@@ -12,10 +13,12 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
     public class AnimaisController : Controller
     {
         private readonly SistemaDeAdocaoParaAnimaisContext _context;
+        private readonly ISessao _sessao;
 
-        public AnimaisController(SistemaDeAdocaoParaAnimaisContext context)
+        public AnimaisController(SistemaDeAdocaoParaAnimaisContext context, ISessao sessao)
         {
             _context = context;
+            _sessao = sessao;
         }
 
         [HttpPost]
@@ -70,7 +73,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // GET: Animais/Create
         public IActionResult Create()
         {
-            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Bairro");
+            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Nome");
             return View();
         }
 
@@ -87,7 +90,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Bairro", animal.FkUsuarios);
+            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Nome", animal.FkUsuarios);
             return View(animal);
         }
 
