@@ -12,40 +12,45 @@
     <link rel="stylesheet" href="~/sistemaDeAdocaoParaAnimais.styles.css" asp-append-version="true" />
 </head>
 
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg">
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
 
+    <header class="header_wrapper">
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <a href="#" class="navbar">
+                    <img src="img/img1pet.png" class="img-fluid">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a asp-area="" asp-controller="Home" asp-action="Index" aria-current="page">Home</a>
+                            <a href="#" class="nav-link active" aria-current="page">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-controller="Home" asp-action="Duvidas">Adotar</a>
+                            <a href="#" class="nav-link">About</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="" asp-controller="Home" asp-action="Duvidas">Dúvidas</a>
+                            <a href="#" class="nav-link">Team</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-controller="Login" asp-action="Sair">Divulgar</a>
+                            <a href="#" class="nav-link">Gallery</a>
+                        </li>
+                       <li class="nav-item">
+                            <a href="#" class="nav-link">Blog</a>
+                        </li>
+                        <li class="nav-item mt-03 mt-lg-0">
+                            <a href="#" class="nav-link">Contact</a>
                         </li>
                     </ul>
+                    <a href="#" style="margin-left: 13%;" type="button" class="btn btn-dark">Sing in</a>
+                    <a href="#" type="button" class="btn btn-dark">Sing out</a>
                 </div>
-            </div>
-            <div class="d-grid gap-1 d-md-flex justify-content-md-end">
-                <a asp-area="" asp-controller="User" asp-action="Login"><button class="btn btn-primary me-md-1"
-                        type="button">Entre</button> </a>
-                <a asp-area="" asp-controller="User" asp-action="Register"><button class="btn btn-primary me-md-1"
-                        type="button">Cadastre</button></a>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
