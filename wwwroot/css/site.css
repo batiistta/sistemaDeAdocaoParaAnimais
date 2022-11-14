@@ -318,22 +318,15 @@ body{
 
 div#esquerda{
   position:relative;
-  float: left;   /*left*/
-  padding-left: 15rem;
+  float: left;   /*Editei*/
+  padding-left: 130px;
   padding-top: 5px;
   padding-right: 25px;
 }
 
-img#esquerda{
-  width: 450px;
-  height: 250px;
-}
-
 div#direita{
-  position:relative;
-  padding-left: 1rem;
-  padding-right: 0.5rem;  
-  padding-top: 1px;
+  position:relative; /*Editei*/ 
+  padding-top: 10px;
 }
 
 .icons{
@@ -342,33 +335,41 @@ div#direita{
   padding-right: 0.5rem;  
 }
 
-
-
-button#adotar{
-  background-color: rgb(68, 241, 45);
-  position: relative;
-  float: right;
+button#bnt{
+  background: linear-gradient(#42d979,#79f583); /*Editei*/ 
   border: 0 solid;
-  border-radius: 5px; 
+  border-radius: 10px; 
   height: 50px;
-width: 600px;
+  width: 450px;
+  position: absolute;
+  top:62%;
+  right: 55%;
 }
-
-
 
 img#perfil{
-  max-width:600px;
-  max-height:650px; 
-  border-radius: 15px;
+  width:450px;
+  height:550px; 
+  border-radius: 15px; /*Editei*/
 }
 
-div#conte-historia{
-  /* deixar texto alinhado */   
+div#historia{
+  width:500px;
+  height:850px; 
+  padding-right: 50px;
+  position:relative;
+  float: left;   /*Editei*/
+  padding-top: 5px;
+  padding-right: 25px;
 }
 
+.card{
+  margin-top: 10px; /*Editei*/
+}
 
-
-
-/* Fim do Css profile */
-
+.card-img-top{
+  max-width:287px; /*Editei*/
+  max-height:250px;
+  min-height:250px; 
+  min-width:287px;
+}
 

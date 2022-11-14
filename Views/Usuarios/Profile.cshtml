@@ -89,22 +89,22 @@
         @{
             if (animais != null)
             {
-                @foreach (var animal in animais)
-                {
-                    <div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="cardPets">
-                                <img src="@animal.ImagensPet" class="card-img-top" alt="Pets" style="height: 80%;">
-                                <div class="card-body">
-                                    <h4 class="card-text">@animal.Nome</h4>
-                                    <p class="card-text">@animal.Descricao</p>
-                                    <p class="card-text">@animal.Estado</p>
-                                    <p class="card-text">@animal.Cidade</p>
-                                </div>
-                            </div>
-                        </div>
+              @foreach (var animal in animais)
+              {
+                <div>
+                  <div class="card" style="width: 18rem;">
+                    <div class="cardPets">
+                      <img src="@animal.ImagensPet" class="card-img-top" alt="Pets">
+                      <div class="card-body">
+                        <h4 class="card-text">@animal.Nome</h4>
+                        <p class="card-text">@animal.EstadoAdocaoPet</p>
+                        <p class="card-text">@animal.Estado</p>
+                        <p class="card-text">@animal.Cidade</p>
+                      </div>
                     </div>
-                }
+                  </div>
+                </div>
+              }
             }
         }
     </div>
