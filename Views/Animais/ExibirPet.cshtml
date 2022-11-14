@@ -4,7 +4,7 @@
     Layout = "_LayoutDeslogado";
 }
 
-<br>
+
 @{
     var animais = ViewBag.pets;
 }
@@ -13,30 +13,26 @@
     {
         @foreach (var Model in animais)
         {
-            <div id="esquerda">
-                <img src="@Model.ImagensPet" id="perfil" />
-            </div>
-            <div id="direita">
-                <h1>
-                    <span>@Model.Nome</span>
-                </h1>
-                <p>@Model.Especie | @Model.Sexo | @Model.Porte</p>
-            </div>
-            <div id="estado">
-                <img src="~/img/location-dot-solid.svg" class="icons">
-                <span>@Model.Cidade, @Model.Estado</span>
-            </div>
-            <div id="historia">
-                <div id="conte-historia">
-                    <h1>Historia da @Model.Nome</h1>
-                    @Model.Descricao
+            <div>    
+                <div id="esquerda">
+                    <img src="@Model.ImagensPet" id="perfil"/>
                 </div>
-            </div>
-            <div>
-                <button type="submit" id="adotar">Quero adotar</button>
-            </div>
+                <div id="direita">
+                    <h1>
+                        <span>@Model.Nome</span>
+                    </h1>
+                    <p>@Model.Especie | @Model.Sexo | @Model.Porte | @Model.Cidade | @Model.Estado</p> 
+                </div>
+                <div id="estado">
+                    <img src="~/img/location-dot-solid.svg" class="icons">
+                </div>
+                <div id="historia">
+                    <h1>Historia da @Model.Nome</h1>
+                    @Model.Descricao 
+                </div>
+                <button type="submit" id="bnt">Quero adotar</button>
+            </div>   
         }
     }
 }
-</div>
-<br>
+
