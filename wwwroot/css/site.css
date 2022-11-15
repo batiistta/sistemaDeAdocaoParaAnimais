@@ -58,7 +58,7 @@ h2 {
 .button_VerMais {
   align-items: center;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 45px;
 }
 
@@ -197,7 +197,6 @@ a {
   font-weight: 600;
 }
 
-
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -214,7 +213,6 @@ body {
   background-color: #fff;
 }
 
-/* Inicio  css Recovery */
 .enviar-email {
   height: center;
   background-color: white;
@@ -237,10 +235,6 @@ body {
   height: 2em;
   color: #ffffff;
 }
-
-/* Fim do css Recovery */
-
-/* Inicio do Css profile */
 
 .main-body {
   padding: 15px;
@@ -318,22 +312,15 @@ body{
 
 div#esquerda{
   position:relative;
-  float: left;   /*left*/
-  padding-left: 15rem;
+  float: left;   /*Editei*/
+  padding-left: 130px;
   padding-top: 5px;
   padding-right: 25px;
 }
 
-img#esquerda{
-  width: 450px;
-  height: 250px;
-}
-
 div#direita{
-  position:relative;
-  padding-left: 1rem;
-  padding-right: 0.5rem;  
-  padding-top: 1px;
+  position:relative; /*Editei*/ 
+  padding-top: 10px;
 }
 
 .icons{
@@ -342,33 +329,57 @@ div#direita{
   padding-right: 0.5rem;  
 }
 
-
-
-button#adotar{
-  background-color: rgb(68, 241, 45);
-  position: relative;
-  float: right;
+button#bnt{
+  background: linear-gradient(#42d979,#79f583); /*Editei*/ 
   border: 0 solid;
-  border-radius: 5px; 
+  border-radius: 10px; 
   height: 50px;
-width: 600px;
+  width: 450px;
+  position: absolute;
+  top:62%;
+  right: 55%;
 }
-
-
 
 img#perfil{
-  max-width:600px;
-  max-height:650px; 
-  border-radius: 15px;
+  width:450px;
+  height:550px; 
+  border-radius: 15px; /*Editei*/
 }
 
-div#conte-historia{
-  /* deixar texto alinhado */   
+div#historia{
+  width:500px;
+  height:850px; 
+  padding-right: 50px;
+  position:relative;
+  float: left;   /*Editei*/
+  padding-top: 5px;
+  padding-right: 25px;
 }
 
+.card{
+  margin-top: 50px; /*Editei*/ 
+  -webkit-transition: all .4s ease;
+}
 
+.card-img-top{
+  max-width:287px; /*Editei*/
+  max-height:250px;
+  min-height:250px; 
+  min-width:287px; 
+}
 
+.card:hover{
+  -webkit-transform: scale(1.1);
+}
 
-/* Fim do Css profile */
+.container-pets{
+  margin-top: 30px;
+  border: 1px solid;
+}
+
+img#avatar:hover{
+  -webkit-transform: scale(1.3);
+}
+
 
 
