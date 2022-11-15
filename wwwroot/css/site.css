@@ -60,6 +60,7 @@ h2 {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 45px;
+  padding-top: 10px;
 }
 
 .btn_VerMais {
@@ -363,7 +364,7 @@ div#historia{
 }
 
 .card{
-  margin-top: 10px; /*Editei*/
+  margin-top: 30px; /*Editei*/
 }
 
 .card-img-top{
@@ -372,4 +373,13 @@ div#historia{
   min-height:250px; 
   min-width:287px;
 }
+
+.card:hover{
+  -webkit-transform: scale(1.1);
+}
+
+img#avatar:hover{
+  -webkit-transform: scale(1.1);
+}
+
 
