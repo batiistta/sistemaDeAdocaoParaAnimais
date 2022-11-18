@@ -78,6 +78,24 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return View(petsDisponiveis);
         }
 
+
+        public class ClusterPrediction
+        {
+        [ColumnName("PredictedLabel")]
+        public uint PredictedClusterId;
+
+        [ColumnName("Score")]
+        public float[] Distances;
+        }
+        
+        /*Essa parte peguei do cógido de Fran, não revisei se será assim ainda mas
+        coloquei caso algum de vocês pesquise sobre isso antes de mim*/
+        public class Result 
+        {
+        public ClusterPrediction clusterPrediction {get; set;}
+        public Animal Animal { get; set; }
+        }
+
         public async Task<IActionResult> Buscar()
         {
             static DataTable BuildDataTable<Animal>(IList<Animal> lst)
@@ -134,6 +152,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             .Concatenate(featuresColumnName, "id", "Energia", "Humor", "Apego")
             .Append(mlContext.Clustering.Trainers.KMeans(featuresColumnName, numberOfClusters: 5));
 
+            //treina o modelo.
             var model = pipeline.Fit(dataView);
 
             //Cria um arquivo para armazenar o modelo treinado em zip.

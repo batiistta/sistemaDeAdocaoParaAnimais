@@ -7,8 +7,7 @@ namespace sistemaDeAdocaoParaAnimais.Models
     public class Animal
     {
         [Key]
-        [Required]
-        [Column("1")]
+        [Required]   
         public int Id { get; set; }
 
         [ForeignKey("Usuarios")]
@@ -54,20 +53,17 @@ namespace sistemaDeAdocaoParaAnimais.Models
 
         [Required]
         [Display(Name = "Energia")]
-        [Range(1, 5)]
-        [Column("2")]
+        [Range(1, 5)]       
         public int Energia { get; set; }
 
         [Required]
         [Display(Name = "Humor")]
-        [Range(1, 5)]
-        [Column("3")]
+        [Range(1, 5)]        
         public int Humor { get; set; }
 
         [Required]
         [Display(Name = "Apego")]
-        [Range(1, 5)]
-        [Column("4")]
+        [Range(1, 5)]        
         public int Apego { get; set; }
 
         [Required]
