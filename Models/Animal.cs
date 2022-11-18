@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.ML.Data;
 
 namespace sistemaDeAdocaoParaAnimais.Models
 {
@@ -7,6 +8,7 @@ namespace sistemaDeAdocaoParaAnimais.Models
     {
         [Key]
         [Required]
+        [Column("1")]
         public int Id { get; set; }
 
         [ForeignKey("Usuarios")]
@@ -45,7 +47,7 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Required]
         [Display(Name = "Estado")]
         public string Estado { get; set; }
-        
+
         [Required]
         [Display(Name = "Cidade")]
         public string Cidade { get; set; }
@@ -53,16 +55,19 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Required]
         [Display(Name = "Energia")]
         [Range(1, 5)]
+        [Column("2")]
         public int Energia { get; set; }
 
         [Required]
         [Display(Name = "Humor")]
         [Range(1, 5)]
+        [Column("3")]
         public int Humor { get; set; }
 
         [Required]
         [Display(Name = "Apego")]
         [Range(1, 5)]
+        [Column("4")]
         public int Apego { get; set; }
 
         [Required]
@@ -91,4 +96,7 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public string ImagensPet { get; set; }
 
     }
+
+    
+
 }
