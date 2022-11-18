@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +23,42 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             _sessao = sessao;
         }
 
+        // public static DataTable BuildDataTable<Animal>(IList<Animal> lst)
+        // {
+        //     //create DataTable Structure
+        //     DataTable tbl = CreateTable<Animal>();
+        //     Type entType = typeof(Animal);
+        //     PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(entType);
+        //     //get the list item and add into the list
+        //     foreach (Animal item in lst)
+        //     {
+        //         DataRow row = tbl.NewRow();
+        //         foreach (PropertyDescriptor prop in properties)
+        //         {
+        //             // row[prop.Name] = prop.GetValue(item);
+        //             row[prop.Name] = prop.GetValue(item);
+        //         }
+        //         tbl.Rows.Add(row);
+        //     }
+        //     return tbl;
+        // }
+
+
+        // private static DataTable CreateTable<Animal>()
+        // {
+        //     Type entType = typeof(Animal);
+        //     //set the datatable name as class name
+        //     DataTable tbl = new DataTable(entType.Name);
+        //     //get the property list
+        //     PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(entType);
+        //     foreach (PropertyDescriptor prop in properties)
+        //     {
+        //         //add property as column
+        //         tbl.Columns.Add(prop.Name, prop.PropertyType);
+        //     }
+        //     return tbl;
+        // }
+
         [HttpPost]
         public async Task<IActionResult> Buscar(string sexo, string estado)
         {
@@ -40,6 +78,44 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         public async Task<IActionResult> Buscar()
         {
+            static DataTable BuildDataTable<Animal>(IList<Animal> lst)
+            {
+                //create DataTable Structure
+                DataTable tbl = CreateTable<Animal>();
+                Type entType = typeof(Animal);
+                PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(entType);
+                //get the list item and add into the list
+                foreach (Animal item in lst)
+                {
+                    DataRow row = tbl.NewRow();
+                    foreach (PropertyDescriptor prop in properties)
+                    {
+                        // row[prop.Name] = prop.GetValue(item);
+                        row[prop.Name] = prop.GetValue(item);
+                    }
+                    tbl.Rows.Add(row);
+                }
+                return tbl;
+            }
+
+            static DataTable CreateTable<Animal>()
+            {
+                Type entType = typeof(Animal);
+                //set the datatable name as class name
+                DataTable tbl = new DataTable(entType.Name);
+                //get the property list
+                PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(entType);
+                foreach (PropertyDescriptor prop in properties)
+                {
+                    //add property as column
+                    tbl.Columns.Add(prop.Name, prop.PropertyType);
+                }
+                return tbl;
+            }
+            List<Animal> ListOfAnimals = _context.animals.ToList();
+            DataTable ListAsDataTable = BuildDataTable<Animal>(ListOfAnimals);
+            DataView ListAsDataView = ListAsDataTable.DefaultView;
+
             IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
             return View(petsDisponiveis);
         }
@@ -53,7 +129,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         public async Task<IActionResult> ExibirPet(int? id)
         {
-            var pet = _context.animals.Where(a=> a.Id == id);
+            var pet = _context.animals.Where(a => a.Id == id);
             ViewBag.pets = pet;
             return View();
         }
