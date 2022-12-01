@@ -88,7 +88,7 @@
     @foreach (var animal in Model)
     {
         <div>
-            <div class="card" style="width: 18rem;">
+            <div class="cardq" style="width: 18rem;">
                 <div class="cardPets">
                     <img src="@animal.ImagensPet" class="card-img-top" alt="Pets" style="width: 100%;">
                     <div class="card-body">
@@ -96,6 +96,7 @@
                         <p class="card-text">@animal.EstadoAdocaoPet</p>
                         <p class="card-text">@animal.Estado</p>
                         <p class="card-text">@animal.Cidade</p>
+                        <button> <a asp-action="ExibirPet" asp-route-id="@animal.Id">Ver mais</a></button>
                     </div>
                 </div>
             </div>

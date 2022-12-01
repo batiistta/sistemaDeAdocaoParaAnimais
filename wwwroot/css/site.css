@@ -6,7 +6,7 @@ h2 {
   flex-direction: column;
 }
 
-.textArea{
+.textArea {
   margin-top: 20px;
   margin-left: 95px;
   width: 925px;
@@ -242,7 +242,6 @@ body {
 /* Fim do css Recovery */
 
 /* Inicio do Css profile */
-
 .main-body {
   padding: 15px;
 }
@@ -262,6 +261,7 @@ body {
   border: 0 solid rgba(0, 0, 0, .125);
   border-radius: .25rem;
 }
+
 
 .exibirLado {
   display: flex;
@@ -313,73 +313,83 @@ body {
   box-shadow: none !important;
 }
 
-body{
+body {
   font-size: larger;
 }
 
-div#esquerda{
-  position:relative;
-  float: left;   /*Editei*/
+div#esquerda {
+  position: relative;
+  float: left;
+  /*Editei*/
   padding-left: 130px;
   padding-top: 5px;
   padding-right: 25px;
 }
 
-div#direita{
-  position:relative; /*Editei*/ 
+div#direita {
+  position: relative;
+  /*Editei*/
   padding-top: 10px;
 }
 
-.icons{
+.icons {
   width: 1.0rem;
   padding-left: 1rem;
-  padding-right: 0.5rem;  
+  padding-right: 0.5rem;
 }
 
-button#bnt{
-  background: linear-gradient(#42d979,#79f583); /*Editei*/ 
+button#bnt {
+  background: linear-gradient(#42d979, #79f583);
+  /*Editei*/
   border: 0 solid;
-  border-radius: 10px; 
+  border-radius: 10px;
   height: 50px;
   width: 450px;
   position: absolute;
-  top:62%;
-  right: 55%;
+  margin-top: 8%;
+  right: 34%
 }
 
-img#perfil{
-  width:450px;
-  height:550px; 
-  border-radius: 15px; /*Editei*/
+img#perfil {
+  width: 350px;
+  height: 350px;
+  border-radius: 15px;
+  /*Editei*/
 }
 
-div#historia{
-  width:500px;
-  height:850px; 
+div#historia {
+  width: 500px;
+  height: 850px;
   padding-right: 50px;
-  position:relative;
-  float: left;   /*Editei*/
+  position: relative;
+  float: left;
+  /*Editei*/
   padding-top: 5px;
   padding-right: 25px;
 }
 
-.card{
-  margin-top: 30px; /*Editei*/
+.card {
+  margin-top: 30px;
+  /*Editei*/
 }
 
-.card-img-top{
-  max-width:287px; /*Editei*/
-  max-height:250px;
-  min-height:250px; 
-  min-width:287px;
+.card-img-top {
+  max-width: 287px;
+  /*Editei*/
+  max-height: 250px;
+  min-height: 250px;
+  min-width: 287px;
 }
 
-.card:hover{
+.cardq {
+  border: #d3d3d3;
+  border-radius: 5px;
+}
+
+.cardq:hover {
   -webkit-transform: scale(1.1);
 }
 
-img#avatar:hover{
+img#avatar:hover {
   -webkit-transform: scale(1.1);
 }
-
-
