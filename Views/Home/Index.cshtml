@@ -43,14 +43,15 @@
                 @foreach (var animal in animais)
                 {
                     <div>
-                        <div class="cardq" style="width: 18rem;">
+                        <div class="cardq" >
                             <div class="cardPets">
-                                <img src="@animal.ImagensPet" class="card-img-top" alt="Pets">
-                                <div id="card-body">
+                                <img src="@animal.ImagensPet" class="card-img-top" alt="Pets"  style="width: 100%;" >
+                                <div class="card-body">
                                     <h4 class="card-text">@animal.Nome</h4>
                                     <p class="card-text">@animal.EstadoAdocaoPet</p>
                                     <p class="card-text">@animal.Estado</p>
                                     <p class="card-text">@animal.Cidade</p>
+                                    <button class="bntbio"> <a asp-action="ExibirPet" asp-route-id="@animal.Id">Sobre</a></button>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +61,7 @@
         }
     </div>
     <div class="button_VerMais">
-        <button type="button" class="btn_VerMais">Ver mais</button>
+        <button type="button" class="btn_VerMais">Ver mais pets</button>
     </div>
 </section>
 

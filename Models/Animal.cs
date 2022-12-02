@@ -28,6 +28,7 @@ namespace sistemaDeAdocaoParaAnimais.Models
 
         [Required(ErrorMessage = "Campo Obrigatório.")]
         [Display(Name = "Conte um pouco da sua historia com o pet")]
+        [StringLength(623, ErrorMessage = "A historia do pet nao pode conter mais de 115 caracrteres. ")]
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório.")]

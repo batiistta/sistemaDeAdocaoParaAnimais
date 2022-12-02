@@ -73,12 +73,14 @@ h2 {
   background-color: #A8EB6B;
   border: 1px solid;
   border-radius: 5px;
+  margin-top: 30px;
 }
 
 .btn_VerMais:hover {
   transition: 1s ease;
   color: black;
-  background-color: #fff;
+  /*background-color: #fff;*/
+  background-color: rgb(17, 233, 53);
 }
 
 .titulo_adocao {
@@ -321,7 +323,7 @@ div#esquerda {
   position: relative;
   float: left;
   /*Editei*/
-  padding-left: 130px;
+  padding-left: 30px;
   padding-top: 5px;
   padding-right: 25px;
 }
@@ -338,7 +340,7 @@ div#direita {
   padding-right: 0.5rem;
 }
 
-button#bnt {
+.bnt {
   background: linear-gradient(#42d979, #79f583);
   /*Editei*/
   border: 0 solid;
@@ -346,26 +348,34 @@ button#bnt {
   height: 50px;
   width: 450px;
   position: absolute;
-  margin-top: 8%;
-  right: 34%
+  margin-top: 21%;
+  right: 17%
+}
+
+
+.bnt:hover {
+  transition: 1s ease;
+  color: black;
+  background-color: rgb(17, 233, 53);
 }
 
 img#perfil {
-  width: 350px;
-  height: 350px;
+  width: 500px;
+  height: 500px;
   border-radius: 15px;
   /*Editei*/
 }
 
 div#historia {
-  width: 500px;
-  height: 850px;
+  width: 730px;
+  height: 600px;
   padding-right: 50px;
   position: relative;
   float: left;
   /*Editei*/
   padding-top: 5px;
   padding-right: 25px;
+  text-align: justify;
 }
 
 .card {
@@ -382,9 +392,17 @@ div#historia {
 }
 
 .cardq {
-  border: #d3d3d3;
-  border-radius: 5px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow:  5px 5px 10px #cfcfcf,
+               -5px -5px 10px #ffffff;
+  margin: 10px;
+  margin-top: 25px;
+  width: 18rem;
+  height: 30rem;
 }
+
+
 
 .cardq:hover {
   -webkit-transform: scale(1.1);
@@ -392,4 +410,20 @@ div#historia {
 
 img#avatar:hover {
   -webkit-transform: scale(1.1);
+}
+
+.bntbio{
+  background-color: #A8EB6B;
+  font-size: 16px;
+  border: 1px solid;
+  border-radius: 5px;
+  margin: 10px;
+  height: 40px;
+  width: 150px;
+}
+
+.bntbio:hover {
+  transition: 1s ease;
+  color: black;
+  background-color: rgb(17, 233, 53);
 }

@@ -39,9 +39,9 @@
             <label asp-for="Porte" style="width: 500px;" class="form-label"></label>
             <select asp-for="Porte" style="width: 400px;" class="form-select">
                 <option selected>Selecione</option>
-                <option value="1">Pequeno</option>
-                <option value="2">Médio</option>
-                <option value="3">Grande</option>
+                <option value="Pequeno">Pequeno</option>
+                <option value="Médio">Médio</option>
+                <option value="Grande">Grande</option>
             </select>
             <span asp-validation-for="Porte" class="text-danger"></span>
         </div>
@@ -49,8 +49,8 @@
             <label asp-for="Especie" style="width: 500px;" class="form-label"></label>
             <select asp-for="Especie" style="width: 400px;" class="form-select" aria-label="Default select example">
                 <option class="form-label" selected>Selecione</option>
-                <option value="1">Cachorro</option>
-                <option value="2">Gato</option>
+                <option value="Cachorro">Cachorro</option>
+                <option value="Gato">Gato</option>
             </select>
             <span asp-validation-for="Especie" class="text-danger"></span>
         </div>
@@ -217,7 +217,7 @@
 
     <div class="textArea">
         <label asp-for="Descricao" class="form-label"></label>
-        <textarea asp-for="Descricao" class="form-control" cols="200" rows="10"></textarea>
+        <textarea asp-for="Descricao" class="form-control" cols="250" rows="10"></textarea>
         <span asp-validation-for="Descricao" class="text-danger"></span>
     </div>
 
