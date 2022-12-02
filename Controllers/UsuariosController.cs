@@ -25,7 +25,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             _context = context;
             _email = email;
             _usuarioRepositorio = usuarioRepositorio;
-            _sessao = sessao; 
+            _sessao = sessao;
         }
 
         // GET: Usuarios
@@ -52,27 +52,72 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return View(usuarios);
         }
 
+
+        public IActionResult Profile()
+        {
+
+            Usuarios usuarios1 = _sessao.BuscarSessaoDoUsuario();
+            var petsUsuario = _context.animals.Where(a => a.FkUsuarios == usuarios1.UsuarioId);
+            ViewBag.pets = petsUsuario;
+
+            return View(usuarios1);
+        }
+
         // GET: Usuarios/Create
         public IActionResult Create()
         {
             return View();
         }
 
-       
-        public IActionResult Profile()
+         public IActionResult CreateUsuarioCaracteristica()
         {
+            return View();
+        }
 
-            Usuarios usuarios1 = _sessao.BuscarSessaoDoUsuario();
-            var petsUsuario = _context.animals.Where(a=> a.FkUsuarios == usuarios1.UsuarioId);
-            ViewBag.pets = petsUsuario; 
-            
-            string sessaoUsuario = HttpContext.Session.GetString("sessaoUsuariologado");
 
-            if (string.IsNullOrEmpty(sessaoUsuario)) return null;
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateUsuarioCaracteristica([Bind("UsuarioId,Avatar,Nome,Sobrenome,NomeSocial,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,Adestramento,TermosCondições")] Usuarios usuarios, float energia, float humor, float apego)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Usuarios usuarios1 = _usuarioRepositorio.BuscarPorUsuario(usuarios.CPF);
+                    Usuarios usuarios2 = _usuarioRepositorio.BuscarPorEmail(usuarios.Email);
 
-            Usuarios usuarios = JsonConvert.DeserializeObject<Usuarios>(sessaoUsuario);
+                    if (usuarios1 == null)
+                    {
+                        if (usuarios2 == null)
+                        {
 
-            return View(usuarios1);
+                            CaracteristicaUsuario caracteristicaUsuario = new CaracteristicaUsuario();
+                            caracteristicaUsuario.Energia = energia;
+                            caracteristicaUsuario.Humor = humor;
+                            caracteristicaUsuario.Apego = apego;
+                            _context.Add(caracteristicaUsuario);
+
+                            usuarios.SetSenhaHash();
+                            _context.Add(usuarios);
+                            await _context.SaveChangesAsync();
+                            string mensagem = $"Olá, seja bem vindo {usuarios.Nome}. <br> Faça um pet mais feliz!";
+                            _email.Enviar(usuarios.Email, "Animal Petz - Bem vindo", mensagem);
+                            TempData["MensagemSucesso"] = $"Usuário Cadastrado com sucesso";
+                            return RedirectToAction("Login", "Login");
+                        }
+                        TempData["MensagemErro"] = $"O email informado já está cadastrado";
+                        return RedirectToAction("Create");
+                    }
+                    TempData["MensagemErro"] = $"Ops, já existe um usuário com o CPF cadastrado";
+                    return RedirectToAction("Create");
+                }
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, aconteceu um erro. Tente novamente mais tarde!";
+                return RedirectToAction("Index", "Home");
+            }
+            return View(usuarios);
         }
 
         // POST: Usuarios/Create

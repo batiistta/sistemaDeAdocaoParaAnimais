@@ -51,21 +51,6 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public string Cidade { get; set; }
 
         [Required]
-        [Display(Name = "Energia")]
-        [Range(1, 5)]
-        public int Energia { get; set; }
-
-        [Required]
-        [Display(Name = "Humor")]
-        [Range(1, 5)]
-        public int Humor { get; set; }
-
-        [Required]
-        [Display(Name = "Apego")]
-        [Range(1, 5)]
-        public int Apego { get; set; }
-
-        [Required]
         [Display(Name = "Adestramento")]
         [Range(1, 5)]
         public int Adestramento { get; set; }
