@@ -30,6 +30,22 @@ h2 {
   height: 15rem;
 }
 
+.circles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 90%;
+  height: 55px;
+  overflow: hidden;
+  width: 65px;
+}
+
+.circles img {
+  height: 7rem;
+}
+
+
+
 .carousel-item {
   animation-delay: 3s;
   transition: 3.5s ease;
