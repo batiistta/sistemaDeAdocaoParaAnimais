@@ -44,8 +44,6 @@ h2 {
   height: 7rem;
 }
 
-
-
 .carousel-item {
   animation-delay: 3s;
   transition: 3.5s ease;
@@ -66,6 +64,21 @@ h2 {
   font-weight: 400;
 }
 
+.titulo_Cuidados h2 {
+  font-family: Roboto;
+  font-weight: 600;
+}
+
+.titulo_adocao {
+  margin-top: 35px;
+}
+
+.titulo_adocao h2 {
+  font-family: Roboto;
+  font-weight: 600;
+}
+
+
 .card-group {
   margin-top: 30px;
   gap: 10px;
@@ -74,7 +87,7 @@ h2 {
 .button_VerMais {
   align-items: center;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 45px;
   margin-bottom: 45px;
   padding-top: 10px;
 }
@@ -329,6 +342,7 @@ body {
   box-shadow: none !important;
 }
 
+
 body {
   font-size: larger;
 }
@@ -337,7 +351,7 @@ div#esquerda {
   position: relative;
   float: left;
   /*Editei*/
-  padding-left: 130px;
+  padding-left: 30px;
   padding-top: 5px;
   padding-right: 25px;
 }
@@ -354,7 +368,7 @@ div#direita {
   padding-right: 0.5rem;
 }
 
-button#bnt {
+.bnt {
   background: linear-gradient(#42d979, #79f583);
   /*Editei*/
   border: 0 solid;
@@ -362,26 +376,34 @@ button#bnt {
   height: 50px;
   width: 450px;
   position: absolute;
-  margin-top: 8%;
-  right: 34%
+  margin-top: 21%;
+  right: 17%
+}
+
+
+.bnt:hover {
+  transition: 1s ease;
+  color: black;
+  background-color: rgb(17, 233, 53);
 }
 
 img#perfil {
-  width: 350px;
-  height: 350px;
+  width: 500px;
+  height: 500px;
   border-radius: 15px;
   /*Editei*/
 }
 
 div#historia {
-  width: 500px;
-  height: 850px;
+  width: 730px;
+  height: 600px;
   padding-right: 50px;
   position: relative;
   float: left;
   /*Editei*/
   padding-top: 5px;
   padding-right: 25px;
+  text-align: justify;
 }
 
 .card {
@@ -390,22 +412,193 @@ div#historia {
 }
 
 .card-img-top {
-  max-width: 287px;
+  max-width: 255px;
   /*Editei*/
-  max-height: 250px;
-  min-height: 250px;
-  min-width: 287px;
+  max-height: 175px;
+  min-height: 175px;
+  min-width: 255px;
 }
 
 .cardq {
-  border: #d3d3d3;
-  border-radius: 5px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 5px 5px 10px #cfcfcf,
+    -5px -5px 10px #ffffff;
+  margin: 10px;
+  margin-top: 25px;
+  width: 16rem;
+  height: 25rem;
 }
 
 .cardq:hover {
-  -webkit-transform: scale(1.1);
+  -webkit-transform: scale(1.06);
 }
 
 img#avatar:hover {
   -webkit-transform: scale(1.1);
+}
+
+.bntbio {
+  background-color: #A8EB6B;
+  font-size: 16px;
+  border: 1px solid;
+  border-radius: 5px;
+  margin: 10px;
+  height: 40px;
+  width: 150px;
+}
+
+.bntbio:hover {
+  transition: 1s ease;
+  color: black;
+  background-color: rgb(17, 233, 53);
+}
+
+.modal-dialog{
+  margin-top: 110px;
+}
+
+@media (max-width: 1024px) {
+
+  .card-img-top {
+    margin-top: 10px;
+    max-width: 237px;
+    /*Editei*/
+    max-height: 140px;
+    min-height: 140px;
+    min-width: 237px;
+  }
+
+  .cardq {
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 5px 5px 10px #cfcfcf,
+      -5px -5px 10px #ffffff;
+    margin: 10px;
+    margin-top: 30px;
+    width: 15rem;
+    height: 23rem;
+  }
+
+  .cardq:hover {
+    -webkit-transform: scale(1.04);
+  }
+
+  .bntbio {
+    align-items: center;
+    text-align: center;
+    background-color: #A8EB6B;
+    font-size: 14px;
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 10px;
+    height: 35px;
+    width: 135px;
+  }
+
+  .button_VerMais {
+    align-items: center;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 45px;
+    padding-top: 10px;
+  }
+
+  .btn_VerMais {
+    font-size: 18px;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    color: black;
+    font-weight: bolder;
+    background-color: #A8EB6B;
+    border: 1px solid;
+    border-radius: 5px;
+  }
+
+  .beneficios-item {
+    margin-left: 20px;
+    height: 350px;
+  }
+
+  .beneficios-item img {
+    height: 400px;
+    width: 500px;
+  }
+
+  .titulo_adocao h2 {
+    font-family: Roboto;
+    font-weight: 600;
+  }
+
+  .titulo_Cuidados {
+    margin-top: 45px;
+  }
+
+  .titulo_Cuidados h2 {
+    font-family: Roboto;
+    font-weight: 600;
+  }
+
+
+  .Cuidados_item {
+    margin-left: 20px;
+    height: 350px;
+  }
+
+  .Cuidados_item img {
+    height: 400px;
+    width: 500px;
+  }
+
+  div#esquerda {
+    position: relative;
+    float: left;
+    /*Editei*/
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-right: 15px;
+  }
+
+  img#perfil {
+    width: 350px;
+    height: 550px;
+    border-radius: 15px;
+    /*Editei*/
+  }
+
+  div#historia {
+    width: 530px;
+    height: 600px;
+    padding-right: 50px;
+    position: relative;
+    float: left;
+    padding-right: 25px;
+    text-align: justify;
+  }
+
+  div#direita span {
+    font-family: Roboto;
+    font-size: 36px;
+    font-weight: 800;
+  }
+
+  div#historia span {
+    font-family: Roboto;
+    font-size: 36px;
+    font-weight: 800;
+  }
+
+  .bnt {
+    background: linear-gradient(#42d979, #79f583);
+    /*Editei*/
+    border: 0 solid;
+    border-radius: 10px;
+    height: 50px;
+    width: 450px;
+    position: absolute;
+    margin-top: 41%;
+    right: 7%;
+  }
+
 }

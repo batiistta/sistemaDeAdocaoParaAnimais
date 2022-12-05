@@ -18,21 +18,16 @@
                     <img src="@Model.ImagensPet" id="perfil"/>
                 </div>
                 <div id="direita">
-                    <h1>
-                        <span>@Model.Nome</span>
-                    </h1>
+                    <span>@Model.Nome</span>
                     <p>@Model.Especie | @Model.Sexo | @Model.Porte | @Model.Cidade | @Model.Estado</p> 
                 </div>
-                <div id="estado">
-                    <img src="~/img/location-dot-solid.svg" class="icons">
-                </div>
                 <div id="historia">
-                    <h1>Historia da @Model.Nome</h1>
+                    <span>Historia sobre @Model.Nome</span>
+                    <br>
                     @Model.Descricao 
                 </div>
-                <button type="submit" id="bnt">Quero adotar</button>
+                <button type="submit" class="bnt">Quero adotar</button>
             </div>   
         }
     }
 }
-
