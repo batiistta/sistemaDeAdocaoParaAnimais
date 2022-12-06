@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.ML;
 using sistemaDeAdocaoParaAnimais.Helper;
 using sistemaDeAdocaoParaAnimais.Models;
 
@@ -78,6 +79,31 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         public async Task<IActionResult> Buscar()
         {
+            string _dataPath = Path.Combine(Environment.CurrentDirectory, "Data", "CaracteristicaAnimal.csv");
+            string _modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "IrisClusteringModel.zip");
+
+            var mlContext = new MLContext(seed: 0);
+
+            IDataView dataView = mlContext.Data.LoadFromTextFile<CaracteristicaAnimal>(_dataPath, hasHeader: false, separatorChar: ',');
+
+            string featuresColumnName = "Features";
+            var pipeline = mlContext.Transforms
+                .Concatenate(featuresColumnName, "Energia", "Humor", "Apego")
+                .Append(mlContext.Clustering.Trainers.KMeans(featuresColumnName, numberOfClusters: 3));
+
+            var model = pipeline.Fit(dataView);
+
+            using (var fileStream = new FileStream(_modelPath, FileMode.Create, FileAccess.Write, FileShare.Write))
+            {
+                mlContext.Model.Save(model, dataView.Schema, fileStream);
+            }
+
+            var predictor = mlContext.Model.CreatePredictionEngine<CaracteristicaUsuario, ClusterPrediction>(model);
+
+            var prediction = predictor.Predict(CaracteristicaUsuarioTeste.Setosa);
+            Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
+            Console.WriteLine($"Distances: {string.Join(" ", prediction.Distances)}");
+
             IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
             return View(petsDisponiveis);
         }
@@ -115,6 +141,35 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return View(animal);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateAnimalCaracteristica([Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Especie,Sexo,Estado,Cidade,Adestramento,Vacinado,Castrado,Vermifugado,EstadoAdocaoPet,ImagensPet")] Animal animal, float energia, float humor, float apego)
+        {
+            if (ModelState.IsValid)
+            {
+                CaracteristicaAnimal caracteristicaAnimal = new CaracteristicaAnimal();
+                caracteristicaAnimal.Energia = energia;
+                caracteristicaAnimal.Apego = apego;
+                caracteristicaAnimal.Humor = humor;
+                _context.Add(caracteristicaAnimal);
+                await _context.SaveChangesAsync();
+
+                Usuarios usuario1 = _sessao.BuscarSessaoDoUsuario();
+                animal.FkUsuarios = usuario1.UsuarioId;
+                _context.Add(animal);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Nome", animal.FkUsuarios);
+            return View(animal);
+        }
+
+        public IActionResult CreateAnimalCaracteristica()
+        {
+            ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Nome");
+            return View();
+        }
+
         // GET: Animais/Create
         public IActionResult Create()
         {
@@ -127,7 +182,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Especie,Sexo,Estado,Cidade,Energia,Humor,Apego,Adestramento,Vacinado,Castrado,Vermifugado,EstadoAdocaoPet,ImagensPet")] Animal animal)
+        public async Task<IActionResult> Create([Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Especie,Sexo,Estado,Cidade,Adestramento,Vacinado,Castrado,Vermifugado,EstadoAdocaoPet,ImagensPet")] Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -163,7 +218,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Especie,Sexo,Estado,Cidade,Energia,Humor,Apego,Adestramento,Vacinado,Castrado,Vermifugado,EstadoAdocaoPet,ImagensPet")] Animal animal)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Especie,Sexo,Estado,Cidade,Adestramento,Vacinado,Castrado,Vermifugado,EstadoAdocaoPet,ImagensPet")] Animal animal)
         {
             if (id != animal.Id)
             {

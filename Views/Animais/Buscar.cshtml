@@ -21,9 +21,9 @@
         <div class="col-md-4">
             <select class="form-select" aria-label="Default select example">
                 <option selected>Todos os portes</option>
-                <option value="1">Pequeno</option>
-                <option value="2">Médio</option>
-                <option value="3">Grande</option>
+                <option value="Pequeno">Pequeno</option>
+                <option value="Médio">Médio</option>
+                <option value="Grande">Grande</option>
             </select>
         </div>
         <div class="col-md-4">
@@ -88,15 +88,15 @@
     @foreach (var animal in Model)
     {
         <div>
-            <div class="cardq" style="width: 18rem;">
-                <div class="cardPets">
+            <div class="cardq" >
+                <div class="cardPets" >
                     <img src="@animal.ImagensPet" class="card-img-top" alt="Pets" style="width: 100%;">
-                    <div class="card-body">
+                    <div class="card-body" >
                         <h4 class="card-text">@animal.Nome</h4>
                         <p class="card-text">@animal.EstadoAdocaoPet</p>
                         <p class="card-text">@animal.Estado</p>
                         <p class="card-text">@animal.Cidade</p>
-                        <button> <a asp-action="ExibirPet" asp-route-id="@animal.Id">Ver mais</a></button>
+                        <a asp-action="ExibirPet" asp-route-id="@animal.Id"><button class="bntbio">Sobre</button></a>
                     </div>
                 </div>
             </div>

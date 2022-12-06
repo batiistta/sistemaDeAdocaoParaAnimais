@@ -100,21 +100,6 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public string Estado { get; set; }
 
         [Required]
-        [Display(Name = "Qual o nivel de energia do pet que você quer?")]
-        [Range(1, 5)]
-        public int Energia { get; set; }
-
-        [Required]
-        [Display(Name = "Qual o nivel do humor do pet que você quer?")]
-        [Range(1, 5)]
-        public int Humor { get; set; }
-
-        [Required]
-        [Display(Name = "Qual o nivel de apego do pet que você quer?")]
-        [Range(1, 5)]
-        public int Apego { get; set; }
-
-        [Required]
         [Display(Name = "Qual o nivel de adestramento do pet que você quer?")]
         [Range(1, 5)]
         public int Adestramento { get; set; }

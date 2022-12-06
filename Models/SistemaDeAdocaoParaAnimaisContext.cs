@@ -13,5 +13,7 @@ namespace sistemaDeAdocaoParaAnimais.Models
 
         public DbSet<Animal> animals { get; set; }
         public DbSet<Usuarios> usuarios { get; set; }
+        public DbSet<CaracteristicaAnimal> caracteristicaAnimals {get; set;}
+        public DbSet<CaracteristicaUsuario> caracteristicaUsuarios { get; set; }
     }
 };

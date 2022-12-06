@@ -7,7 +7,7 @@
 
 <h1 style="text-align: center; margin-top: 30px; ">Cadastre seu pet</h1>
 
-<form asp-action="Create">
+<form asp-action="CreateAnimalCaracteristica">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group" style="visibility: hidden;">
         <label asp-for="FkUsuarios" class="control-label"></label>
@@ -101,7 +101,7 @@
 
     <div class="row d-flex justify-content-center">
         <div class="col-md-5">
-            <label name="energia" style="width: 500px;" class="form-label"></label>
+            <label name="energia" style="width: 500px;" class="form-label">Qual o nível de energia do seu pet?</label>
             <select name= "energia" style="width: 400px;" class="form-select" aria-label="Default select example">
                 <option class="form-label" selected>Selecione</option>
                 <option value="1">1</option>
@@ -113,8 +113,8 @@
         </div>
         
         <div class="col-md-5">
-            <label name="humor" style="width: 500px;" class="form-label"></label>
-            <select name="hunor" style="width: 400px;" class="form-select" aria-label="Default select example">
+            <label name="humor" style="width: 500px;" class="form-label">Qual o nível de humor do seu pet?</label>
+            <select name="humor" style="width: 400px;" class="form-select" aria-label="Default select example">
                 <option class="form-label" selected>Selecione</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -127,7 +127,7 @@
 
     <div class="row d-flex justify-content-center">
         <div class="col-md-5">
-            <label name="apego" style="width: 500px;" class="form-label"></label>
+            <label name="apego" style="width: 500px;" class="form-label">Qual o nível de apego do seu pet?</label>
             <select name="apego" style="width: 400px;" class="form-select" aria-label="Default select example">
                 <option class="form-label" selected>Selecione</option>
                 <option value="1">1</option>
