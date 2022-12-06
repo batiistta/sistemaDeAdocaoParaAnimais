@@ -21,9 +21,9 @@
         <div class="col-md-4">
             <select class="form-select" aria-label="Default select example">
                 <option selected>Todos os portes</option>
-                <option value="1">Pequeno</option>
-                <option value="2">Médio</option>
-                <option value="3">Grande</option>
+                <option value="Pequeno">Pequeno</option>
+                <option value="Médio">Médio</option>
+                <option value="Grande">Grande</option>
             </select>
         </div>
         <div class="col-md-4">
@@ -96,7 +96,7 @@
                         <p class="card-text">@animal.EstadoAdocaoPet</p>
                         <p class="card-text">@animal.Estado</p>
                         <p class="card-text">@animal.Cidade</p>
-                        <button class="bntbio"> <a asp-action="ExibirPet" asp-route-id="@animal.Id">Sobre</a></button>
+                        <a asp-action="ExibirPet" asp-route-id="@animal.Id"><button class="bntbio">Sobre</button></a>
                     </div>
                 </div>
             </div>

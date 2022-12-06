@@ -225,14 +225,165 @@ button.accept-policy {
     font-weight: 600;
   }
 
-  .buttonEntrar{
+  .buttonEntrar {
     margin-top: 10px;
     margin-left: 210px;
   }
 
-  .buttonEntrar .btn{
+  .buttonEntrar .btn {
     width: 70px;
     height: 40px;
+  }
+
+}
+
+@media(max-width: 724px) {
+
+  body{
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .navbar-la {
+    align-items: center;
+    background: linear-gradient(#00a83e,
+        #79f583);
+    height: 95px;
+    margin-bottom: 20px;
+    display: block;
+    width: 100%;
+  }
+
+  .container-fluid {
+    display: flex;
+  }
+
+  .mobile-menu div {
+    width: 30px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+  }
+
+  .mobile-menu {
+    cursor: pointer;
+  }
+
+  .navbar-toggler {
+    display: flex;
+  }
+
+  .buttonToggler {
+    margin-top: 25px;
+    display: flex;
+  }
+
+  .navbarIMG {
+    margin-top: 5px;
+    display: flex;
+    margin-left: 120px;
+  }
+
+  .navbarIMG img {
+    width: 95px;
+  }
+
+  .banAnimal {
+    margin-top: 10px;
+    display: flex;
+    margin-left: -30px;
+  }
+
+  .banAnimal a {
+    color: #fff;
+    font-size: 28px;
+    font-family: Roboto;
+    font-weight: 600;
+  }
+
+  .buttonEntrar {
+    margin-top: 10px;
+    margin-left: 165px;
+  }
+
+  .buttonEntrar .btn {
+    width: 80px;
+    height: 35px;
+  }
+
+}
+
+
+@media(max-width: 600px) {
+
+  .navbar {
+    display: none;
+  }
+
+  .navbar-la {
+    align-items: center;
+    background: linear-gradient(#00a83e,
+        #79f583);
+    height: 95px;
+    margin-bottom: 20px;
+    display: block;
+    width: 100%;
+  }
+
+  .container-fluid {
+    display: flex;
+  }
+
+  .mobile-menu div {
+    width: 30px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+  }
+
+  .mobile-menu {
+    cursor: pointer;
+  }
+
+  .navbar-toggler {
+    display: flex;
+  }
+
+  .buttonToggler {
+    margin-top: 25px;
+    display: flex;
+  }
+
+  .navbarIMG {
+    display: none;
+  }
+
+  .navbarIMG img {
+    width: 30px;
+  }
+
+  .banAnimal {
+    display: none;
+  }
+
+  .banAnimal a {
+    color: #fff;
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: 600;
+  }
+
+  .buttonEntrar {
+    margin-top: 10px;
+    margin-left: 190px;
+  }
+
+  .buttonEntrar .btn {
+    width: 80px;
+    height: 35px;
   }
 
 }

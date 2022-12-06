@@ -454,9 +454,7 @@ img#avatar:hover {
   background-color: rgb(17, 233, 53);
 }
 
-.modal-dialog{
-  margin-top: 110px;
-}
+
 
 @media (max-width: 1024px) {
 
@@ -599,6 +597,68 @@ img#avatar:hover {
     position: absolute;
     margin-top: 41%;
     right: 7%;
+  }
+
+}
+
+
+@media(max-width: 990px) {
+  .modal-dialog {
+    margin-top: 120px;
+  }
+
+  .carousel-inner {
+    margin-top: 125px;
+  }
+
+  .beneficios_adocao {
+    margin-top: 20px;
+  }
+
+  .beneficios-item img {
+    height: 200px;
+    width: 300px;
+  }
+
+  .beneficios-item{
+    margin-left: -30px;
+  }
+
+  .list-beneficios{
+    margin-left: -30px;
+  }
+
+  .list-beneficios-item {
+    width: 350px;
+    text-align: justify;
+    list-style: none;
+    font-size: 14px;
+    margin: 5px;
+  }
+
+  .titulo_Cuidados{
+    margin-top: -110px;
+  }
+
+  .Cuidados_Pet{
+    margin-top: 30px;
+  }
+
+  .Cuidados_item{
+    margin-top: 10px;
+  }
+
+  .Cuidados_item img{
+    height: 200px;
+    width: 300px;
+  }
+
+  .list-cuidados-item {
+    width: 350px;
+    text-align: justify;
+    list-style: none;
+    font-size: 14px;
+    margin: 5px;
   }
 
 }
