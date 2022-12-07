@@ -77,7 +77,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateUsuarioCaracteristica([Bind("UsuarioId,Avatar,Nome,Sobrenome,NomeSocial,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,Adestramento,TermosCondições")] Usuarios usuarios, float energia, float humor, float apego)
+        public async Task<IActionResult> CreateUsuarioCaracteristica([Bind("UsuarioId, fkCaracteristica, Avatar,Nome,Sobrenome,NomeSocial,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,Adestramento,TermosCondições")] Usuarios usuarios, float energia, float humor, float apego)
         {
             try
             {
@@ -100,6 +100,10 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                             usuarios.SetSenhaHash();
                             _context.Add(usuarios);
                             await _context.SaveChangesAsync();
+                             usuarios.fkCaracteristica = caracteristicaUsuario.Id; 
+                              _context.Update(usuarios);
+                            await _context.SaveChangesAsync();
+                            
                             string mensagem = $"Olá, seja bem vindo {usuarios.Nome}. <br> Faça um pet mais feliz!";
                             _email.Enviar(usuarios.Email, "Animal Petz - Bem vindo", mensagem);
                             TempData["MensagemSucesso"] = $"Usuário Cadastrado com sucesso";

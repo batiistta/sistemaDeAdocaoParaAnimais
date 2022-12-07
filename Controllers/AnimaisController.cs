@@ -79,6 +79,9 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         public async Task<IActionResult> Buscar()
         {
+
+            Usuarios usuario1 = _sessao.BuscarSessaoDoUsuario();
+
             string _dataPath = Path.Combine(Environment.CurrentDirectory, "Data", "CaracteristicaAnimal.csv");
             string _modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "IrisClusteringModel.zip");
 
@@ -99,6 +102,14 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             }
 
             var predictor = mlContext.Model.CreatePredictionEngine<CaracteristicaUsuario, ClusterPrediction>(model);
+
+            var usuario = _context.usuarios.Find(usuario1.UsuarioId);
+
+            var caracteristicaUsuario = _context.caracteristicaUsuarios.Find(usuario.fkCaracteristica);
+
+            CaracteristicaUsuarioTeste.Setosa.Apego = caracteristicaUsuario.Apego;
+            CaracteristicaUsuarioTeste.Setosa.Humor = caracteristicaUsuario.Humor;
+            CaracteristicaUsuarioTeste.Setosa.Energia = caracteristicaUsuario.Energia;
 
             var prediction = predictor.Predict(CaracteristicaUsuarioTeste.Setosa);
             Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
@@ -143,7 +154,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateAnimalCaracteristica([Bind("Id,FkUsuarios,Nome,Raca,Cor,Descricao,Porte,Especie,Sexo,Estado,Cidade,Adestramento,Vacinado,Castrado,Vermifugado,EstadoAdocaoPet,ImagensPet")] Animal animal, float energia, float humor, float apego)
+        public async Task<IActionResult> CreateAnimalCaracteristica([Bind("Id,FkUsuarios, FkCaracteristicaAnimal, FkCluster, Nome,Raca,Cor,Descricao,Porte,Especie,Sexo,Estado,Cidade,Adestramento,Vacinado,Castrado,Vermifugado,EstadoAdocaoPet,ImagensPet")] Animal animal, float energia, float humor, float apego)
         {
             if (ModelState.IsValid)
             {
@@ -156,8 +167,14 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
                 Usuarios usuario1 = _sessao.BuscarSessaoDoUsuario();
                 animal.FkUsuarios = usuario1.UsuarioId;
+
                 _context.Add(animal);
                 await _context.SaveChangesAsync();
+
+                animal.FkCaracteristicaAnimal = caracteristicaAnimal.Id;
+                _context.Update(animal);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Nome", animal.FkUsuarios);

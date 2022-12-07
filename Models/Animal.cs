@@ -76,5 +76,9 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Display(Name = "Insira uma foto do pet")]
         public string ImagensPet { get; set; }
 
+        public int FkCaracteristicaAnimal {get; set;}
+        
+        public uint FkCluster {get; set;}
+
     }
 }

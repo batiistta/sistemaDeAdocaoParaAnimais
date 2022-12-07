@@ -109,6 +109,8 @@ namespace sistemaDeAdocaoParaAnimais.Models
         [Range(typeof(bool), "true", "true", ErrorMessage = "Aceite os termos e condições.")]
         public bool TermosCondições { get; set; }
 
+        public int fkCaracteristica {get; set;}
+
         public bool SenhaValida(string senha)
         {
             return Senha == senha.GerarHash();
