@@ -7,9 +7,9 @@ namespace sistemaDeAdocaoParaAnimais.Models
     {
         internal static readonly CaracteristicaUsuario Setosa = new CaracteristicaUsuario
         {
-            Energia = 3.1f,
-            Humor = 2.5f,
-            Apego = 0.4f
+            Energia = 0,
+            Humor = 0,
+            Apego = 0
         };
     }
 }
