@@ -1,3 +1,7 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
 .navbar {
   align-items: center;
   background: linear-gradient(#00a83e,

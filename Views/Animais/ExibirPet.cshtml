@@ -13,7 +13,7 @@
     {
         @foreach (var Model in animais)
         {
-            <div>    
+            <div class="container-exibir">    
                 <div id="esquerda">
                     <img src="@Model.ImagensPet" id="perfil"/>
                 </div>
@@ -26,7 +26,14 @@
                     <br>
                     @Model.Descricao 
                 </div>
-                <button type="submit" class="bnt">Quero adotar</button>
+                <div>
+                <button type="submit" class="btn btn-success" onclick="openPopup()">Quero adotar</button>
+                <div class="popup" id="popup">
+                    <h2>Titulo</h2>
+                    <p>Texto abaixo....</p>
+                    <button type="button" class="btn btn-success" onclick="closePopup()">Fechar</button>
+                </div>
+                </div>
             </div>   
         }
     }
