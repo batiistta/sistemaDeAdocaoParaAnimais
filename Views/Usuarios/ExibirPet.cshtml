@@ -1,9 +1,9 @@
-@model sistemaDeAdocaoParaAnimais.Models.Animal
+@model sistemaDeAdocaoParaAnimais.Models.Usuarios
+
 
 @{
     var animais = ViewBag.pets;
 }
-
 
 @{
     if (animais != null)
@@ -25,13 +25,13 @@
                 </div>
                 <button type="submit" class="bnt" onclick="openPopup()">Quero adotar</button>
             </div>
-            <div class="popup" id="popup">
-                <h2>Contato do Cuidador</h2>
-                <p>@Models.Usuarios.Nome</p>
-                <p>@Models.Usuarios.Celular</p>
-                <p>@Models.Usuarios.Email</p>
-                <button type="button" onclick="closePopup()">Fechar</button>
-            </div>
         }
+        <div class="popup" id="popup">
+            <h2>Contato do Cuidador</h2>
+            <p>@Model.Nome</p>
+            <p>@Model.Celular</p>
+            <p>@Model.Email</p>
+            <button type="button" onclick="closePopup()">Fechar</button>
+        </div>
     }
 }

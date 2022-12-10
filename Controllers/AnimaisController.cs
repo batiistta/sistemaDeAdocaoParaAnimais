@@ -61,6 +61,14 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // }
 
         [HttpPost]
+        public async Task<IActionResult> Limpar(string sexo, string estado)
+        {
+
+            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
+            return View(petsDisponiveis);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> Buscar(string sexo, string estado)
         {
 
@@ -76,6 +84,16 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
             return View(petsDisponiveis);
         }
+
+
+        public async Task<IActionResult> ExibirPet(int? id)
+        {
+            var pet = _context.animals.Where(a => a.Id == id);
+            ViewBag.pets = pet;
+
+            return View();
+        }
+
 
         public async Task<IActionResult> Buscar()
         {
@@ -124,13 +142,6 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         {
             var sistemaDeAdocaoParaAnimaisContext = _context.animals.Include(a => a.Usuarios);
             return View(await sistemaDeAdocaoParaAnimaisContext.ToListAsync());
-        }
-
-        public async Task<IActionResult> ExibirPet(int? id)
-        {
-            var pet = _context.animals.Where(a => a.Id == id);
-            ViewBag.pets = pet;
-            return View();
         }
 
         // GET: Animais/Details/5
