@@ -115,7 +115,19 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
             Console.WriteLine($"Distances: {string.Join(" ", prediction.Distances)}");
 
+<<<<<<< master
             IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
+=======
+
+            foreach (var animal in _context.animals)
+            {
+                animal.FkCluster = prediction.PredictedClusterId;
+                _context.Update(animal);
+                usuario1.FkCluster = prediction.PredictedClusterId;
+            }
+            await _context.SaveChangesAsync();
+            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.FkCluster == usuario1.FkCluster));
+>>>>>>> local
             return View(petsDisponiveis);
         }
 
