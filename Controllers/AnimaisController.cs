@@ -61,6 +61,14 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // }
 
         [HttpPost]
+        public async Task<IActionResult> Limpar()
+        {
+
+            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
+            return View(petsDisponiveis);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> Buscar(string sexo, string estado)
         {
 
@@ -77,11 +85,20 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return View(petsDisponiveis);
         }
 
+
+        public async Task<IActionResult> ExibirPet(int? id)
+        {
+            var pet = _context.animals.Where(a => a.Id == id);
+            ViewBag.pets = pet;
+
+            return View();
+        }
+
+
         public async Task<IActionResult> Buscar()
         {
 
             Usuarios usuario1 = _sessao.BuscarSessaoDoUsuario();
-
             string _dataPath = Path.Combine(Environment.CurrentDirectory, "Data", "CaracteristicaAnimal.csv");
             string _modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "IrisClusteringModel.zip");
 
@@ -101,11 +118,11 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 mlContext.Model.Save(model, dataView.Schema, fileStream);
             }
 
-            var predictor = mlContext.Model.CreatePredictionEngine<CaracteristicaUsuario, ClusterPrediction>(model);
-
             var usuario = _context.usuarios.Find(usuario1.UsuarioId);
 
             var caracteristicaUsuario = _context.caracteristicaUsuarios.Find(usuario.fkCaracteristica);
+            
+            var predictor = mlContext.Model.CreatePredictionEngine<CaracteristicaUsuario, ClusterPrediction>(model);
 
             CaracteristicaUsuarioTeste.Setosa.Apego = caracteristicaUsuario.Apego;
             CaracteristicaUsuarioTeste.Setosa.Humor = caracteristicaUsuario.Humor;
@@ -115,9 +132,9 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
             Console.WriteLine($"Distances: {string.Join(" ", prediction.Distances)}");
 
-<<<<<<< master
+
             IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
-=======
+
 
             foreach (var animal in _context.animals)
             {
@@ -126,8 +143,10 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 usuario1.FkCluster = prediction.PredictedClusterId;
             }
             await _context.SaveChangesAsync();
+
+
             IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.FkCluster == usuario1.FkCluster));
->>>>>>> local
+
             return View(petsDisponiveis);
         }
 
@@ -136,13 +155,6 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         {
             var sistemaDeAdocaoParaAnimaisContext = _context.animals.Include(a => a.Usuarios);
             return View(await sistemaDeAdocaoParaAnimaisContext.ToListAsync());
-        }
-
-        public async Task<IActionResult> ExibirPet(int? id)
-        {
-            var pet = _context.animals.Where(a => a.Id == id);
-            ViewBag.pets = pet;
-            return View();
         }
 
         // GET: Animais/Details/5

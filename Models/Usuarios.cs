@@ -111,6 +111,8 @@ namespace sistemaDeAdocaoParaAnimais.Models
 
         public int fkCaracteristica {get; set;}
 
+        public uint FkCluster {get; set;}
+
         public bool SenhaValida(string senha)
         {
             return Senha == senha.GerarHash();

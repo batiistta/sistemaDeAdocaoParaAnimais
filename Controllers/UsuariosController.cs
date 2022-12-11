@@ -52,6 +52,17 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return View(usuarios);
         }
 
+        public async Task<IActionResult> ExibirPet(int? id)
+        {
+            Usuarios usuarios = _sessao.BuscarSessaoDoUsuario();
+            var pet = _context.animals.Where(a => a.Id == id);
+            ViewBag.pet = pet;
+            var pets = _context.animals.Where(a => a.EstadoAdocaoPet == "Disponível");
+            ViewBag.pets = pets;
+
+            return View(usuarios);
+        }
+
 
         public IActionResult Profile()
         {
@@ -63,13 +74,14 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return View(usuarios1);
         }
 
+
         // GET: Usuarios/Create
         public IActionResult Create()
         {
             return View();
         }
 
-         public IActionResult CreateUsuarioCaracteristica()
+        public IActionResult CreateUsuarioCaracteristica()
         {
             return View();
         }
@@ -100,12 +112,12 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                             usuarios.SetSenhaHash();
                             _context.Add(usuarios);
                             await _context.SaveChangesAsync();
-                             usuarios.fkCaracteristica = caracteristicaUsuario.Id; 
-                              _context.Update(usuarios);
+                            usuarios.fkCaracteristica = caracteristicaUsuario.Id;
+                            _context.Update(usuarios);
                             await _context.SaveChangesAsync();
-                            
+
                             string mensagem = $"Olá, seja bem vindo {usuarios.Nome}. <br> Faça um pet mais feliz!";
-                            _email.Enviar(usuarios.Email, "Animal Petz - Bem vindo", mensagem);
+                            _email.Enviar(usuarios.Email, "Animal Pets - Bem vindo", mensagem);
                             TempData["MensagemSucesso"] = $"Usuário Cadastrado com sucesso";
                             return RedirectToAction("Login", "Login");
                         }

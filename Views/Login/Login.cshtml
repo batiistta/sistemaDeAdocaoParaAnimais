@@ -22,7 +22,7 @@
       <div class="modal-body p-5 pt-0">
         <form asp-controller="Login" asp-action="Entrar" method="post">
           <div class="form-floating mb-3">
-            <input asp-for="Email" type="email" class="form-control rounded-3" id="email" placeholder="name@example.com">
+            <input autocomplete="off" asp-for="Email" type="email" class="form-control rounded-3" id="email" placeholder="name@example.com">
             <label for="floatingInput">Email</label>
              <span asp-validation-for="Email" class="text-danger"></span>
           </div>
@@ -33,7 +33,7 @@
           </div>
           <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Entrar</button>
           <hr class="my-4">
-          <a  href="https://localhost:7204/User/Recovery"><h5>Esqueceu sua senha ?</h5></a>
+          <a  asp-controller="Login" asp-action="RedefinirSenha"><h5>Esqueceu sua senha?</h5></a>
         </form>
       </div>
     </div>

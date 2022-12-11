@@ -1,33 +1,37 @@
 @model sistemaDeAdocaoParaAnimais.Models.Animal
 
 @{
-    Layout = "_LayoutDeslogado";
-}
-
-
-@{
     var animais = ViewBag.pets;
 }
+
+
 @{
     if (animais != null)
     {
-        @foreach (var Model in animais)
+        @foreach (var Models in animais)
         {
-            <div>    
+            <div>
                 <div id="esquerda">
-                    <img src="@Model.ImagensPet" id="perfil"/>
+                    <img src="@Models.ImagensPet" id="perfil" />
                 </div>
                 <div id="direita">
-                    <span>@Model.Nome</span>
-                    <p>@Model.Especie | @Model.Sexo | @Model.Porte | @Model.Cidade | @Model.Estado</p> 
+                    <span>@Models.Nome</span>
+                    <p>@Models.Especie | @Models.Sexo | @Models.Porte | @Models.Cidade | @Models.Estado</p>
                 </div>
                 <div id="historia">
-                    <span>Historia sobre @Model.Nome</span>
+                    <span>Historia sobre @Models.Nome</span>
                     <br>
-                    @Model.Descricao 
+                    @Models.Descricao
                 </div>
-                <button type="submit" class="bnt">Quero adotar</button>
-            </div>   
+                <button type="submit" class="bnt"  onclick="openPopup()">Quero adotar</button>
+            </div>
+            <div class="popup" id="popup">
+                <h2>Contato do Cuidador</h2>
+                <p>@Models.Usuarios.Nome</p>
+                <p>@Models.Usuarios.Celular</p>
+                <p>@Models.Usuarios.Email</p>
+                <button type="button" onclick="closePopup()">Fechar</button>
+            </div>
         }
     }
 }

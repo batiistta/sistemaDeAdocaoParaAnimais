@@ -61,19 +61,19 @@
     <div class="row d-flex justify-content-center">
 
         <div class="col-md-4">
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Todas as cidades</option>
-                <option value="Salvador">Salvador</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
+            <input type="text" class="form-control" id="floatingInput" placeholder="Cidade">
         </div>
         <div class="col-md-4">
-            <input type="email" class="form-control" id="floatingInput" placeholder="Nome do pet">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Nome do pet">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
             <div class="d-grid gap-1">
                 <input type="submit" value="Buscar" class="btn btn-outline-success" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="d-grid gap-1">
+                <input type="submit" value="Limpar" class="btn btn-outline-success" />
             </div>
         </div>
     </div>
@@ -84,15 +84,15 @@
     @foreach (var animal in Model)
     {
         <div>
-            <div class="cardq" >
-                <div class="cardPets" >
+            <div class="cardq">
+                <div class="cardPets">
                     <img src="@animal.ImagensPet" class="card-img-top" alt="Pets" style="width: 100%;">
-                    <div class="card-body" >
+                    <div class="card-body">
                         <h4 class="card-text">@animal.Nome</h4>
-                        <p class="card-text">@animal.EstadoAdocaoPet</p>
-                        <p class="card-text">@animal.Estado</p>
-                        <p class="card-text">@animal.Cidade</p>
-                        <a asp-action="ExibirPet" asp-route-id="@animal.Id"><button class="bntbio">Sobre</button></a>
+                        <p class="card-text"><span class="informacaoPet">Estado: </span>@animal.Estado</p>
+                        <p class="card-text"><span class="informacaoPet">Cidade: </span>@animal.Cidade</p>
+                        <a asp-controller="Usuarios" asp-action="ExibirPet" asp-route-id="@animal.Id"><button
+                            class="bntbio">Sobre</button></a>
                     </div>
                 </div>
             </div>

@@ -38,12 +38,19 @@
                     <img src="@Html.DisplayFor(model => model.Avatar)" alt="Admin" id="avatar" class="circles"
                         width="80"><br>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" style="width: 250px; height: 230px; margin-top: -22px;">
-                    <li><a class="dropdown-item" style="font-size: 16px; font-weight: 500;" href="#">Cadastar novo
+                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
+                    style="width: 250px; height: 270px; margin-top: -22px;">
+                    <li><a class="dropdown-item" style="font-size: 16px; font-weight: 500;" asp-controller="Animais"
+                            asp-action="CreateAnimalCaracteristica">Cadastar novo
                             animal</a></li>
-                    <li><a class="dropdown-item" style="font-size: 16px; font-weight: 500;" href="#">Meu perfil</a></li>
-                    <li><a class="dropdown-item" style="font-size: 16px; font-weight: 500;" href="#">Editar Perfil</a></li>
-                    <li><a class="dropdown-item" style="font-size: 16px; font-weight: 500;" href="#">Sair</a></li>
+                    <li><a class="dropdown-item" style="font-size: 16px; font-weight: 500;" asp-controller="Usuarios"
+                            asp-action="Profile">Meu perfil</a></li>
+                    <li><a class="dropdown-item" style="font-size: 16px; font-weight: 500;" asp-controller="AlterarSenha"
+                            asp-action="Index" asp-route-id="@Model.UsuarioId">Alterar Senha</a></li>
+                    <li><a class="dropdown-item" style="font-size: 16px; font-weight: 500;" asp-controller="Usuarios"
+                            asp-action="Edit" asp-route-id="@Model.UsuarioId">Editar Perfil</a></li>
+                    <li><a class="dropdown-item" style="font-size: 16px; font-weight: 500;" asp-controller="Login"
+                            asp-action="Sair">Sair</a></li>
                 </ul>
             </div>
         </div>
