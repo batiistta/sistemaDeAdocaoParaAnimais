@@ -139,6 +139,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 _context.Update(animal);
                 usuario1.FkCluster = prediction.PredictedClusterId;
             }
+            
             await _context.SaveChangesAsync();
 
             IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.FkCluster == usuario1.FkCluster));
