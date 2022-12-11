@@ -61,7 +61,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         // }
 
         [HttpPost]
-        public async Task<IActionResult> Limpar(string sexo, string estado)
+        public async Task<IActionResult> Limpar()
         {
 
             IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
@@ -99,7 +99,6 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         {
 
             Usuarios usuario1 = _sessao.BuscarSessaoDoUsuario();
-
             string _dataPath = Path.Combine(Environment.CurrentDirectory, "Data", "CaracteristicaAnimal.csv");
             string _modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "IrisClusteringModel.zip");
 
@@ -119,11 +118,11 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 mlContext.Model.Save(model, dataView.Schema, fileStream);
             }
 
-            var predictor = mlContext.Model.CreatePredictionEngine<CaracteristicaUsuario, ClusterPrediction>(model);
-
             var usuario = _context.usuarios.Find(usuario1.UsuarioId);
 
             var caracteristicaUsuario = _context.caracteristicaUsuarios.Find(usuario.fkCaracteristica);
+            
+            var predictor = mlContext.Model.CreatePredictionEngine<CaracteristicaUsuario, ClusterPrediction>(model);
 
             CaracteristicaUsuarioTeste.Setosa.Apego = caracteristicaUsuario.Apego;
             CaracteristicaUsuarioTeste.Setosa.Humor = caracteristicaUsuario.Humor;
@@ -133,7 +132,16 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
             Console.WriteLine($"Distances: {string.Join(" ", prediction.Distances)}");
 
-            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
+
+            foreach (var animal in _context.animals)
+            {
+                animal.FkCluster = prediction.PredictedClusterId;
+                _context.Update(animal);
+                usuario1.FkCluster = prediction.PredictedClusterId;
+            }
+            await _context.SaveChangesAsync();
+
+            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.FkCluster == usuario1.FkCluster));
             return View(petsDisponiveis);
         }
 

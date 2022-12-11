@@ -9,7 +9,8 @@
         <div class="card">
           <div class="card-body-profile">
             <div class="d-flex flex-column align-items-center text-center">
-              <img src="@Html.DisplayFor(model => model.Avatar)" alt="Admin" id="avatar" class="circle" width="150"><br>
+                <img src="@Html.DisplayFor(model => model.Avatar)" alt="Admin" id="avatar" class="circle"
+                  width="150"><br>
               <div class="mt-3">
                 <h4>@Model.Nome @Model.Sobrenome</h4>
                 <p class="text-secondary mb-1">@Model.Email</p>
@@ -69,8 +70,8 @@
             </div>
             <div class="row">
               <div class="col-sm-12">
-                <a class="btn btn-info " target="__blank"
-                   asp-action="Edit" asp-route-id="@Model.UsuarioId">Editar</a>
+                <a class="btn btn-success " target="__blank" asp-action="Edit"
+                  asp-route-id="@Model.UsuarioId">Editar</a>
               </div>
             </div>
           </div>
@@ -82,30 +83,28 @@
 
 <h2>Meus Pets</h2>
 <div class="exibirLado">
-        @{
-            var animais = ViewBag.pets;
-        }
+  @{
+    var animais = ViewBag.pets;
+  }
 
-        @{
-            if (animais != null)
-            {
-              @foreach (var animal in animais)
-              {
-                <div>
-                  <div class="cardq" style="width: 18rem;">
-                    <div class="cardPets">
-                      <img src="@animal.ImagensPet" class="card-img-top" alt="Pets">
-                      <div class="card-body">
-                        <h4 class="card-text">@animal.Nome</h4>
-                        <p class="card-text">@animal.EstadoAdocaoPet</p>
-                        <p class="card-text">@animal.Estado</p>
-                        <p class="card-text">@animal.Cidade</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              }
-            }
-        }
-    </div>
-
+  @{
+    if (animais != null)
+    {
+      @foreach (var animal in animais)
+      {
+        <div>
+          <div class="cardq" style="width: 18rem;">
+            <div class="cardPets">
+              <img src="@animal.ImagensPet" class="card-img-top" alt="Pets" style="width: 100%;">
+              <div class="card-body">
+                <h4 class="card-text">@animal.Nome</h4>
+                <p class="card-text"><span class="informacaoPet">Estado: </span>@animal.Estado</p>
+                <p class="card-text"><span class="informacaoPet">Cidade: </span>@animal.Cidade</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    }
+  }
+</div>

@@ -88,11 +88,11 @@ function validarCpf() {
         resultadoModulo1 = obterDigitoVerificador(somaDosNovePrimeirosNumeros);
     resultadoModulo2 = obterDigitoVerificador(somaDosDezPrimeirosNumeros);
 
-    if ((resultadoModulo1 + resultadoModulo2) === cpfSoNumero.substr(9, 2)) {
-        alert('CPF Válido');
-    } else {
-        alert('CPF Inválido');
-    }
+    // if ((resultadoModulo1 + resultadoModulo2) === cpfSoNumero.substr(9, 2)) {
+    //     alert('CPF Válido');
+    // } else {
+    //     alert('CPF Inválido');
+    // }
 }
 function obterDigitoVerificador(soma) {
     var resultado = (soma * 10) % 11;

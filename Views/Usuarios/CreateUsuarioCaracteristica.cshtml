@@ -8,7 +8,7 @@
 
 
 
-<h1 style="text-align: center; margin-top: 30px; ">Cadastro</h1>
+<h1 style="text-align: center; margin-top: 30px; ">Cadastro do Usuário</h1>
 
 <form asp-action="CreateUsuarioCaracteristica">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -20,12 +20,12 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-5">
             <label asp-for="Nome" class="control-label"></label>
-            <input asp-for="Nome" class="form-control" />
+            <input autocomplete="off" asp-for="Nome" class="form-control" />
             <span asp-validation-for="Nome" class="text-danger"></span>
         </div>
         <div class="col-md-5">
             <label asp-for="Sobrenome" class="control-label"></label>
-            <input asp-for="Sobrenome" class="form-control" />
+            <input autocomplete="off" asp-for="Sobrenome" class="form-control" />
             <span asp-validation-for="Sobrenome" class="text-danger"></span>
         </div>
     </div>
@@ -37,19 +37,19 @@
         </div>
         <div class="col-md-5">
             <label asp-for="CPF" class="control-label"></label>
-            <input asp-for="CPF" onblur="validarCpf(this.value)" id="cpf" class="form-control" />
+            <input autocomplete="off" asp-for="CPF" onblur="validarCpf(this.value)" id="cpf" class="form-control" />
             <span asp-validation-for="CPF" class="text-danger"></span>
         </div>
     </div>
     <div class="row d-flex justify-content-center">
         <div class="col-md-5">
             <label asp-for="Email" class="control-label"></label>
-            <input asp-for="Email" class="form-control" />
+            <input autocomplete="off" asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="col-md-5">
             <label asp-for="ConfirmeEmail" class="control-label"></label>
-            <input asp-for="ConfirmeEmail" class="form-control" />
+            <input autocomplete="off" asp-for="ConfirmeEmail" class="form-control" />
             <span asp-validation-for="ConfirmeEmail" class="text-danger"></span>
         </div>
     </div>
@@ -72,8 +72,13 @@
             <span asp-validation-for="DtNascimento" class="text-danger"></span>
         </div>
         <div class="col-md-5">
-            <label asp-for="Genero" class="control-label"></label>
-            <input asp-for="Genero" class="form-control" />
+            <label asp-for="Genero" class="form-label"></label>
+            <select asp-for="Genero" class="form-select">
+                <option selected>Selecione</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outros">Outros</option>
+            </select>
             <span asp-validation-for="Genero" class="text-danger"></span>
         </div>
     </div>
@@ -190,7 +195,7 @@
         </div>
     </div>
     <div class="col-md-5">
-        <input type="submit" value="Create" class="btn btn-success"
+        <input type="submit" value="Criar" class="btn btn-success"
             style="align-items: center; margin-left: 85%; border-radius: 5px; width: 400px; height: 40px;" />
     </div>
 

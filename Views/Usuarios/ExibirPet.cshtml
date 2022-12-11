@@ -2,7 +2,7 @@
 
 
 @{
-    var animais = ViewBag.pets;
+    var animais = ViewBag.pet;
 }
 
 @{
@@ -15,22 +15,22 @@
                     <img src="@Models.ImagensPet" id="perfil" />
                 </div>
                 <div id="direita">
-                    <span>@Models.Nome</span>
+                    <span style="font-size: 35px; font-weight: 600;">@Models.Nome</span>
                     <p>@Models.Especie | @Models.Sexo | @Models.Porte | @Models.Cidade | @Models.Estado</p>
                 </div>
                 <div id="historia">
-                    <span>Historia sobre @Models.Nome</span>
+                    <span style="font-size: 32px; font-weight: 500;">Historia sobre @Models.Nome</span>
                     <br>
-                    @Models.Descricao
+                    <p style="margin-top: 15px;">@Models.Descricao</p>
                 </div>
-                <button type="submit" class="bnt" onclick="openPopup()">Quero adotar</button>
+                <button type="submit" class="bnt" style="right: 30%;" onclick="openPopup()">Quero adotar</button>
             </div>
         }
         <div class="popup" id="popup">
-            <h2>Contato do Cuidador</h2>
-            <p>@Model.Nome</p>
-            <p>@Model.Celular</p>
-            <p>@Model.Email</p>
+            <h2 style="text-align: center;">Contato do Cuidador</h2>
+            <p style="text-align: start;"><span>Nome: </span>@Model.Nome @Model.Sobrenome</p>
+            <p style="text-align: start;"><i class="fa-solid fa-square-phone"></i> @Model.Celular</p>
+            <p style="text-align: start;"><i class="fa-solid fa-envelope"></i> @Model.Email</p>
             <button type="button" onclick="closePopup()">Fechar</button>
         </div>
     }

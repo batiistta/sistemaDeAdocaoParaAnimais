@@ -30,7 +30,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         public IActionResult Sair()
         {
             _sessao.RemoverSessaoUsuario();
-            return View("Login");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -47,7 +47,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                         if (usuarios.SenhaValida(login.Senha))
                         {
                             _sessao.CriarSessaoDoUsuario(usuarios);
-                            return RedirectToAction("Profile", "Usuarios");
+                            return RedirectToAction("Buscar", "Animais");
                         }
 
                         TempData["MensagemErro"] = $"Senha do usuário é inválida, tente novamente.";
@@ -79,7 +79,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
                         string mensagem = $"Sua nova senha é: {novaSenha}";
 
-                        bool emailEnviado = _email.Enviar(usuarios.Email, "Animal Petz - Nova Senha", mensagem);
+                        bool emailEnviado = _email.Enviar(usuarios.Email, "Animal Pets - Nova Senha", mensagem);
                         
                         if(emailEnviado)
                         {

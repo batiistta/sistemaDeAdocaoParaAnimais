@@ -56,7 +56,9 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         {
             Usuarios usuarios = _sessao.BuscarSessaoDoUsuario();
             var pet = _context.animals.Where(a => a.Id == id);
-            ViewBag.pets = pet;
+            ViewBag.pet = pet;
+            var pets = _context.animals.Where(a => a.EstadoAdocaoPet == "Disponível");
+            ViewBag.pets = pets;
 
             return View(usuarios);
         }
@@ -115,7 +117,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                             await _context.SaveChangesAsync();
 
                             string mensagem = $"Olá, seja bem vindo {usuarios.Nome}. <br> Faça um pet mais feliz!";
-                            _email.Enviar(usuarios.Email, "Animal Petz - Bem vindo", mensagem);
+                            _email.Enviar(usuarios.Email, "Animal Pets - Bem vindo", mensagem);
                             TempData["MensagemSucesso"] = $"Usuário Cadastrado com sucesso";
                             return RedirectToAction("Login", "Login");
                         }

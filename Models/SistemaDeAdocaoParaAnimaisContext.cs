@@ -15,5 +15,6 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public DbSet<Usuarios> usuarios { get; set; }
         public DbSet<CaracteristicaAnimal> caracteristicaAnimals {get; set;}
         public DbSet<CaracteristicaUsuario> caracteristicaUsuarios { get; set; }
+        public DbSet<ClusterPrediction> clusterPredictions { get; set; }
     }
 };
