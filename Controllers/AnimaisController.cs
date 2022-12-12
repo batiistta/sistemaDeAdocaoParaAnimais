@@ -24,42 +24,6 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             _sessao = sessao;
         }
 
-        // public static DataTable BuildDataTable<Animal>(IList<Animal> lst)
-        // {
-        //     //create DataTable Structure
-        //     DataTable tbl = CreateTable<Animal>();
-        //     Type entType = typeof(Animal);
-        //     PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(entType);
-        //     //get the list item and add into the list
-        //     foreach (Animal item in lst)
-        //     {
-        //         DataRow row = tbl.NewRow();
-        //         foreach (PropertyDescriptor prop in properties)
-        //         {
-        //             // row[prop.Name] = prop.GetValue(item);
-        //             row[prop.Name] = prop.GetValue(item);
-        //         }
-        //         tbl.Rows.Add(row);
-        //     }
-        //     return tbl;
-        // }
-
-
-        // private static DataTable CreateTable<Animal>()
-        // {
-        //     Type entType = typeof(Animal);
-        //     //set the datatable name as class name
-        //     DataTable tbl = new DataTable(entType.Name);
-        //     //get the property list
-        //     PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(entType);
-        //     foreach (PropertyDescriptor prop in properties)
-        //     {
-        //         //add property as column
-        //         tbl.Columns.Add(prop.Name, prop.PropertyType);
-        //     }
-        //     return tbl;
-        // }
-
         [HttpPost]
         public async Task<IActionResult> Limpar()
         {
@@ -99,54 +63,48 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         {
 
             Usuarios usuario1 = _sessao.BuscarSessaoDoUsuario();
-            string _dataPath = Path.Combine(Environment.CurrentDirectory, "Data", "CaracteristicaAnimal.csv");
-            string _modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "IrisClusteringModel.zip");
-
-            var mlContext = new MLContext(seed: 0);
-
-            IDataView dataView = mlContext.Data.LoadFromTextFile<CaracteristicaAnimal>(_dataPath, hasHeader: false, separatorChar: ',');
-
-            string featuresColumnName = "Features";
-            var pipeline = mlContext.Transforms
-                .Concatenate(featuresColumnName, "Energia", "Humor", "Apego")
-                .Append(mlContext.Clustering.Trainers.KMeans(featuresColumnName, numberOfClusters: 3));
-
-            var model = pipeline.Fit(dataView);
-
-            using (var fileStream = new FileStream(_modelPath, FileMode.Create, FileAccess.Write, FileShare.Write))
-            {
-                mlContext.Model.Save(model, dataView.Schema, fileStream);
-            }
-
             var usuario = _context.usuarios.Find(usuario1.UsuarioId);
 
             var caracteristicaUsuario = _context.caracteristicaUsuarios.Find(usuario.fkCaracteristica);
-            
-            var predictor = mlContext.Model.CreatePredictionEngine<CaracteristicaUsuario, ClusterPrediction>(model);
-
-            CaracteristicaUsuarioTeste.Setosa.Apego = caracteristicaUsuario.Apego;
-            CaracteristicaUsuarioTeste.Setosa.Humor = caracteristicaUsuario.Humor;
-            CaracteristicaUsuarioTeste.Setosa.Energia = caracteristicaUsuario.Energia;
-
-            var prediction = predictor.Predict(CaracteristicaUsuarioTeste.Setosa);
-            Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
-            Console.WriteLine($"Distances: {string.Join(" ", prediction.Distances)}");
-
-
-            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
-
 
             foreach (var animal in _context.animals)
             {
+                string _dataPath = Path.Combine(Environment.CurrentDirectory, "Data", "CaracteristicaAnimal.csv");
+                string _modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "IrisClusteringModel.zip");
+
+                var mlContext = new MLContext(seed: 0);
+
+                IDataView dataView = mlContext.Data.LoadFromTextFile<CaracteristicaAnimal>(_dataPath, hasHeader: false, separatorChar: ',');
+
+                string featuresColumnName = "Features";
+                var pipeline = mlContext.Transforms
+                    .Concatenate(featuresColumnName, "Energia", "Humor", "Apego")
+                    .Append(mlContext.Clustering.Trainers.KMeans(featuresColumnName, numberOfClusters: 3));
+
+                var model = pipeline.Fit(dataView);
+
+                using (var fileStream = new FileStream(_modelPath, FileMode.Create, FileAccess.Write, FileShare.Write))
+                {
+                    mlContext.Model.Save(model, dataView.Schema, fileStream);
+                }
+
+                var predictor = mlContext.Model.CreatePredictionEngine<CaracteristicaUsuario, ClusterPrediction>(model);
+
+                CaracteristicaUsuarioTeste.Setosa.Apego = caracteristicaUsuario.Apego;
+                CaracteristicaUsuarioTeste.Setosa.Humor = caracteristicaUsuario.Humor;
+                CaracteristicaUsuarioTeste.Setosa.Energia = caracteristicaUsuario.Energia;
+
+                var prediction = predictor.Predict(CaracteristicaUsuarioTeste.Setosa);
+                Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
+                Console.WriteLine($"Distances: {string.Join(" ", prediction.Distances)}");
+
                 animal.FkCluster = prediction.PredictedClusterId;
                 _context.Update(animal);
                 usuario1.FkCluster = prediction.PredictedClusterId;
             }
             await _context.SaveChangesAsync();
 
-
-            //IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.FkCluster == usuario1.FkCluster));
-
+            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.FkCluster == usuario1.FkCluster));
             return View(petsDisponiveis);
         }
 
