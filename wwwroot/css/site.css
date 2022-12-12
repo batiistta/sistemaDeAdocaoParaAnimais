@@ -1,3 +1,4 @@
+
 .popup {
   height: 300px;
   width: 700px;
@@ -724,4 +725,28 @@ img#avatar:hover {
     margin: 5px;
   }
 
+}
+
+footer{
+  background: linear-gradient(#42d979, #29f13a);
+}
+
+#hrfooter{
+    background-color: white;
+    height: 2px;
+    width: 50%;
+    margin-left: 0;   
+}
+
+#divfooter{
+    width: 94%;
+}
+
+#iconsfooter{
+    text-align: center;
+    padding-top: 20px;
+}
+
+#pfooter{
+    font-size: 17px;
 }

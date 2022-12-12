@@ -145,7 +145,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             await _context.SaveChangesAsync();
 
 
-            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.FkCluster == usuario1.FkCluster));
+            //IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.FkCluster == usuario1.FkCluster));
 
             return View(petsDisponiveis);
         }

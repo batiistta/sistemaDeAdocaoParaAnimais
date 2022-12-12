@@ -23,7 +23,7 @@
             <div class="container-fluid">
                 <a href="#" class="navbarIMG">
                     <img src="~/img/logopets.png" style="width: 90px;" alt="">
-                    AnimalPets
+                   AnimalPets
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -47,7 +47,7 @@
 
                 </div>
                 <a asp-controller="Login" asp-action="Login" style="font-size: 1.3rem; font-family: Roboto; font-weight: 800;" type="button" class="btn btn-outline-light">Entrar</a>
-                <a  asp-controller="Usuarios" asp-action="Create" style="font-size: 1.3rem; font-family: Roboto; font-weight: 800;" type="button" class="btn btn-outline-light">Cadastrar</a>
+                <a  asp-controller="Usuarios" asp-action="CreateUsuarioCaracteristica" style="font-size: 1.3rem; font-family: Roboto; font-weight: 800;" type="button" class="btn btn-outline-light">Cadastrar</a>
             </div>
         </nav>
 
@@ -111,11 +111,50 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - ProjetoTcc - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="text-white">
+        <div class="container-fluid pt-5 pb-5" id="divfooter">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="font-weight-bold mb-3">ADOTE</h5> <hr id="hrfooter">
+                    <p id="pfooter">Adote com Responsabilidade</p>
+                    <p id="pfooter">Quem pode adotar ?</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="font-weight-bold mb-3">DIVULGUE UM ANIMAL</h5> <hr id="hrfooter">
+                    <p id="pfooter">Cadastre um Animal</p>
+                </div>
+                 <div class="col-md-4">
+                    <h5 class="font-weight-bold mb-3">SOBRE NÓS</h5> <hr id="hrfooter">
+                    <p id="pfooter">Fale Conosco</p>
+                    <p id="pfooter">Perguntas Frequentes</p>
+                    <p id="pfooter">Parceiros</p>
+                    <p id="pfooter">Termo de Uso de Política de Privacidade</p>
+                </div>
+            </div>
+
+            <div id="iconsfooter" class="flex gap-3 mt-16 justify-center">
+                <a href="#" target="_blank">
+                <img loading="lazy" src="https://www.amigonaosecompra.com.br/images/instagram-1577ddddf7aaefce41fe6e89b4d81de3.png?vsn=d">
+                </a>
+                <a href="#" target="_blank">
+                <img loading="lazy" src="https://www.amigonaosecompra.com.br/images/facebook-42cdb13b597064462896ab0d32096a36.png?vsn=d">
+                </a>
+                <a href="#" target="_blank">
+                <img loading="lazy" src="https://www.amigonaosecompra.com.br/images/youtube-df83385dafd64efd85799e8a2daa2ef0.png?vsn=d">
+                </a>
+                <a href="#" target="_blank">
+                <img loading="lazy" src="https://www.amigonaosecompra.com.br/images/twitter-e2c877a4789b475409a4c93237faca71.png?vsn=d">
+                </a>
+              </div>
+
+            <div class="flex flex-col mt-10 text-center items-center">      
+                <img src="~/img/logopets.png" style="width: 120px;" id="imgfooter">      
+            <div class="text-xs mt-3">Todos os direitos reservados.</div>
+            </div>
+
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
