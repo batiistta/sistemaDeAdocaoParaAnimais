@@ -64,8 +64,8 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
             Usuarios usuario1 = _sessao.BuscarSessaoDoUsuario();
             var usuario = _context.usuarios.Find(usuario1.UsuarioId);
-
             var caracteristicaUsuario = _context.caracteristicaUsuarios.Find(usuario.fkCaracteristica);
+
 
             foreach (var animal in _context.animals)
             {
@@ -100,12 +100,51 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
                 animal.FkCluster = prediction.PredictedClusterId;
                 _context.Update(animal);
-                usuario1.FkCluster = prediction.PredictedClusterId;
             }
             await _context.SaveChangesAsync();
-
-            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.FkCluster == usuario1.FkCluster));
+            BuscarFkUsuario();
+            IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.FkCluster == usuario.FkCluster && a.EstadoAdocaoPet == "Disponível"));
             return View(petsDisponiveis);
+        }
+
+        public async void BuscarFkUsuario()
+        {
+            Usuarios usuario1 = _sessao.BuscarSessaoDoUsuario();
+
+            var usuario = _context.usuarios.Find(usuario1.UsuarioId);
+
+            var caracteristicaUsuario = _context.caracteristicaUsuarios.Find(usuario.fkCaracteristica);
+
+            string _dataPath = Path.Combine(Environment.CurrentDirectory, "Data", "CaracteristicaAnimal.csv");
+            string _modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "CaracteristicaUsuarioModel.zip");
+
+            var mlContext = new MLContext(seed: 0);
+
+            IDataView dataView = mlContext.Data.LoadFromTextFile<CaracteristicaUsuario>(_dataPath, hasHeader: false, separatorChar: ',');
+
+            string featuresColumnName = "Features";
+            var pipeline = mlContext.Transforms
+                .Concatenate(featuresColumnName, "Energia", "Humor", "Apego")
+                .Append(mlContext.Clustering.Trainers.KMeans(featuresColumnName, numberOfClusters: 5));
+
+            var model = pipeline.Fit(dataView);
+
+            using (var fileStream = new FileStream(_modelPath, FileMode.Create, FileAccess.Write, FileShare.Write))
+            {
+                mlContext.Model.Save(model, dataView.Schema, fileStream);
+            }
+
+            var predictor = mlContext.Model.CreatePredictionEngine<CaracteristicaUsuario, ClusterPrediction>(model);
+
+            CaracteristicaUsuarioTeste.Setosa.Apego = caracteristicaUsuario.Apego;
+            CaracteristicaUsuarioTeste.Setosa.Humor = caracteristicaUsuario.Humor;
+            CaracteristicaUsuarioTeste.Setosa.Energia = caracteristicaUsuario.Energia;
+
+            var prediction = predictor.Predict(CaracteristicaUsuarioTeste.Setosa);
+            Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
+            Console.WriteLine($"Distances: {string.Join(" ", prediction.Distances)}");
+
+            usuario.FkCluster = prediction.PredictedClusterId;
         }
 
         // GET: Animais
