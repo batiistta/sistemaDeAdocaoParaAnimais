@@ -60,10 +60,31 @@ button.accept-policy {
   line-height: inherit;
 }
 
-.footer {
+footer {
+  background: linear-gradient(#42d979, #29f13a);
+  width: 100%;
+  margin-top: 500px;
   position: absolute;
   bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+  left: 0;
+}
+
+#hrfooter {
+  background-color: white;
+  height: 2px;
+  width: 50%;
+  margin-left: 0;
+}
+
+#divfooter {
+  width: 94%;
+}
+
+#iconsfooter {
+  text-align: center;
+  padding-top: 20px;
+}
+
+#pfooter {
+  font-size: 17px;
 }

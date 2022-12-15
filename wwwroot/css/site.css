@@ -1,4 +1,3 @@
-
 .popup {
   height: 300px;
   width: 700px;
@@ -34,7 +33,7 @@
 
 .open-popup {
   visibility: visible;
-  top: 50%;
+  top: 30%;
   transform: translate(-50%, -50%) scale(1);
 }
 
@@ -222,6 +221,10 @@ h2 {
   font-size: 16px;
   margin: 15px;
 }
+
+/* .section{
+  margin-bottom: 500px;
+} */
 
 .container_duvidas {
   width: 100%;
@@ -727,26 +730,3 @@ img#avatar:hover {
 
 }
 
-footer{
-  background: linear-gradient(#42d979, #29f13a);
-}
-
-#hrfooter{
-    background-color: white;
-    height: 2px;
-    width: 50%;
-    margin-left: 0;   
-}
-
-#divfooter{
-    width: 94%;
-}
-
-#iconsfooter{
-    text-align: center;
-    padding-top: 20px;
-}
-
-#pfooter{
-    font-size: 17px;
-}

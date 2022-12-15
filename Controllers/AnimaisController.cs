@@ -33,7 +33,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Buscar(string sexo, string estado)
+        public async Task<IActionResult> Buscar(string sexo, string estado, string porte)
         {
 
             IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.EstadoAdocaoPet == "Disponível"));
@@ -46,16 +46,24 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 petsDisponiveis = petsDisponiveis.Where(a => a.Estado == estado);
             }
 
+            if (porte != "Todos os Portes")
+            {
+                petsDisponiveis = petsDisponiveis.Where(a => a.Porte == porte);
+            }
+
             return View(petsDisponiveis);
         }
 
 
         public async Task<IActionResult> ExibirPet(int? id)
         {
-            var pet = _context.animals.Where(a => a.Id == id);
-            ViewBag.pets = pet;
+            var informacoesAnimal = _context.animals.Find(id);
+            var inforUser = _context.usuarios.Find(informacoesAnimal.FkUsuarios);
+            var user = _context.usuarios.Where(a => a.UsuarioId == inforUser.UsuarioId);
+            ViewBag.user = user;
 
-            return View();
+            IEnumerable<Animal> pets = new List<Animal>(_context.animals.Where(a => a.Id == id));
+            return View(pets);
         }
 
 
@@ -66,6 +74,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             var usuario = _context.usuarios.Find(usuario1.UsuarioId);
             var caracteristicaUsuario = _context.caracteristicaUsuarios.Find(usuario.fkCaracteristica);
 
+            BuscarFkUsuario();
 
             foreach (var animal in _context.animals)
             {
@@ -78,7 +87,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
                 string featuresColumnName = "Features";
                 var pipeline = mlContext.Transforms
-                    .Concatenate(featuresColumnName, "Energia", "Humor", "Apego")
+                    .Concatenate(featuresColumnName, "Energia", "Humor", "Apego", "Brincalhao", "Adestramento")
                     .Append(mlContext.Clustering.Trainers.KMeans(featuresColumnName, numberOfClusters: 3));
 
                 var model = pipeline.Fit(dataView);
@@ -90,11 +99,13 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
                 var predictor = mlContext.Model.CreatePredictionEngine<CaracteristicaUsuario, ClusterPrediction>(model);
 
-                CaracteristicaUsuarioTeste.Setosa.Apego = caracteristicaUsuario.Apego;
-                CaracteristicaUsuarioTeste.Setosa.Humor = caracteristicaUsuario.Humor;
-                CaracteristicaUsuarioTeste.Setosa.Energia = caracteristicaUsuario.Energia;
+                CaracteristicaUsuarioTeste.caracteristicaUsuario.Apego = caracteristicaUsuario.Apego;
+                CaracteristicaUsuarioTeste.caracteristicaUsuario.Humor = caracteristicaUsuario.Humor;
+                CaracteristicaUsuarioTeste.caracteristicaUsuario.Energia = caracteristicaUsuario.Energia;
+                CaracteristicaUsuarioTeste.caracteristicaUsuario.Adestramento = caracteristicaUsuario.Adestramento;
+                CaracteristicaUsuarioTeste.caracteristicaUsuario.Brincalhao = caracteristicaUsuario.Brincalhao;
 
-                var prediction = predictor.Predict(CaracteristicaUsuarioTeste.Setosa);
+                var prediction = predictor.Predict(CaracteristicaUsuarioTeste.caracteristicaUsuario);
                 Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
                 Console.WriteLine($"Distances: {string.Join(" ", prediction.Distances)}");
 
@@ -102,7 +113,6 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 _context.Update(animal);
             }
             await _context.SaveChangesAsync();
-            BuscarFkUsuario();
             IEnumerable<Animal> petsDisponiveis = new List<Animal>(_context.animals.Where(a => a.FkCluster == usuario.FkCluster && a.EstadoAdocaoPet == "Disponível"));
             return View(petsDisponiveis);
         }
@@ -120,12 +130,12 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
             var mlContext = new MLContext(seed: 0);
 
-            IDataView dataView = mlContext.Data.LoadFromTextFile<CaracteristicaUsuario>(_dataPath, hasHeader: false, separatorChar: ',');
+            IDataView dataView = mlContext.Data.LoadFromTextFile<CaracteristicaAnimal>(_dataPath, hasHeader: false, separatorChar: ',');
 
             string featuresColumnName = "Features";
             var pipeline = mlContext.Transforms
-                .Concatenate(featuresColumnName, "Energia", "Humor", "Apego")
-                .Append(mlContext.Clustering.Trainers.KMeans(featuresColumnName, numberOfClusters: 5));
+                .Concatenate(featuresColumnName, "Energia", "Humor", "Apego", "Brincalhao", "Adestramento")
+                .Append(mlContext.Clustering.Trainers.KMeans(featuresColumnName, numberOfClusters: 3));
 
             var model = pipeline.Fit(dataView);
 
@@ -136,11 +146,13 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
             var predictor = mlContext.Model.CreatePredictionEngine<CaracteristicaUsuario, ClusterPrediction>(model);
 
-            CaracteristicaUsuarioTeste.Setosa.Apego = caracteristicaUsuario.Apego;
-            CaracteristicaUsuarioTeste.Setosa.Humor = caracteristicaUsuario.Humor;
-            CaracteristicaUsuarioTeste.Setosa.Energia = caracteristicaUsuario.Energia;
+            CaracteristicaUsuarioTeste.caracteristicaUsuario.Apego = caracteristicaUsuario.Apego;
+            CaracteristicaUsuarioTeste.caracteristicaUsuario.Humor = caracteristicaUsuario.Humor;
+            CaracteristicaUsuarioTeste.caracteristicaUsuario.Energia = caracteristicaUsuario.Energia;
+            CaracteristicaUsuarioTeste.caracteristicaUsuario.Adestramento = caracteristicaUsuario.Adestramento;
+            CaracteristicaUsuarioTeste.caracteristicaUsuario.Brincalhao = caracteristicaUsuario.Brincalhao;
 
-            var prediction = predictor.Predict(CaracteristicaUsuarioTeste.Setosa);
+            var prediction = predictor.Predict(CaracteristicaUsuarioTeste.caracteristicaUsuario);
             Console.WriteLine($"Cluster: {prediction.PredictedClusterId}");
             Console.WriteLine($"Distances: {string.Join(" ", prediction.Distances)}");
 
@@ -175,7 +187,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateAnimalCaracteristica([Bind("Id,FkUsuarios, FkCaracteristicaAnimal, FkCluster, Nome,Raca,Cor,Descricao,Porte,Especie,Sexo,Estado,Cidade,Adestramento,Vacinado,Castrado,Vermifugado,EstadoAdocaoPet,ImagensPet")] Animal animal, float energia, float humor, float apego)
+        public async Task<IActionResult> CreateAnimalCaracteristica([Bind("Id,FkUsuarios, FkCaracteristicaAnimal, FkCluster, Nome,Raca,Cor,Descricao,Porte,Especie,Sexo,Estado,Cidade,Vacinado,Castrado,Vermifugado,EstadoAdocaoPet,ImagensPet")] Animal animal, float energia, float humor, float apego, float adestramento, float brincalhao)
         {
             if (ModelState.IsValid)
             {
@@ -183,6 +195,8 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 caracteristicaAnimal.Energia = energia;
                 caracteristicaAnimal.Apego = apego;
                 caracteristicaAnimal.Humor = humor;
+                caracteristicaAnimal.Adestramento = adestramento;
+                caracteristicaAnimal.Brincalhao = brincalhao;
                 _context.Add(caracteristicaAnimal);
                 await _context.SaveChangesAsync();
 
@@ -196,7 +210,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                 _context.Update(animal);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Profile", "Usuarios");
             }
             ViewData["FkUsuarios"] = new SelectList(_context.usuarios, "UsuarioId", "Nome", animal.FkUsuarios);
             return View(animal);

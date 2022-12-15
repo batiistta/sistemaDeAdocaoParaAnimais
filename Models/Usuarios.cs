@@ -100,11 +100,6 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public string Estado { get; set; }
 
         [Required]
-        [Display(Name = "Qual o nivel de adestramento do pet que você quer?")]
-        [Range(1, 5)]
-        public int Adestramento { get; set; }
-
-        [Required]
         [Display(Name = "Termos & Condições")]
         [Range(typeof(bool), "true", "true", ErrorMessage = "Aceite os termos e condições.")]
         public bool TermosCondições { get; set; }

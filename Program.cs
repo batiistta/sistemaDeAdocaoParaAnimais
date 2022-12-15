@@ -11,6 +11,7 @@ builder.Services.AddDbContext<SistemaDeAdocaoParaAnimaisContext>(opt =>
 {
     opt.UseMySql(mysqlconnection, ServerVersion.AutoDetect(mysqlconnection));
 });
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 builder.Services.AddScoped<ISessao, Sessao>();

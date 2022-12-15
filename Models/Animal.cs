@@ -52,11 +52,6 @@ namespace sistemaDeAdocaoParaAnimais.Models
         public string Cidade { get; set; }
 
         [Required]
-        [Display(Name = "Adestramento")]
-        [Range(1, 5)]
-        public int Adestramento { get; set; }
-
-        [Required]
         [Display(Name = "Vacinado ?")]
         public string Vacinado { get; set; }
 

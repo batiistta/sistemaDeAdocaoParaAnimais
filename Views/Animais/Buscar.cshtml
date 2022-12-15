@@ -7,22 +7,28 @@
 <br>
 <form asp-action="Buscar">
     <div class="row d-flex justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <select name="sexo" class="form-select" aria-label="Default select example">
                 <option selected>Todos os sexos</option>
                 <option value="Macho">Macho</option>
                 <option value="Fêmea">Fêmea</option>
             </select>
         </div>
-        <div class="col-md-4">
-            <select class="form-select" aria-label="Default select example">
+        <div class="col-md-6">
+            <select name="porte" class="form-select" aria-label="Default select example">
                 <option selected>Todos os portes</option>
                 <option value="Pequeno">Pequeno</option>
                 <option value="Médio">Médio</option>
                 <option value="Grande">Grande</option>
             </select>
         </div>
-        <div class="col-md-4">
+
+    </div>
+
+    <br>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
             <select name="estado" class="form-select" aria-label="Default select example">
                 <option selected>Todos os estados</option>
                 <option value="Acre">Acre</option>
@@ -54,24 +60,12 @@
                 <option value="Tocantins">Tocantins</option>
             </select>
         </div>
-    </div>
-
-    <br>
-
-    <div class="row d-flex justify-content-center">
-
-        <div class="col-md-4">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Cidade">
-        </div>
-        <div class="col-md-4">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Nome do pet">
-        </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="d-grid gap-1">
                 <input type="submit" value="Buscar" class="btn btn-outline-success" />
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="d-grid gap-1">
                 <input type="submit" value="Limpar" class="btn btn-outline-success" />
             </div>
@@ -91,8 +85,7 @@
                         <h4 class="card-text">@animal.Nome</h4>
                         <p class="card-text"><span class="informacaoPet">Estado: </span>@animal.Estado</p>
                         <p class="card-text"><span class="informacaoPet">Cidade: </span>@animal.Cidade</p>
-                        <a asp-controller="Usuarios" asp-action="ExibirPet" asp-route-id="@animal.Id"><button
-                            class="bntbio">Sobre</button></a>
+                        <a asp-action="ExibirPet" asp-route-id="@animal.Id"><button class="bntbio">Sobre</button></a>
                     </div>
                 </div>
             </div>

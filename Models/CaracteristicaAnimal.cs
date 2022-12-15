@@ -21,5 +21,14 @@ namespace sistemaDeAdocaoParaAnimais.Models
 
         [LoadColumn(3)]
         public float Apego { get; set; }
+
+        [Required]
+
+        [LoadColumn(4)]
+        public float Brincalhao { get; set; }
+
+        [Required]
+        [LoadColumn(5)]
+        public float Adestramento { get; set; }
     }
 }

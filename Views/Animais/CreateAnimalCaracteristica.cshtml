@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
-    
+
 }
 
 <h1 style="text-align: center; margin-top: 30px; ">Cadastre seu pet</h1>
@@ -29,7 +29,7 @@
         </div>
         <div class="col-md-5">
             <label asp-for="Cor" class="control-label"></label>
-            <input asp-for="Cor" class="form-control" style="width: 400px;"  type="text" />
+            <input asp-for="Cor" class="form-control" style="width: 400px;" type="text" />
             <span asp-validation-for="Cor" class="text-danger"></span>
         </div>
     </div>
@@ -57,7 +57,7 @@
     </div>
 
     <div class="row d-flex justify-content-center">
-<div class="col-md-5">
+        <div class="col-md-5">
             <label asp-for="Estado" class="control-label"></label>
             <select name="estado" id="estado" class="form-select" style="width: 400px;" asp-for="Estado"
                 aria-label="Default select example">
@@ -101,8 +101,9 @@
 
     <div class="row d-flex justify-content-center">
         <div class="col-md-5">
-            <label name="energia" style="width: 500px;" class="form-label">Qual o nível de energia do seu pet?</label>
-            <select name= "energia" style="width: 400px;" class="form-select" aria-label="Default select example">
+            <label name="energia" style="width: 500px;" class="form-label">Informe de 1 à 5, o quanto seu pet é
+                enérgico</label>
+            <select name="energia" style="width: 400px;" class="form-select" aria-label="Default select example">
                 <option class="form-label" selected>Selecione</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -111,9 +112,10 @@
                 <option value="5">5</option>
             </select>
         </div>
-        
+
         <div class="col-md-5">
-            <label name="humor" style="width: 500px;" class="form-label">Qual o nível de humor do seu pet?</label>
+            <label name="humor" style="width: 500px;" class="form-label">Informe de 1 à 5, o quanto seu pet é
+                sociável</label>
             <select name="humor" style="width: 400px;" class="form-select" aria-label="Default select example">
                 <option class="form-label" selected>Selecione</option>
                 <option value="1">1</option>
@@ -127,7 +129,8 @@
 
     <div class="row d-flex justify-content-center">
         <div class="col-md-5">
-            <label name="apego" style="width: 500px;" class="form-label">Qual o nível de apego do seu pet?</label>
+            <label name="apego" style="width: 500px;" class="form-label">Informe de 1 à 5, o quanto seu pet é
+                apegado</label>
             <select name="apego" style="width: 400px;" class="form-select" aria-label="Default select example">
                 <option class="form-label" selected>Selecione</option>
                 <option value="1">1</option>
@@ -139,9 +142,9 @@
         </div>
 
         <div class="col-md-5">
-            <label asp-for="Adestramento" style="width: 500px;" class="form-label"></label>
-            <select asp-for="Adestramento" style="width: 400px;" class="form-select"
-                aria-label="Default select example">
+            <label name="adestramento" style="width: 500px;" class="form-label">Informe de 1 à 5, o quanto seu pet é
+                adestado</label>
+            <select name="adestramento" style="width: 400px;" class="form-select" aria-label="Default select example">
                 <option class="form-label" selected>Selecione</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -149,11 +152,22 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <span asp-validation-for="Adestramento" class="text-danger"></span>
         </div>
     </div>
 
     <div class="row d-flex justify-content-center">
+        <div class="col-md-5">
+            <label name="brincalhao" style="width: 500px;" class="form-label">Informe de 1 à 5, o quanto seu pet é
+                adestado</label>
+            <select name="brincalhao" style="width: 400px;" class="form-select" aria-label="Default select example">
+                <option class="form-label" selected>Selecione</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
         <div class="col-md-5">
             <label asp-for="Vacinado" style="width: 500px;" class="form-label"></label>
             <select asp-for="Vacinado" style="width: 400px;" class="form-select" aria-label="Default select example">
@@ -163,6 +177,9 @@
             </select>
             <span asp-validation-for="Vacinado" class="text-danger"></span>
         </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
         <div class="col-md-5">
             <label asp-for="Castrado" style="width: 500px;" class="form-label"></label>
             <select asp-for="Castrado" style="width: 400px;" class="form-select" aria-label="Default select example">
@@ -172,9 +189,6 @@
             </select>
             <span asp-validation-for="Castrado" class="text-danger"></span>
         </div>
-    </div>
-
-    <div class="row d-flex justify-content-center">
         <div class="col-md-5">
             <label asp-for="Vermifugado" style="width: 500px;" class="form-label"></label>
             <select asp-for="Vermifugado" style="width: 400px;" class="form-select" aria-label="Default select example">
@@ -184,6 +198,9 @@
             </select>
             <span asp-validation-for="Vermifugado" class="text-danger"></span>
         </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
         <div class="col-md-5">
             <label asp-for="Sexo" style="width: 500px;" class="form-label"></label>
             <select asp-for="Sexo" style="width: 400px;" class="form-select" aria-label="Default select example">
@@ -193,9 +210,7 @@
             </select>
             <span asp-validation-for="Sexo" class="text-danger"></span>
         </div>
-    </div>
 
-    <div class="row d-flex justify-content-center">
         <div class="col-md-5">
             <label asp-for="EstadoAdocaoPet" class="form-label"></label>
             <select asp-for="EstadoAdocaoPet" style="width: 400px;" class="form-select"
@@ -206,13 +221,13 @@
             </select>
             <span asp-validation-for="EstadoAdocaoPet" class="text-danger"></span>
         </div>
-
-        <div class="col-md-5">
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
             <label for="formFileMultiple" class="form-label">Escolha a foto do seu pet</label>
             <input class="form-control" style="width: 400px;" type="file" id="photoInput">
         </div>
     </div>
-
     <div class="textArea">
         <label asp-for="Descricao" class="form-label"></label>
         <textarea asp-for="Descricao" class="form-control" cols="200" rows="10"></textarea>
@@ -225,7 +240,7 @@
         <span asp-validation-for="ImagensPet" class="text-danger"></span>
     </div>
     <div class="col-md-5">
-        <input type="submit" value="Criar" class="btn btn-primary" style="align-items: center; margin-left: 85%; border-radius: 5px; width: 400px; height: 40px;"/>
+        <input type="submit" value="Criar" class="btn btn-primary"
+            style="align-items: center; margin-left: 85%; border-radius: 5px; width: 400px; height: 40px;" />
     </div>
 </form>
-

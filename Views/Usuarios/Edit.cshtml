@@ -12,6 +12,11 @@
     <form asp-action="Edit">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="UsuarioId" />
+        <div class="form-group" style="visibility: hidden;">
+            <label asp-for="Avatar" class="control-label"></label>
+            <input id="photo" asp-for="Avatar" class="form-control" />
+            <span asp-validation-for="Avatar" class="text-danger"></span>
+        </div>
         <div class="row d-flex justify-content-center">
             <div class="col-md-5">
                 <label asp-for="Nome" class="control-label"></label>
@@ -129,7 +134,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-5">
                 <label name="Energia" class="form-label">Nível de energia do pet desejado?</label>
-                <select namer="Energia" class="form-select" aria-label="Default select example">
+                <select name="Energia" class="form-select" aria-label="Default select example">
                     <option class="form-label" selected>Selecione</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -163,8 +168,8 @@
                 </select>
             </div>
             <div class="col-md-5">
-                <label asp-for="Adestramento" class="form-label">Nível de adestramento do pet desejado?</label>
-                <select asp-for="Adestramento" class="form-select" aria-label="Default select example">
+                <label name="Adestramento" class="form-label">Nível de adestramento do pet desejado?</label>
+                <select name="Adestramento" class="form-select" aria-label="Default select example">
                     <option class="form-label" selected>Selecione</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -172,9 +177,9 @@
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                <span asp-validation-for="Adestramento" class="text-danger"></span>
             </div>
         </div>
+
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
                 <label for="formFileMultiple" class="form-label">Escolha sua imagem de perfil</label>
