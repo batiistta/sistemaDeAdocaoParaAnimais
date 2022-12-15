@@ -1,35 +1,38 @@
-@model sistemaDeAdocaoParaAnimais.Models.Animal
+@model IEnumerable<sistemaDeAdocaoParaAnimais.Models.Animal>
 
-@{
-    var animais = ViewBag.pets;
+@foreach (var animal in Model)
+{
+    <div class="divAnimais" style="margin-bottom: 650px;">
+        <div id="esquerda">
+            <img src="@animal.ImagensPet" id="perfil" />
+        </div>
+        <div id="direita">
+            <span style="font-size: 35px; font-weight: 600;"> @animal.Nome</span>
+            <p>@animal.Especie | @animal.Sexo | @animal.Porte | @animal.Cidade | @animal.Estado</p>
+        </div>
+        <div id="historia">
+            <span style="font-size: 32px; font-weight: 500;">Historia sobre @animal.Nome</span>
+            <br>
+            <p style="margin-top: 15px;">@animal.Descricao</p>
+        </div>
+        <button type="submit" class="bnt" style="right: 30%;" onclick="openPopup()">Quero adotar</button>
+    </div>
 }
 
+@{
+    var usuarios = ViewBag.user;
+}
 
 @{
-    if (animais != null)
+    if (usuarios != null)
     {
-        @foreach (var Models in animais)
+        @foreach (var Models in usuarios)
         {
-            <div>
-                <div id="esquerda">
-                    <img src="@Models.ImagensPet" id="perfil" />
-                </div>
-                <div id="direita">
-                    <span>@Models.Nome</span>
-                    <p>@Models.Especie | @Models.Sexo | @Models.Porte | @Models.Cidade | @Models.Estado</p>
-                </div>
-                <div id="historia">
-                    <span>Historia sobre @Models.Nome</span>
-                    <br>
-                    @Models.Descricao
-                </div>
-                <button type="submit" class="bnt"  onclick="openPopup()">Quero adotar</button>
-            </div>
             <div class="popup" id="popup">
-                <h2>Contato do Cuidador</h2>
-                <p>@Models.Usuarios.Nome</p>
-                <p>@Models.Usuarios.Celular</p>
-                <p>@Models.Usuarios.Email</p>
+                <h2 style="text-align: center;">Contato do Cuidador</h2>
+                <p style="text-align: start;"><span>Nome: </span>@Models.Nome @Models.Sobrenome</p>
+                <p style="text-align: start;"><i class="fa-solid fa-square-phone"></i> @Models.Celular</p>
+                <p style="text-align: start;"><i class="fa-solid fa-envelope"></i> @Models.Email</p>
                 <button type="button" onclick="closePopup()">Fechar</button>
             </div>
         }

@@ -8,7 +8,7 @@
 
 
 
-<h1 style="text-align: center; margin-top: 30px; ">Cadastro do Usuário</h1>
+<h1 style="text-align: center; margin-top: 30px; margin-bottom: -50px;">Cadastro do Usuário</h1>
 
 <form asp-action="CreateUsuarioCaracteristica">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -133,8 +133,8 @@
     </div>
     <div class="row d-flex justify-content-center">
         <div class="col-md-5">
-            <label name="Energia" class="form-label">Nível de energia do pet desejado?</label>
-            <select name="Energia" class="form-select" aria-label="Default select example">
+            <label name="energia" class="form-label">Nível de energia do pet desejado?</label>
+            <select name="energia" class="form-select" aria-label="Default select example">
                 <option class="form-label" selected>Selecione</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -167,9 +167,10 @@
                 <option value="5">5</option>
             </select>
         </div>
+
         <div class="col-md-5">
-            <label asp-for="Adestramento" class="form-label">Nível de adestramento do pet desejado?</label>
-            <select asp-for="Adestramento" class="form-select" aria-label="Default select example">
+            <label name="adestramento" class="form-label">Nível de adestramento do pet desejado?</label>
+            <select name="adestramento" class="form-select" aria-label="Default select example">
                 <option class="form-label" selected>Selecione</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -177,15 +178,27 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <span asp-validation-for="Adestramento" class="text-danger"></span>
         </div>
     </div>
+
     <div class="row d-flex justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-5">
             <label for="formFileMultiple" class="form-label">Escolha sua imagem de perfil</label>
-            <input class="form-control" style="width: 400px;" type="file" id="photoInput">
+            <input class="form-control" style="width: 525px;" type="file" id="photoInput">
         </div>
-    </div> <br>
+        <div class="col-md-5">
+            <label name="brincalhao" class="form-label">Quanto você deseja que seu pet goste de brincadeira?</label>
+            <select name="brincalhao" class="form-select" aria-label="Default select example">
+                <option class="form-label" selected>Selecione</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+    </div>
+    <br>
     <div class="row d-flex justify-content-center">
         <div style="margin-top: -10px;" class="col-md-10">
             <label class="form-check-label">

@@ -52,18 +52,6 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
             return View(usuarios);
         }
 
-        public async Task<IActionResult> ExibirPet(int? id)
-        {
-            Usuarios usuarios = _sessao.BuscarSessaoDoUsuario();
-            var pet = _context.animals.Where(a => a.Id == id);
-            ViewBag.pet = pet;
-            var pets = _context.animals.Where(a => a.EstadoAdocaoPet == "Disponível");
-            ViewBag.pets = pets;
-
-            return View(usuarios);
-        }
-
-
         public IActionResult Profile()
         {
 
@@ -89,7 +77,7 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateUsuarioCaracteristica([Bind("UsuarioId, fkCaracteristica, Avatar,Nome,Sobrenome,NomeSocial,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,Adestramento,TermosCondições")] Usuarios usuarios, float energia, float humor, float apego)
+        public async Task<IActionResult> CreateUsuarioCaracteristica([Bind("UsuarioId, fkCaracteristica, Avatar,Nome,Sobrenome,NomeSocial,CPF,Email,ConfirmeEmail,Senha,ConfirmeSenha,DtNascimento,Genero,Celular,Cep,Rua,Bairro,Numero,complemento,Cidade,Estado,TermosCondições")] Usuarios usuarios, float energia, float humor, float apego, float adestramento, float brincalhao)
         {
             try
             {
@@ -107,6 +95,8 @@ namespace sistemaDeAdocaoParaAnimais.Controllers
                             caracteristicaUsuario.Energia = energia;
                             caracteristicaUsuario.Humor = humor;
                             caracteristicaUsuario.Apego = apego;
+                            caracteristicaUsuario.Adestramento = adestramento;
+                            caracteristicaUsuario.Brincalhao = brincalhao;
                             _context.Add(caracteristicaUsuario);
 
                             usuarios.SetSenhaHash();
